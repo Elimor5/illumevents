@@ -62,8 +62,7 @@ Trello Link: [link]
       * Scrolling a certain distance on the page leads to a background AJAX call to fetch more events
     * Google Maps
       * Interactive map showing the event's location on the event showpage
-      * Interactive map showing multiple events on search results page
-    * Hot   
+      * Interactive map showing multiple events on search results page 
     * Search
       * Autocomplete search feature allows users to search for events by category or by event name
     * Event Suggestions
