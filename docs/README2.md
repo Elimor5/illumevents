@@ -18,13 +18,20 @@ Trello Link: [link]
   - Bonus: Infinite Scroll
   - Bonus: Ticket Quantity (Quantity Remaining)
 
-###### CREATE LINKS FOR THESE
   Design Docs:
-   * Wireframes
-   * API Endpoints
-   * React Component Hierarchy
-   * Sample State
-   * Schema
+  * [View Wireframes][wireframes]
+  * [React Components][components]
+  * [API endpoints][api-endpoints]
+  * [DB schema][schema]
+  * [Sample State][sample-state]
+
+  [wireframes]: ./wireframes/
+  [components]: ./react-component-hierarchy.md
+  [sample-state]: ./sample-state.md
+  [api-endpoints]: ./api-endpoints.md
+  [schema]: ./schema.md
+
+
 
   Feature Implementation Timeline:
 
