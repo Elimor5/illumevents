@@ -19,6 +19,7 @@
       time: "18:25:43",
       ticket_quantity: 100,
       ticket_price: 50,
+      ticket_id: 1, 
       venue: "Madison Square Garden",
       address: "4 Pennsylvania Plaza",
       city_state_zip: "New York, NY, 10001",

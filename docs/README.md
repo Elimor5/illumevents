@@ -5,7 +5,7 @@ Heroku Link: [link]
 Trello Link: [link]
 
 # Minimum Viable Product
-  Illumevents is a web application inspired by Eventbrite built using Ruby on Rails on the backend and React/Redux on the frontend. This website will allow users to browse events by area, bookmark events, create new events, buy tickets for events and sell tickets for events. By the end of week 9, the following features will be implemented with smooth, bug-free navigation, adequate seed data and sufficient CSS styling:
+  Illumevents is a web application inspired by Eventbrite built using Ruby on Rails on the backend and React/Redux on the frontend. This website will allow users to browse events, bookmark events, create new events, buy tickets for events and sell tickets for events. By the end of week 9, the following features will be implemented with smooth, bug-free navigation, adequate seed data and sufficient CSS styling:
 
   - Hosting on Heroku
   - New account creation, login and guest/demo login
@@ -62,7 +62,7 @@ Trello Link: [link]
       * Scrolling a certain distance on the page leads to a background AJAX call to fetch more events
     * Google Maps
       * Interactive map showing the event's location on the event showpage
-      * Interactive map showing multiple events on search results page 
+      * Interactive map showing multiple events on search results page
     * Search
       * Autocomplete search feature allows users to search for events by category or by event name
     * Event Suggestions
