@@ -1,5 +1,15 @@
 # API Endpoints
 
+##HMTL
+
+
+### Root
+
+- `GET /`
+
+
+## JSON
+
 ### Users
 
 - `POST /api/users`
@@ -13,7 +23,7 @@
 ### Events
 - `GET /api/events`
 - `POST /api/events`
-- `GET /api/events/:id`
+- `GET /api/events/:id` 
 - `PATCH /api/events/:id`
 - `DELETE /api/events/:id`
 

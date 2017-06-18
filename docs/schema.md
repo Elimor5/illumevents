@@ -45,7 +45,6 @@
 | column name     | data type  | details  
 |-----------------|------------|------------------------
 | name            | string     | not null, unique
-| image_url       | string     | not null, unique
 
 ## event_categories (bridge column to connect categories to users)
 | column name     | data type  | details  
