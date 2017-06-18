@@ -25,9 +25,9 @@ Trello Link: [link]
   * [DB schema][schema]
   * [Sample State][sample-state]
 
-  [wireframes]: ./wireframes/
-  [components]: ./react-component-hierarchy.md
-  [sample-state]: ./sample-state.md
+  [wireframes]: ./Wireframes/
+  [components]: ./react_component_hierarchy.md
+  [sample-state]: ./sample_state.md
   [api-endpoints]: ./api-endpoints.md
   [schema]: ./schema.md
 
