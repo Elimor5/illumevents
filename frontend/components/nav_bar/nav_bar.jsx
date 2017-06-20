@@ -11,14 +11,10 @@ class NavBar extends React.Component {
       return (<button className="" onClick={this.props.logout}>Log Out</button>);
     } else {
         return (
-          <nav className="">
-            <div className= "nav-bar-item">
-              <Link to="/login">Login</Link>
-            </div>
-              <div className= "nav-bar-item">
-                <Link to="/signup">Sign up!</Link>
-              </div>
-          </nav>
+          <div>
+            <Link to="/login">Login</Link>
+            <Link to="/signup">Sign up!</Link>
+          </div>  
         );
       }
   }
