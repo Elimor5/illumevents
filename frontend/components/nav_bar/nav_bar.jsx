@@ -8,13 +8,18 @@ class NavBar extends React.Component {
 
   renderAuthLinks() {
     if (this.props.currentUser) {
-      return (<button className="" onClick={this.props.logout}>Log Out</button>);
+      return (
+        <div className="auth-item-split">
+          <Link className="nav-button nav-bar-item auth-bar-nav" to="/">{this.props.currentUser.username}</Link>
+          <button className="nav-button auth-bar-nav" onClick={this.props.logout}>LOG OUT</button>
+        </div>
+      );
     } else {
         return (
-          <div>
-            <Link to="/login">Login</Link>
-            <Link to="/signup">Sign up!</Link>
-          </div>  
+          <div className="auth-item-split">
+            <Link className="nav-button nav-bar-item auth-bar-nav" to="/signup">SIGN UP</Link>
+            <Link className="nav-button auth-bar-nav" to="/login">LOG IN</Link>
+          </div>
         );
       }
   }
@@ -23,19 +28,28 @@ class NavBar extends React.Component {
     return (
       <section className= "nav-bar-container">
 
-        <div className= "nav-bar-item">
-          <Link to="/" className="header-link">
-            <p>Illumevents</p>
-          </Link>
-        </div>
+        <section>
           <div className= "nav-bar-item">
-            <p>(Search bar will go here)</p>
+            <Link to="/" >
+              <p className="logo">Illumevents</p>
+            </Link>
           </div>
-            <div className= "nav-bar-item">
-              {this.renderAuthLinks()}
+          </section>
+            <div className="search-bar-item">
+              <p className="search-bar">(Search bar will go here)</p>
             </div>
 
 
+            <section className="right-side-nav">
+              <section className="auth-item-split">
+                <div className= "nav-bar-item">
+                  {this.renderAuthLinks()}
+                </div>
+                  <div className="nav-bar-item ">
+                    <p className="nav-button event-bar-nav"> CREATE EVENT </p>
+                  </div>
+              </section>
+            </section>
       </section>
     );
   }
