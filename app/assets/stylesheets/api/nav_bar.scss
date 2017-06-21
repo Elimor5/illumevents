@@ -1,6 +1,6 @@
 .nav-bar-container {
   display: flex;
-  height: 77px;
+  height: 63px;
   width: 100%;
   border-bottom: 1px solid #EFF2F5;
   justify-content: space-between;
@@ -31,14 +31,14 @@
   color: #F6682F;
   font-family: sans-serif;
   font-weight: bolder;
-  font-size: 28px;
+  font-size: 20px;
   padding: 24px;
 }
 
 .search-bar-item {
   border-right: 1px solid #EFF2F5;
   display: flex;
-  flex-basis: 74%;
+  flex-basis: 67%;
   border-right: none;
 }
 
@@ -50,17 +50,17 @@
 .event-bar-nav {
   color: #549AC0;
   font-weight: bolder;
-  font-size: 15px;
+  font-size: 12px;
 }
 
 .auth-bar-nav {
   color: #676A6E;
-  font-size: 15px;
+  font-size: 12px;
 }
 
 .nav-button {
   font-family: sans-serif;
-  padding: 24px;
+  padding: 20px;
   padding-left: 27px;
   padding-right: 27px;
   align-self: flex-end;
