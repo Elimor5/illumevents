@@ -38,7 +38,7 @@
 .search-bar-item {
   border-right: 1px solid #EFF2F5;
   display: flex;
-  flex-basis: 67%;
+  flex-basis: 51%;
   border-right: none;
 }
 
@@ -69,4 +69,8 @@
 .right-side-nav {
   display: flex;
   justify-content: flex-end;
+}
+
+.session-button {
+  background-color: red;
 }

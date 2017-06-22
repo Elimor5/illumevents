@@ -9,6 +9,7 @@ class SessionForm extends React.Component {
       password: ''
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.navLink = this.navLink.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
