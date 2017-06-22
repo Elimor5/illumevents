@@ -1,3 +1,16 @@
 // Place all the styles related to the api/sessions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.session-modal-container {
+  margin-top: 20%;
+  display:flex;
+  align-content: center;
+  justify-content: center;
+  background-color: white;
+}
+
+.login-form-box {
+  flex: center;
+}
