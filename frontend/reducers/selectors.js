@@ -1,1 +1,2 @@
-export const allEvents = ({ events }) => Object.keys(events).map(id => events[id]);
+
+export const allEvents = (events) => Object.keys(events).map(id => events[id]);

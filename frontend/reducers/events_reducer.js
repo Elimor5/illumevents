@@ -12,9 +12,7 @@ const eventsReducer = (state = {}, action) => {
 
   switch(action.type){
     case RECEIVE_EVENTS:
-      nextState = {};
-      action.events.forEach(event => nextState[event.id] = event);
-      return nextState;
+      return action.events;
     case RECEIVE_EVENT:
       const newEvent = {[action.event.id]: action.event};
       return merge({}, state, newEvent);
