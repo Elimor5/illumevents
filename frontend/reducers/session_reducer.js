@@ -10,7 +10,7 @@ const nullUser = Object.freeze({
   errors: []
 });
 
-const SessionReducer = (state = nullUser, action) => {
+const sessionReducer = (state = nullUser, action) => {
   Object.freeze(state);
   switch(action.type) {
     case RECEIVE_CURRENT_USER:
@@ -28,4 +28,4 @@ const SessionReducer = (state = nullUser, action) => {
   }
 };
 
-export default SessionReducer;
+export default sessionReducer;
