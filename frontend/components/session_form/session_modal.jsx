@@ -25,18 +25,21 @@ class SessionModal extends React.Component {
  }
 
   openModal() {
-    this.setState({ openModal: true })
+    this.setState({ openModal: true });
   }
 
   closeModal() {
-    this.setState({ openModal: false })
+    this.setState({ openModal: false });
   }
 
   render() {
     return (
-      <div id="modal">
-        <button className="session-button" onClick={this.openModal}>
-          {this.props.formType}
+      <div>
+        <button className={`nav-button
+        auth-bar-nav
+        ${this.props.formType === 'signup' ?  "nav-bar-item" : ""} `}
+        onClick={this.openModal}>
+          {this.props.formType === "login" ? "LOG IN" : "SIGN UP"}
         </button>
 
         <Modal

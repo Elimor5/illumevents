@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import SessionModal from '../session_form/session_modal'
+import SessionFormContainer from '../session_form/session_form_container';
 
 class NavBar extends React.Component {
   constructor(props) {
@@ -18,8 +18,8 @@ class NavBar extends React.Component {
     } else {
         return (
           <div className="auth-item-split">
-            <Link className="nav-button nav-bar-item auth-bar-nav" to="/signup">SIGN UP</Link>
-            <Link className="nav-button auth-bar-nav" to="/login">LOG IN</Link>
+          <SessionFormContainer formType="signup"/>
+          <SessionFormContainer formType="login"/>
           </div>
         );
       }
