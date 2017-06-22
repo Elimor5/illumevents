@@ -23,7 +23,7 @@
       bookmark_id: 1,
       venue: "Madison Square Garden",
       address: "4 Pennsylvania Plaza",
-      city_state_zip: "New York, NY, 10001",
+      city_state_zip: "New Yorghngnk, NY, 10001",
       image: "event image url"
     }
   },
