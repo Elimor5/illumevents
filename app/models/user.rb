@@ -4,7 +4,10 @@ class User < ActiveRecord::Base
   after_initialize :ensure_session_token
 	before_validation :ensure_session_token_uniqueness
 
-  has_many :events 
+  has_many :events,
+  foreign_key: :host_id,
+  class_name: :Event,
+  primary_key: :id
 
 	validates :username, :password_digest, :session_token, presence: true
 	validates :username, uniqueness: true

@@ -6,7 +6,7 @@ class Api::EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
-  
+
     @user = @event.host
   end
 
@@ -22,7 +22,8 @@ class Api::EventsController < ApplicationController
   end
 
   def destroy
-    @event = event.find(params[:id])
+    @user = current_user
+    @event = current_user.events.find(params[:id])
     @event.destroy
     render :show
   end
@@ -30,7 +31,8 @@ class Api::EventsController < ApplicationController
   def update
     @event = current_user.events.find(params[:id])
     if @event.update_attributes(event_params)
-      render :show
+       @user = current_user
+       render :show
     else
       render json:  @event.errors.full_messages, status: 422
     end

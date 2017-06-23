@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import React from 'react';
-import { createEvent } from '../../actions/event_actions';
+import { createEvent, fetchSingleEvent, updateEvent } from '../../actions/event_actions';
 
 class CreateEvent extends React.Component {
   constructor(props) {
@@ -21,15 +21,49 @@ class CreateEvent extends React.Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
+  componentDidMount() {
+    let id = this.props.match.params.id
+    debugger
+    if (this.props.match.params.id) {
+      this.props.fetchSingleEvent(id);
+    }
+  }
 
+  componentWillReceiveProps(nextProps) {
+    debugger
+    if (nextProps.event.title) {
+      this.setState({
+        id: nextProps.match.params.id,
+        title: nextProps.event.title,
+        location: nextProps.event.location,
+        description: nextProps.event.description,
+        date: nextProps.event.date,
+        time: nextProps.event.time,
+        ticket_price: nextProps.event.ticket_price,
+        ticket_quantity: nextProps.event.ticket_quantity,
+        venue: nextProps.event.venue,
+        address: nextProps.event.address,
+        host_id: nextProps.event.host_id,
+        city_state_zip: nextProps.event.city_state_zip
+      });
+    }
+  }
 
   handleSubmit(e) {
     e.preventDefault();
+    if (this.props.match.params.id) {
+      debugger
+      this.props.updateEvent(this.state)
+      .then(({ event }) => {
+        this.props.history.push(`/events/${event.id}`);
+      })
+    } else {
     this.props.createEvent(this.state)
       .then(({event}) => {
 
         this.props.history.push(`/events/${event.id}`);
       });
+    }
   }
 
   handleChange(property) {
@@ -122,14 +156,17 @@ class CreateEvent extends React.Component {
 }
 
 
-const mapStateToProps = ( { session },ownProps) => {
+const mapStateToProps = ( { events, session },ownProps) => {
   return {
-    userId: session.currentUser.id
+    userId: session.currentUser.id,
+    event: events[ownProps.match.params.id] || {}
   };
 };
 
 const mapDispatchToProps = dispatch => ({
   createEvent: (event) => dispatch(createEvent(event)),
+  fetchSingleEvent: (id) => dispatch(fetchSingleEvent(id)),
+  updateEvent: (event) => dispatch(updateEvent(event))
 });
 
 

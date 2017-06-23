@@ -43,7 +43,7 @@ export const createEvent = event => dispatch => (
   EventAPIUtil.createEvent(event)
   .then(event =>  {
     dispatch(clearErrors());
-    return dispatch(receiveEvent(event)); 
+    return dispatch(receiveEvent(event));
   },
   err => dispatch(receiveErrors(err.responseJSON)))
 );
@@ -52,6 +52,6 @@ export const updateEvent = event => dispatch => (
   EventAPIUtil.updateEvent(event).then(event => dispatch(receiveEvent(event)))
 );
 
-export const deleteEvent = event => dispatch => (
-  EventAPIUtil.deleteEvent(event).then(event => dispatch(removeEvent(event)))
-);
+export const deleteEvent = event => dispatch => {
+  return (EventAPIUtil.deleteEvent(event).then(event => dispatch(removeEvent(event))));
+};

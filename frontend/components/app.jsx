@@ -28,6 +28,7 @@ const App = () => (
         <section>
           <Route exact path="/" component={ HomePageContainer } />
           <ProtectedRoute exact path="/new" component={ CreateEvent } />
+          <ProtectedRoute exact path="/edit/:id" component={ CreateEvent } />
           <Route path="/events/:id" component={ EventShow } />
           <AuthRoute exact path="/login" component= { SessionFormContainer }/>
           <AuthRoute exact path="/signup" component= { SessionFormContainer }/>
