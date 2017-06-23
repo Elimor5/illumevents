@@ -1,14 +1,14 @@
 import React from 'react';
-import Modal from 'react-modal'
-import SessionForm from './session_form'
-import { ModalStyle } from './modal_style'
+import Modal from 'react-modal';
+import SessionForm from './session_form';
+import { ModalStyle } from './modal_style';
 
 class SessionModal extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      openModal: false,
+      openModal: this.props.openModal || false,
       formType: props.formType
     };
 

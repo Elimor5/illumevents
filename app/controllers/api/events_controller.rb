@@ -7,14 +7,14 @@ class Api::EventsController < ApplicationController
   def show
     @event = Event.find(params[:id])
     # debugger
-    @user = User.find(@event.host_id)
+    @user = @event.host
   end
 
   def create
     @event = Event.new(event_params)
-
+    @event.host = current_user
+    @user = current_user
     if @event.save
-       @user = User.find(@event.host_id)
       render :show
     else
       render json:  @event.errors.full_messages, status: 422
@@ -40,7 +40,6 @@ class Api::EventsController < ApplicationController
 
   def event_params
     params.require(:event).permit(
-      :host_id,
       :title,
       :venue,
       :address,

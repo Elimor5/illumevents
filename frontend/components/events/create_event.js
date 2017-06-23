@@ -11,7 +11,6 @@ class CreateEvent extends React.Component {
       description: "",
       date: "",
       time: "",
-      host_id: "",
       ticket_price: 100,
       ticket_quantity: 500,
       venue: "some place",
@@ -24,21 +23,11 @@ class CreateEvent extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.state["host_id"] = this.props.userId;
-    this.props.createEvent(this.state).
-      then(() => this.setState({
-        title: "",
-        description: "",
-        location: "",
-        date: "",
-        time: "",
-        host_id: "",
-        ticket_price: 100,
-        ticket_quantity: 500,
-        venue: "some place",
-        address: "",
-        city_state_zip: ""
-      }));
+    this.props.createEvent(this.state)
+      .then(({event}) => {
+        debugger
+        this.props.history.push(`/events/${event.id}`);
+      });
   }
 
   handleChange(property) {

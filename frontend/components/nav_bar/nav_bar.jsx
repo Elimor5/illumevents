@@ -47,7 +47,7 @@ class NavBar extends React.Component {
                   {this.renderAuthLinks()}
                 </div>
                   <div className="nav-bar-item ">
-                    <Link to="/events/new">
+                    <Link to="/new">
                       <p className="nav-button event-bar-nav"> CREATE EVENT </p>
                     </Link>
                   </div>

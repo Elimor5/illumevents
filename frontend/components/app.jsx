@@ -16,6 +16,7 @@ import HomePageContainer from './events/homepage_container';
 import EventShow from './events/event_show';
 import CreateEvent from './events/create_event';
 
+
 const App = () => (
   <div>
     <header>
@@ -24,8 +25,9 @@ const App = () => (
       <HashRouter>
         <section>
           <Route exact path="/" component={ HomePageContainer } />
-          <Route exact path="/events/:id" component={ EventShow } />
-          <Route exact path="/events/new" component={ CreateEvent } />
+          <ProtectedRoute exact path="/new" component={ CreateEvent } />
+          <Route path="/events/:id" component={ EventShow } />
+          <Route exact path="/login" component= { SessionFormContainer } modalOpen={ true }/>
         </section>
       </HashRouter>
   </div>

@@ -13,11 +13,13 @@ const mapStateToProps = ({ session }) => {
 };
 
 const mapDispatchToProps = (dispatch, { location, formType }) => {
-  // const formType = location.pathname.slice(1);
+  debugger
+  // const modalOpen = location.pathname.slice(1) === 'login';
   const processForm = (formType === 'login') ? login : signup;
   return {
     processForm: user => dispatch(processForm(user)),
-    formType
+    formType,
+    modalOpen: false
   };
 };
 
