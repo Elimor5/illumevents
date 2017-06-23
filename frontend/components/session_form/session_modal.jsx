@@ -8,7 +8,7 @@ class SessionModal extends React.Component {
     super(props);
 
     this.state = {
-      openModal: this.props.openModal || false,
+      openModal: this.props.openm,
       formType: props.formType
     };
 

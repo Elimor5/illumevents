@@ -18,8 +18,12 @@ class NavBar extends React.Component {
     } else {
         return (
           <div className="auth-item-split">
-          <SessionFormContainer formType="signup"/>
-          <SessionFormContainer formType="login"/>
+          <Link className="nav-button nav-bar-item auth-bar-nav" to="signup">
+            <SessionFormContainer />
+          </Link>
+            <Link className="nav-button auth-bar-nav" to="login">
+              <SessionFormContainer />
+            </Link>
           </div>
         );
       }

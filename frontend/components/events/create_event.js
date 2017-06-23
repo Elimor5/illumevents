@@ -25,7 +25,7 @@ class CreateEvent extends React.Component {
     e.preventDefault();
     this.props.createEvent(this.state)
       .then(({event}) => {
-        debugger
+
         this.props.history.push(`/events/${event.id}`);
       });
   }

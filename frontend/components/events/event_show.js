@@ -5,7 +5,7 @@ import { fetchSingleEvent } from '../../actions/event_actions';
 class EventShow extends React.Component {
 
   componentDidMount() {
-    debugger
+    
     this.props.fetchSingleEvent(this.props.match.params.id);
   }
 
