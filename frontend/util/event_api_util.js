@@ -13,13 +13,15 @@ export const fetchSingleEvent = (id) => {
   });
 };
 
-export const createEvent = event => (
- $.ajax({
+export const createEvent = event => {
+  debugger
+ return $.ajax({
     method: 'POST',
     url: '/api/events',
-    data: event
-  })
-);
+    data: { event }
+  });
+
+};
 
 export const updateEvent = event => (
   $.ajax({

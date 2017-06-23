@@ -10,7 +10,6 @@ class EventShow extends React.Component {
   }
 
   render() {
-    debugger
     if (this.props.event)
     return (
       <div>
@@ -27,7 +26,6 @@ class EventShow extends React.Component {
 
 
 const mapStateToProps = ({ events }, ownProps) => {
-  debugger
   return {
 
     event: events[ownProps.match.params.id]

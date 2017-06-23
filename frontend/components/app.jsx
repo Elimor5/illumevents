@@ -14,6 +14,7 @@ import SessionFormContainer from './session_form/session_form_container';
 import NavBarContainer from './nav_bar/nav_bar_container';
 import HomePageContainer from './events/homepage_container';
 import EventShow from './events/event_show';
+import CreateEvent from './events/create_event';
 
 const App = () => (
   <div>
@@ -23,7 +24,8 @@ const App = () => (
       <HashRouter>
         <section>
           <Route exact path="/" component={ HomePageContainer } />
-          <Route path="/events/:id" component={ EventShow } />
+          <Route exact path="/events/:id" component={ EventShow } />
+          <Route exact path="/events/new" component={ CreateEvent } />
         </section>
       </HashRouter>
   </div>
