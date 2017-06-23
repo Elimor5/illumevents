@@ -1,16 +1,31 @@
 import React from 'react';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-const HomepageEventItem = () => (
-  <li className="event-index-item">
-        <span>{event.title} </span>
-        <span>{event.address}</span>
-        <span>{event.city_state_zip}</span>
-        <span>{event.date}</span>
-        <span>{event.time}</span>
-        <span>{event.ticket_price}</span>
-        <span>{event.ticket_quantity}</span>
-  </li>
-);
+  const HomepageEventItem = ({ event }) => {
+
+  return(
+    <Link to={`/events/${event.id}`}>
+      <li className="event-index-item">
+
+              <span>{event.title} </span>
+              <br/>
+              <span>{event.address}</span>
+              <br/>
+              <span>{event.city_state_zip}</span>
+              <br/>
+              <span>{event.date}</span>
+              <br/>
+              <span>{event.time}</span>
+              <br/>
+              <span>{event.ticket_price}</span>
+              <br/>
+              <span>{event.ticket_quantity}</span>
+      </li>
+    </Link>
+  );
+
+
+
+  };
 
 export default HomepageEventItem;

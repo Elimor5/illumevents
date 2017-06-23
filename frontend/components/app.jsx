@@ -13,13 +13,19 @@ import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import SessionFormContainer from './session_form/session_form_container';
 import NavBarContainer from './nav_bar/nav_bar_container';
 import HomePageContainer from './events/homepage_container';
+import EventShow from './events/event_show';
 
 const App = () => (
   <div>
     <header>
       <NavBarContainer />
     </header>
-    <HomePageContainer />
+      <HashRouter>
+        <section>
+          <Route exact path="/" component={ HomePageContainer } />
+          <Route path="/events/:id" component={ EventShow } />
+        </section>
+      </HashRouter>
   </div>
 );
 

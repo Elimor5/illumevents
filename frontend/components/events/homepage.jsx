@@ -12,11 +12,12 @@ class Homepage extends React.Component {
 
   render(){
       const { events, errors } = this.props;
-      debugger
     return(
     <section>
       <ul>
-        {events.map(event => <HomepageEventItem key={event.id} event={event} />)}
+        {events.map(event =>
+          <HomepageEventItem key={event.id} event={event} />)
+        }
       </ul>
     </section>
     );
