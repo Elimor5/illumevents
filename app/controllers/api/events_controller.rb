@@ -6,14 +6,14 @@ class Api::EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
-    #
+  
     @user = @event.host
   end
 
   def create
     @event = Event.new(event_params)
     @event.host = current_user
-    @user = current_user
+    @user = @event.host
     if @event.save
       render :show
     else

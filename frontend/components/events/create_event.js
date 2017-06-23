@@ -21,6 +21,8 @@ class CreateEvent extends React.Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
+
+
   handleSubmit(e) {
     e.preventDefault();
     this.props.createEvent(this.state)

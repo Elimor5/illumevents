@@ -1,5 +1,6 @@
 import React from 'react';
 import { Provider } from 'react-redux';
+import Modal from './modal/modal';
 import {
   Route,
   Redirect,
@@ -20,6 +21,7 @@ import CreateEvent from './events/create_event';
 const App = () => (
   <div>
     <header>
+      <Modal />
       <NavBarContainer />
     </header>
       <HashRouter>
@@ -27,7 +29,8 @@ const App = () => (
           <Route exact path="/" component={ HomePageContainer } />
           <ProtectedRoute exact path="/new" component={ CreateEvent } />
           <Route path="/events/:id" component={ EventShow } />
-          <Route exact path="/login" component= { SessionFormContainer } modalOpen={ true }/>
+          <AuthRoute exact path="/login" component= { SessionFormContainer }/>
+          <AuthRoute exact path="/signup" component= { SessionFormContainer }/>
         </section>
       </HashRouter>
   </div>

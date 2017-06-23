@@ -16,13 +16,16 @@ class NavBar extends React.Component {
         </div>
       );
     } else {
+
         return (
           <div className="auth-item-split">
-          <Link className="nav-button nav-bar-item auth-bar-nav" to="signup">
-            <SessionFormContainer />
+          <Link to="signup">
+            <button className="nav-button nav-bar-item auth-bar-nav"           onClick={this.props.showSignInModal}>SIGN UP
+            </button>
           </Link>
-            <Link className="nav-button auth-bar-nav" to="login">
-              <SessionFormContainer />
+            <Link to="login">
+              <button className="nav-button auth-bar-nav "      onClick={this.props.showSignInModal}>LOG IN
+              </button>
             </Link>
           </div>
         );
