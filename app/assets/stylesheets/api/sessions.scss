@@ -4,13 +4,40 @@
 
 
 .session-modal-container {
-  margin-top: 20%;
+  margin-top: 9%;
   display:flex;
   align-content: center;
+  // flex-direction: column;
   justify-content: center;
   background-color: white;
+  text-align: center;
 }
 
 .login-form-box {
-  flex: center;
+}
+
+.session-modal-greeting {
+  align-self: auto;
+  color: #676A6E;
+  font-family: sans-serif;
+  font-size: 32px;
+  font-weight: 100;
+  letter-spacing: -.1px;
+  text-align: center;
+}
+
+.session-modal-form-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.session-modal-form-signup-login {
+  color: #676A6E;
+  font-family: sans-serif;
+  font-size: 16px;
+  font-weight: 100;
+}
+
+.link {
+  color: blue;
 }

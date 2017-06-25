@@ -22,8 +22,9 @@ const App = () => (
   <div>
     <header>
       <Modal />
-      <NavBarContainer />
+
     </header>
+    <NavBarContainer />
       <HashRouter>
         <section>
           <Route exact path="/" component={ HomePageContainer } />
