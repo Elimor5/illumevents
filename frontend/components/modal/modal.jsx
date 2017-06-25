@@ -1,6 +1,6 @@
 import React from 'react';
 // import Modal from 'react-modal';
-import { ModalStyle } from './modal_style';
+// import { ModalStyle } from './modal_style';
 import { connect } from 'react-redux';
 import { hideModal } from '../../actions/modal_actions';
 

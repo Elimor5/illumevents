@@ -10,10 +10,11 @@
   // flex-direction: column;
   justify-content: center;
   background-color: white;
-  text-align: center;
+
 }
 
 .login-form-box {
+  flex-basis: 20%;
 }
 
 .session-modal-greeting {
@@ -24,6 +25,8 @@
   font-weight: 100;
   letter-spacing: -.1px;
   text-align: center;
+  margin-bottom: 14px;
+
 }
 
 .session-modal-form-container {
@@ -36,8 +39,72 @@
   font-family: sans-serif;
   font-size: 16px;
   font-weight: 100;
+  margin-bottom: 30px;
+  margin-left: 20px;
 }
 
 .link {
   color: blue;
+}
+
+.login-form-email-pw {
+  text-align: left;
+  color: #676A6E;
+  font-size: 16px;
+  font-weight: 100;
+  margin-top: 30px;
+}
+
+.login-input {
+  padding-left: 15px;
+  display: block;
+  width: 126%;
+  height: 38px;
+  font-size: 20px;
+  margin-top: 6px;
+  border-radius: 3px;
+}
+
+.login-input::placeholder {
+  color: #D1D2D6;
+  font-size: 15px;
+  font-weight: 100;
+}
+
+.login-input:focus {
+  outline: none;
+  border:1px solid #39C2C9;
+}
+
+.login-form {
+  padding: 1px;
+  margin-right: 29px;
+  margin-left: -33px;
+}
+
+.session-submit {
+  padding: 10px;
+  padding-left: 100px;
+  padding-right: 100px;
+  font-size: 20px;
+  background-color: #F6682F;
+  border: none;
+  color: white;
+  border-radius: 51px;
+  align-self: center;
+  width: 133%
+}
+
+.session-submit:hover {
+  background-color: #F95654;
+}
+
+.close-session-modal {
+  align-self: flex-start;
+  position: relative;
+  bottom: 91px;
+  left: 700px;
+  font-family: sans-serif;
+  color: #676A6E;
+  font-size: 30px;
 }

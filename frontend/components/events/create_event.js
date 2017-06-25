@@ -13,7 +13,7 @@ class CreateEvent extends React.Component {
       time: "",
       ticket_price: 100,
       ticket_quantity: 500,
-      venue: "some place",
+      venue: "",
       address: "",
       city_state_zip: ""
     };
@@ -23,14 +23,12 @@ class CreateEvent extends React.Component {
 
   componentDidMount() {
     let id = this.props.match.params.id
-    debugger
     if (this.props.match.params.id) {
       this.props.fetchSingleEvent(id);
     }
   }
 
   componentWillReceiveProps(nextProps) {
-    debugger
     if (nextProps.event.title) {
       this.setState({
         id: nextProps.match.params.id,
@@ -52,7 +50,6 @@ class CreateEvent extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     if (this.props.match.params.id) {
-      debugger
       this.props.updateEvent(this.state)
       .then(({ event }) => {
         this.props.history.push(`/events/${event.id}`);
@@ -76,80 +73,95 @@ class CreateEvent extends React.Component {
 
   render () {
     return (
-      <section>
-        <div>
-          <h1> Create An Event </h1>
-        </div>
-          <form className=""
-          onSubmit={this.handleSubmit}>
-            <label
-              className="form-label">Title:
-              <input
-                value={this.state.title}
-                placeholder="Give it a short distinct name"
-                className="form-input"
-                ref="title"
-                type='text'
-                onChange={this.handleChange('title')}
-                required/>
-            </label>
-              <label
-                className="form-label">Location:
-                <input
-                  value={this.state.location}
-                  placeholder="Specify where its held"
-                  className="form-input"
-                  ref="location"
-                  type='text'
-                  onChange={this.handleChange('location')}
-                  required/>
-              </label>
-                <label
-                  className="form-label">Date:
-                  <input
-                    value={this.state.date}
-                    placeholder="dd/mm/yy"
-                    className="form-input"
-                    ref="date"
-                    type='text'
-                    onChange={this.handleChange('date')}
-                    required/>
-                </label>
-                  <label
-                    className="form-label">Time:
+      <section className="backdrop">
+
+        <section className="event-form-container">
+          <h1 className="event-form-header"> {this.props.match.params.id ? "Edit Event" : "Create An Event"} </h1>
+            <div className="form-box">
+              <div>
+                <h1 className="create-event-header"> Event Details </h1>
+              </div>
+                <form className="event-form"
+                onSubmit={this.handleSubmit}>
+                  <label className="form-label">EVENT TITLE </label>
                     <input
-                      value={this.state.time}
-                      placeholder="hh:mm am/pm"
+                      value={this.state.title}
+                      placeholder="Give it a short distinct name"
                       className="form-input"
-                      ref="time"
+                      ref="title"
                       type='text'
-                      onChange={this.handleChange('time')}
+                      onChange={this.handleChange('title')}
                       required/>
-                  </label>
-                      <label
-                        className="form-label">Address:
-                        <input
-                          value={this.state.address}
-                          placeholder="dd/mm/yy"
-                          className="form-input"
-                          ref="address"
-                          type='text'
-                          onChange={this.handleChange('address')}
-                          required/>
-                      </label>
-                        <label
-                          className="form-label">City, State and Zip,:
+
+                    <label className="form-label"> VENUE </label>
                           <input
-                            value={this.state.city_state_zip}
-                            placeholder="Like so New York, NY 10004"
+                            value={this.state.venue}
+                            placeholder="Pick a place!"
                             className="form-input"
-                            ref="city_state_zip"
+                            ref="venue"
                             type='text'
-                            onChange={this.handleChange('city_state_zip')}
+                            onChange={this.handleChange('venue')}
                             required/>
-                        </label>
-                        <button className="form-button">Create Event!</button>
-          </form>
+                      <div className="date-time">
+                        <div>
+                          <label className="form-label"> DATE </label>
+                              <input
+                                value={this.state.date}
+                                placeholder="mm/dd/yy"
+                                className="form-input"
+                                ref="date"
+                                type='text'
+                                onChange={this.handleChange('date')}
+                                required/>
+                        </div>
+                            <div>
+                                <label className="form-label">TIME</label>
+                                  <input
+                                    value={this.state.time}
+                                    placeholder="hh:mm am/pm"
+                                    className="form-input"
+                                    ref="time"
+                                    type='text'
+                                    onChange={this.handleChange('time')}
+                                    required/>
+                            </div>
+
+                        </div>
+                                <label className="form-label">EVENT DESCRIPTION</label>
+                                    <textarea
+                                      value={this.state.description}
+                                      placeholder=""
+                                      className="form-textarea"
+                                      ref="description"
+                                      type='textarea'
+                                      onChange={this.handleChange('description')}
+                                      />
+
+                                <label className="form-label">ADDRESS</label>
+                                    <input
+                                      value={this.state.address}
+                                      placeholder="dd/mm/yy"
+                                      className="form-input"
+                                      ref="address"
+                                      type='text'
+                                      onChange={this.handleChange('address')}
+                                      required/>
+
+                                    <label
+                                      className="form-label">CITY, STATE, ZIP</label>
+                                      <input
+                                        value={this.state.city_state_zip}
+                                        placeholder="Like so New York, NY 10004"
+                                        className="form-input"
+                                        ref="city_state_zip"
+                                        type='text'
+                                        onChange={this.handleChange('city_state_zip')}
+                                        required/>
+
+                                      <button className="event-form-button">{this.props.match.params.id ? "EDIT EVENT" : "CREATE EVENT!"}</button>
+                </form>
+            </div>
+          </section>
       </section>
     );
   }

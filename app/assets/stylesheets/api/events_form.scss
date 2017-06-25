@@ -1,0 +1,97 @@
+// Place all the styles related to the api/events controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+//create/edit events
+.event-form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.event-form-container {
+  background-color: #F8F8FA;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: 1200px;
+}
+
+.create-event-header {
+  align-self: flex-start;
+  font-size: 29px;
+  font-weight: 200;
+  margin-bottom: 2%;
+}
+
+.event-form-header {
+  font-weight: bold;
+  font-size: 25px;
+  font-family: sans-serif;
+  margin-right: 25px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.form-box {
+  width: 50%;
+  font-family: sans-serif;
+}
+
+.form-label {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.form-input {
+  padding-left: 10px;
+  display: block;
+  width: 60%;
+  height: 38px;
+  font-size: 20px;
+  margin-top: 6px;
+  border-radius: 3px;
+  margin-bottom: 30px;
+}
+
+.form-input:focus {
+  outline: none;
+  border:1px solid #39C2C9;
+}
+
+.form-input::placeholder {
+  color: #D3D5D8;
+  font-size: 16px;
+  font-weight: 100;
+}
+
+.date-time {
+  display: flex;
+}
+
+.form-textarea {
+  padding-left: 10px;
+  display: block;
+  width: 60%;
+  height: 238px;
+  font-size: 20px;
+  margin-top: 6px;
+  border-radius: 3px;
+  margin-bottom: 30px;
+}
+
+.event-form-button {
+  height: 17px;
+  border: solid #0093D7 2px;
+  padding: 14px;
+  color: #0093D7;
+  border-radius: 7px;
+}
+
+.event-form-button:hover {
+  background-color: #013653;
+  color: white;
+}

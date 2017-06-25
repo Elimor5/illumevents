@@ -53,37 +53,47 @@ class SessionForm extends React.Component {
   render() {
     return (
       <section className="session-modal-container">
+        <div className="close-session-modal">
+          <Link className="close button" to="/">x</Link>
+        </div>
         <div>
+
           <div className="session-modal-form-container">
+
             <h1 className="session-modal-greeting">Let's get started</h1>
           </div>
+            <h2 className="session-modal-form-signup-login">
+              Enter your email to {this.props.formType} or {this.navLink()}
+            </h2>
             <form onSubmit={this.handleSubmit} className="login-form-box">
 
               <br/>
 
-              <h2 className="session-modal-form-signup-login">
-                Enter your email to {this.props.formType} or {this.navLink()}
-              </h2>
+
                 {this.renderErrors()}
                 <div className="login-form">
                   <br/>
-                  <label>Username:
+                  <label className="login-form-email-pw">Email Address</label>
+                  <br />
                     <input type="text"
                       value={this.state.username}
                       onChange={this.update('username')}
+                      placeholder="Enter email"
                       className="login-input"
                     />
-                  </label>
+
                   <br/>
-                  <label>Password:
+                  <label className="login-form-email-pw">Password</label>
+                    <br />
                     <input type="password"
                       value={this.state.password}
                       onChange={this.update('password')}
+                      placeholder="Enter password"
                       className="login-input"
                     />
-                  </label>
+
                   <br/>
-                  <input type="submit" value="Submit" />
+                  <input className="session-submit" type="submit" value="Get Started" />
                 </div>
             </form>
         </div>
