@@ -64,22 +64,23 @@ class EventShow extends React.Component {
             <div className="event-show-description-info-container">
               <div className="space-container"></div>
               <div className="description-container">
-                {event.description}
+                <h1 className="event-location-title">DESCRIPTION</h1>
+                <p className="event-description-content">{event.description}</p>
               </div>
               <div className="space-container"></div>
               <div className="info-container">
                 <div className="event-time-date"></div>
-                  <h1 className="event-title-location">Date & Time</h1>
+                  <h1 className="event-location-title">DATE & TIME</h1>
                   <div className="event-show-time-date">
-                    <h2>{event.date}</h2>
-                    <h2>{event.time}</h2>
+                    <h2 className="event-show-location-item">{event.date}</h2>
+                    <h2 className="event-show-location-item">{event.time}</h2>
                   </div>
                 <div className="event-location">
-                  <h1 className="event-location-title">Location</h1>
+                  <h1 className="event-location-title">LOCATION</h1>
                   <div className="event-show-location">
-                    <h2>{event.venue}</h2>
-                    <h2>{event.address}</h2>
-                    <h2>{event.city_state_zip}</h2>
+                    <h2 className="event-show-location-item">{event.venue}</h2>
+                    <h2 className="event-show-location-item">{event.address}</h2>
+                    <h2 className="event-show-location-item">{event.city_state_zip}</h2>
                   </div>
                 </div>
               </div>

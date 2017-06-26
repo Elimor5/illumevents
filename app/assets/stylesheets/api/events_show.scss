@@ -93,15 +93,15 @@
 
 .event-show-description-info-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
 }
 
 .space-container {
-
+  flex-basis: 15%
 }
 
 .description-container {
-
+  width: 40%;
 }
 
 .info-container {
@@ -115,12 +115,39 @@
 .event-location {
   display: flex;
   flex-direction: column;
+  margin-top: 45px;
 }
 
-.event-title-location {
-  font-size: 20px;
+.event-location-title {
+  font-size: 13px;
+  margin-top: 30px;
+  margin-bottom: 40px;
 }
 
+.event-show-location {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 .event-show-time-date {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.event-description-content {
+  margin-top: 30px;
+  color: #686C75;
+}
+
+.event-description-content {
+  word-wrap: break-word;
+}
+
+.event-show-location-item {
+  font-size: 17px;
+  margin-bottom: 2px;
+  font-weight: 100;
+  color: #606368;
 
 }
