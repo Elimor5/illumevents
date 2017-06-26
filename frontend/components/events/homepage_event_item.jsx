@@ -13,7 +13,7 @@ import { Link } from 'react-router-dom';
                     <span className="home-event-item">{event.date}</span>
                     <span className="home-event-item">{event.time}</span>
                   </div>
-                    <span>{event.title} </span>
+                    <span className>{event.title} </span>
                       <div>
                         <span>{event.address}</span>
                         <span>{event.city_state_zip.slice(0,(event.city_state_zip.length)-7)}</span>
