@@ -11,7 +11,8 @@ Day 3
 * add image url and event category columns to events
 
 Day 4
-* style index, create, edit, show pages
 * create personal dashboard - implement dashboard
 * will need to move edit link and destroy link to personal dashboard and make protected link to prevent unauthorized editing.
 * fix description column
+* implement images
+* fix delete item bug

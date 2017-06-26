@@ -9,7 +9,7 @@
 
   flex-direction: row;
   justify-content: space-between;
-  width: 67%
+  width: 1095px;
 }
 
 .homepage-event-item {
@@ -36,8 +36,23 @@
   flex-direction: column;
   list-style: none;
   border: solid gray 1px;
+  background-color: white;
+  margin-top: 36px;
 }
 
 .homepage-events-img {
-  height: 170px
+  height: 170px;
+  width: 340px;
+}
+
+.homepage-event-date-time {
+  margin-top: 15px;
+  margin-left: 15px;
+  color: #595C61;
+}
+
+.home-event-item {
+  font-size: 15px;
+  margin: 5px;
+  font-weight: 100;
 }
