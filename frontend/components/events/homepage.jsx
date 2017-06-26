@@ -14,11 +14,18 @@ class Homepage extends React.Component {
       const { events, errors } = this.props;
     return(
     <section>
-      <ul>
-        {events.map(event =>
-          <HomepageEventItem key={event.id} event={event} />)
-        }
-      </ul>
+      <div className= "spash-container"></div>
+        <div className="homepage-outer-container">
+          <div className="homepage-events">
+            <ul className="events-container">
+              {events.map(event =>
+                <HomepageEventItem key={event.id} event={event} />)
+              }
+            </ul>
+          </div>
+        </div>
+
+
     </section>
     );
   }
