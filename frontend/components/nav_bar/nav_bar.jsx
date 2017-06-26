@@ -1,6 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import SessionFormContainer from '../session_form/session_form_container';
+import { showModal } from '../../actions/modal_actions';
+
+
+
 
 class NavBar extends React.Component {
   constructor(props) {
@@ -19,14 +23,12 @@ class NavBar extends React.Component {
 
         return (
           <div className="auth-item-split">
-          <Link to="signup">
-            <button className="nav-button nav-bar-item auth-bar-nav"           onClick={this.props.showSignInModal}>SIGN UP
+            <button className="nav-button nav-bar-item auth-bar-nav" onClick={this.props.showSignUpModal}>
+              SIGN UP
             </button>
-          </Link>
-            <Link to="login">
-              <button className="nav-button auth-bar-nav "      onClick={this.props.showSignInModal}>LOG IN
-              </button>
-            </Link>
+            <button className="nav-button auth-bar-nav " onClick={this.props.showLogInModal}>
+              LOG IN
+            </button>
           </div>
         );
       }

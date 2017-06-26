@@ -48,9 +48,7 @@ class Api::EventsController < ApplicationController
       :city_state_zip,
       :date,
       :time,
-      :description,
-      :ticket_price,
-      :ticket_quantity
+      :description
     )
   end
 end

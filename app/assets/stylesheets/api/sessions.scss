@@ -4,9 +4,8 @@
 
 
 .session-modal-container {
-  margin-top: 9%;
   display:flex;
-  align-content: center;
+  // align-content: center;
   // flex-direction: column;
   justify-content: center;
   background-color: white;
@@ -32,6 +31,7 @@
 .session-modal-form-container {
   display: flex;
   flex-direction: column;
+  margin-top: 100px;
 }
 
 .session-modal-form-signup-login {
@@ -107,4 +107,16 @@
   font-family: sans-serif;
   color: #676A6E;
   font-size: 30px;
+}
+
+.close-button {
+  font-size: 20px;
+  z-index: 101;
+  position: fixed;
+  top: 50px;
+}
+
+.button {
+  font-size: 15px;
+  color: blue;
 }

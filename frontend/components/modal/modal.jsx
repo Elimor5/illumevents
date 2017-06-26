@@ -14,7 +14,7 @@ class Modal extends React.Component {
 
     return (
       <div onClick={this.props.hideModal} className={`${this.props.visible ? "modal-screen-visible" : "modal-screen-hidden" }`}>
-        <div className="model-contents">
+        <div className="modal-contents" onClick={e => e.stopPropagation()}>
           {this.props.content}
         </div>
       </div>

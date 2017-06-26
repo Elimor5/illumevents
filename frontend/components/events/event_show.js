@@ -50,7 +50,7 @@ class EventShow extends React.Component {
                       <h2 className="event-author">by {event.username}</h2>
                   </div>
                   <div className= "event-show-ticket-summary">
-                    <h2 className="event-author">${event.ticket_price}</h2>
+              
                   </div>
               </div>
 

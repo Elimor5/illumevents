@@ -47,5 +47,6 @@ group :development do
   gem 'binding_of_caller'
   gem 'pry-rails'
   gem 'annotate'
+  gem 'seed_dump'
 
 end

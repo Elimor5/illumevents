@@ -13,15 +13,10 @@ const mapStateToProps = ({ session }) => {
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
-  let formType;
-  if (ownProps.location) {
-    formType = ownProps.location.pathname.slice(1);
-  }
-  const processForm = (formType === 'login') ? login : signup;
+  const processForm = (ownProps.formType === 'login') ? login : signup;
   return {
     processForm: user => dispatch(processForm(user)),
-    hideModal: () => dispatch(hideModal()),
-    formType,
+    hideModal: () => dispatch(hideModal())
   };
 };
 

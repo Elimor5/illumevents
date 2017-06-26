@@ -6,10 +6,14 @@ class SessionForm extends React.Component {
     super(props);
     this.state = {
       username: '',
-      password: ''
+      password: '',
+      formType: this.props.formType
+
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.navLink = this.navLink.bind(this);
+    this.toggleSignUp = this.toggleSignUp.bind(this);
+
   }
 
   componentWillReceiveProps(nextProps) {
@@ -28,13 +32,18 @@ class SessionForm extends React.Component {
     e.preventDefault();
     const user = this.state;
     this.props.processForm({user});
+    this.props.hideModal();
+  }
+
+  toggleSignUp() {
+    this.state.formType === 'login' ? this.setState({formType: 'signup'}) : this.setState({formType: 'login'});
   }
 
   navLink() {
-    if (this.props.formType === 'login') {
-      return <Link className="link" to="/signup">sign up</Link>;
+    if (this.state.formType === 'login') {
+      return <button className="button" onClick={this.toggleSignUp}>sign up</button>;
     } else {
-      return <Link className="link" to="/login">log in </Link>;
+      return <button className="button" onClick={this.toggleSignUp}>log in </button>;
     }
   }
 
@@ -54,7 +63,7 @@ class SessionForm extends React.Component {
     return (
       <section className="session-modal-container">
         <div className="close-session-modal">
-          <Link className="close button" to="/">x</Link>
+          <button className="close-button" onClick={this.props.hideModal}>x</button>
         </div>
         <div>
 
@@ -63,7 +72,7 @@ class SessionForm extends React.Component {
             <h1 className="session-modal-greeting">Let's get started</h1>
           </div>
             <h2 className="session-modal-form-signup-login">
-              Enter your email to {this.props.formType} or {this.navLink()}
+              Enter your email to {this.state.formType} or {this.navLink()}
             </h2>
             <form onSubmit={this.handleSubmit} className="login-form-box">
 

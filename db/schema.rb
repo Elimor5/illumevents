@@ -11,29 +11,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170622151033) do
+ActiveRecord::Schema.define(version: 20170626193720) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "event_tickets", force: :cascade do |t|
+    t.string   "type",         null: false
+    t.integer  "price",        null: false
+    t.integer  "event_id",     null: false
+    t.string   "max_quantity", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "event_tickets", ["event_id"], name: "index_event_tickets_on_event_id", unique: true, using: :btree
+
   create_table "events", force: :cascade do |t|
-    t.integer  "host_id",         null: false
-    t.string   "title",           null: false
-    t.string   "venue",           null: false
-    t.string   "address",         null: false
-    t.string   "city_state_zip",  null: false
-    t.string   "date",            null: false
-    t.string   "time",            null: false
+    t.integer  "host_id",        null: false
+    t.string   "title",          null: false
+    t.string   "venue",          null: false
+    t.string   "address",        null: false
+    t.string   "city_state_zip", null: false
+    t.string   "date",           null: false
+    t.string   "time",           null: false
     t.text     "description"
-    t.integer  "ticket_price",    null: false
-    t.integer  "ticket_quantity", null: false
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   add_index "events", ["date"], name: "index_events_on_date", using: :btree
   add_index "events", ["host_id"], name: "index_events_on_host_id", using: :btree
-  add_index "events", ["ticket_price"], name: "index_events_on_ticket_price", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "username",        null: false

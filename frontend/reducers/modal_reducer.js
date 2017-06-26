@@ -15,10 +15,10 @@ const modalReducer = (state = initialState, action) => {
 
   switch (action.type) {
     case SHOW_MODAL:
-      newState = { visible: true, content: action};
+      newState = { visible: true, content: action.content };
       return newState;
     case HIDE_MODAL:
-      newState = { visible: false, content: null};
+      newState = { visible: false, content: null };
       return newState;
     default:
       return state;

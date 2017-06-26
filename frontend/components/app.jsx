@@ -19,7 +19,7 @@ import CreateEvent from './events/create_event';
 
 
 const App = () => (
-  <div>
+  <div className="app">
     <header>
       <Modal />
 
@@ -31,8 +31,7 @@ const App = () => (
           <ProtectedRoute exact path="/new" component={ CreateEvent } />
           <ProtectedRoute exact path="/edit/:id" component={ CreateEvent } />
           <Route path="/events/:id" component={ EventShow } />
-          <AuthRoute exact path="/login" component= { SessionFormContainer }/>
-          <AuthRoute exact path="/signup" component= { SessionFormContainer }/>
+
         </section>
       </HashRouter>
   </div>
@@ -43,3 +42,6 @@ export default App;
 //   < AuthRoute path="/login" component={SessionFormContainer} />
 //   < AuthRoute path="/signup" component={SessionFormContainer} />
 // </Switch>
+//
+// <AuthRoute exact path="/login" component= { SessionFormContainer }/>
+// <AuthRoute exact path="/signup" component= { SessionFormContainer }/>

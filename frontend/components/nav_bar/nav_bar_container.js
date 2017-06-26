@@ -11,7 +11,8 @@ const mapStateToProps = ({ session }) => ({
 
 const mapDispatchToProps = dispatch => ({
   logout: () => dispatch(logout()),
-  showSignInModal: () => dispatch(showModal(<SessionFormContainer />))
+  showLogInModal: () => dispatch(showModal(<SessionFormContainer formType="login"/>)),
+  showSignUpModal: () => dispatch(showModal(<SessionFormContainer formType="signup"/>))
 });
 
 export default connect(

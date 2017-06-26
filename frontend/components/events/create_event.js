@@ -7,12 +7,9 @@ class CreateEvent extends React.Component {
     super(props);
     this.state = {
       title: "",
-      location: "",
       description: "",
       date: "",
       time: "",
-      ticket_price: 100,
-      ticket_quantity: 500,
       venue: "",
       address: "",
       city_state_zip: ""
@@ -33,12 +30,9 @@ class CreateEvent extends React.Component {
       this.setState({
         id: nextProps.match.params.id,
         title: nextProps.event.title,
-        location: nextProps.event.location,
         description: nextProps.event.description,
         date: nextProps.event.date,
         time: nextProps.event.time,
-        ticket_price: nextProps.event.ticket_price,
-        ticket_quantity: nextProps.event.ticket_quantity,
         venue: nextProps.event.venue,
         address: nextProps.event.address,
         host_id: nextProps.event.host_id,
