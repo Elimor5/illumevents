@@ -6,6 +6,7 @@ Day 2
 
 * style modal appropriately
 * find out what happened to error messages
+* error messages for editing events when you are not the user
 
 Day 3
 * add image url and event category columns to events

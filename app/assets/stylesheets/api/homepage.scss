@@ -17,7 +17,6 @@
   flex-direction: row;
   justify-content: space-between;
   flex-wrap: wrap;
-
 }
 
 
@@ -34,10 +33,12 @@
 .event-index-item {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   list-style: none;
   border: solid gray 1px;
   background-color: white;
   margin-top: 36px;
+  height: 285px;
 }
 
 .homepage-events-img {
@@ -49,7 +50,7 @@
   // margin-left: 20px;
   // margin-bottom: 6px;
   margin: 5px 0 6px 20px;
-  color: #595C61;
+  color: #74777A;
 }
 
 .home-event-item {
@@ -68,7 +69,9 @@
 
 .homepage-event-address {
   margin: 0 5px 10px 20px;
-  color: #595C61;
+  font-size: 14px;
+  font-weight: 100;
+  color: #70737C;
 }
 
 .homepage-address {
