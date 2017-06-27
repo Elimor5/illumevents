@@ -14,7 +14,6 @@ export const fetchSingleEvent = (id) => {
 };
 
 export const createEvent = event => {
-
  return $.ajax({
     method: 'POST',
     url: '/api/events',

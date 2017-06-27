@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import React from 'react';
 import { createEvent, fetchSingleEvent, updateEvent } from '../../actions/event_actions';
+import CreateEventTicket from '../event_tickets/create_event_ticket';
 
 class CreateEvent extends React.Component {
   constructor(props) {
@@ -156,6 +157,7 @@ class CreateEvent extends React.Component {
                 </form>
             </div>
           </section>
+          <CreateEventTicket />
       </section>
     );
   }

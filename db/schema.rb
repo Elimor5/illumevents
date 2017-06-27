@@ -11,13 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170626193720) do
+ActiveRecord::Schema.define(version: 20170627021136) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "event_tickets", force: :cascade do |t|
-    t.string   "type",         null: false
+    t.string   "ticket_type",  null: false
     t.integer  "price",        null: false
     t.integer  "event_id",     null: false
     t.string   "max_quantity", null: false

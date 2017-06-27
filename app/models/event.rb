@@ -5,5 +5,5 @@ class Event < ActiveRecord::Base
   foreign_key: :host_id,
   class_name: :User
 
-
+  has_many :event_tickets
 end
