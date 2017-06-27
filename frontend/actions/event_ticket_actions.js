@@ -28,8 +28,8 @@ export const eventError = error => ({
 
 
 // async actions
-export const fetchAllEventTickets = () => dispatch => (
-  EventAPIUtil.fetchAllEventTickets().then(eventTickets => dispatch(receiveEventTickets(eventTickets)))
+export const fetchAllEventTickets = (event_id) => dispatch => (
+  EventAPIUtil.fetchAllEventTickets(event_id).then(eventTickets => dispatch(receiveEventTickets(eventTickets)))
 );
 
 export const fetchSingleEventTicket = id => dispatch => (

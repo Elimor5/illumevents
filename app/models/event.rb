@@ -6,4 +6,5 @@ class Event < ActiveRecord::Base
   class_name: :User
 
   has_many :event_tickets
+  accepts_nested_attributes_for :event_tickets
 end

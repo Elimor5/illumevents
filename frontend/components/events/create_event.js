@@ -2,10 +2,12 @@ import { connect } from 'react-redux';
 import React from 'react';
 import { createEvent, fetchSingleEvent, updateEvent } from '../../actions/event_actions';
 import CreateEventTicket from '../event_tickets/create_event_ticket';
+import { merge } from 'lodash';
 
 class CreateEvent extends React.Component {
   constructor(props) {
     super(props);
+    this.handleTicketChange = this.handleTicketChange.bind(this);
     this.state = {
       title: "",
       description: "",
@@ -14,17 +16,34 @@ class CreateEvent extends React.Component {
       venue: "",
       address: "",
       city_state_zip: "",
-      tickets: [<CreateEventTicket />, <CreateEventTicket />]
+      event_tickets_attributes: {
+        0: {
+          ticket_type: "",
+          max_quantity: null,
+          price: null
+        }
+      },
+      tickets: [<CreateEventTicket index={0} handleTicketChange={this.handleTicketChange}/>]
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.addTicket = this.addTicket.bind(this);
+    this.removeTicket = this.removeTicket.bind(this);
   }
 
   componentDidMount() {
     let id = this.props.match.params.id
     if (this.props.match.params.id) {
       this.props.fetchSingleEvent(id);
+    }
+  }
+
+  handleTicketChange(property, index) {
+    return (e) => {
+      const newTickets = merge({}, this.state.event_tickets_attributes, {[index]: {[property]: e.currentTarget.value}})
+      // const newTicket = Object.assign({}, this.state.event_tickets_attributes[index]
+      // newTicket[property] = e.currentTarget.value;
+      this.setState({event_tickets_attributes: newTickets});
     }
   }
 
@@ -61,10 +80,22 @@ class CreateEvent extends React.Component {
   }
 
   addTicket() {
-
-    let newTickets = this.state.tickets.concat([<CreateEventTicket />])
+    let newTickets = this.state.tickets.concat([<CreateEventTicket index={this.state.tickets.length} handleTicketChange={this.handleTicketChange}/>])
     this.setState({ tickets: newTickets });
+    let newTicketsAttrs = merge({}, this.state.event_tickets_attributes,
+      {[newTickets.length-1]: {ticket_type: "",
+                               max_quantity: null,
+                               price: null}
+                             });
+    this.setState({event_tickets_attributes: newTicketsAttrs});
   }
+
+  removeTicket() {
+    let newTickets = this.state.tickets.slice(0,this.state.tickets.length - 1)
+    this.setState({tickets: newTickets });
+  }
+
+
 
   handleChange(property) {
     return(e) => {
@@ -75,6 +106,7 @@ class CreateEvent extends React.Component {
   }
 
   render () {
+
     return (
       <section className="backdrop">
 
@@ -174,7 +206,8 @@ class CreateEvent extends React.Component {
                       ticketForm)
                     }
                   </ul>
-                  <button className="add-ticket-button" onClick={this.addTicket}>+</button>
+                  <button className="add-ticket-button" onClick={this.addTicket}> + </button>
+                  <button className="add-ticket-button" onClick={this.removeTicket}> - </button>
                 </div>
             </div>
           </section>
