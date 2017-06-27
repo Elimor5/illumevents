@@ -5,6 +5,8 @@ class Event < ActiveRecord::Base
   foreign_key: :host_id,
   class_name: :User
 
-  has_many :event_tickets
+  has_many :event_tickets,
+  inverse_of: :event
+  
   accepts_nested_attributes_for :event_tickets
 end

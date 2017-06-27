@@ -6,20 +6,20 @@ export const fetchAllEventTickets = (event_id) => {
 };
 
 
-export const fetchSingleEventTicket = (ticket_id) => {
-  return $.ajax({
-    method: 'GET',
-    uurl: `api/event_tickets/${ticket_id}`,
-  });
-};
-
-export const createEventTicket = eventTicket => {
- return $.ajax({
-    method: 'POST',
-    url: `api/event_tickets`,
-    data: { eventTicket }
-  });
-};
+// export const fetchSingleEventTicket = (ticket_id) => {
+//   return $.ajax({
+//     method: 'GET',
+//     uurl: `api/event_tickets/${ticket_id}`,
+//   });
+// };
+//
+// export const createEventTicket = eventTicket => {
+//  return $.ajax({
+//     method: 'POST',
+//     url: `api/event_tickets`,
+//     data: { eventTicket }
+//   });
+// };
 
 export const updateEventTicket = eventTicket => {
   return (

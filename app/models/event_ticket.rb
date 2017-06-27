@@ -1,7 +1,8 @@
 class EventTicket < ActiveRecord::Base
-  validates :event_id, :ticket_type, :price, :max_quantity, presence: true
+  validates :event, :ticket_type, :price, :max_quantity, presence: true
 
   belongs_to :event,
   foreign_key: :event_id,
-  class_name: :Event
+  class_name: :Event,
+  inverse_of: :event_tickets
 end

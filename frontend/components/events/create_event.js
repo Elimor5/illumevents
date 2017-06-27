@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import React from 'react';
 import { createEvent, fetchSingleEvent, updateEvent } from '../../actions/event_actions';
 import CreateEventTicket from '../event_tickets/create_event_ticket';
-import { merge } from 'lodash';
+import { merge, values } from 'lodash';
 
 class CreateEvent extends React.Component {
   constructor(props) {
@@ -71,7 +71,12 @@ class CreateEvent extends React.Component {
         this.props.history.push(`/events/${event.id}`);
       })
     } else {
-    this.props.createEvent(this.state)
+      const event_tickets_attributes = values(this.state.event_tickets_attributes);
+      const event = merge({}, this.state)
+      event.event_tickets_attributes = event_tickets_attributes;
+      delete event.tickets;
+
+    this.props.createEvent(event)
       .then(({event}) => {
 
         this.props.history.push(`/events/${event.id}`);
@@ -92,10 +97,10 @@ class CreateEvent extends React.Component {
 
   removeTicket() {
     let newTickets = this.state.tickets.slice(0,this.state.tickets.length - 1)
-    this.setState({tickets: newTickets });
+    let newTicketsAttrs = merge({}, this.state.event_tickets_attributes);
+    delete newTicketsAttrs[newTickets.length];
+    this.setState({ event_tickets_attributes: newTicketsAttrs, tickets: newTickets })
   }
-
-
 
   handleChange(property) {
     return(e) => {
@@ -106,7 +111,7 @@ class CreateEvent extends React.Component {
   }
 
   render () {
-
+    debugger
     return (
       <section className="backdrop">
 
@@ -145,7 +150,7 @@ class CreateEvent extends React.Component {
                                 placeholder="mm/dd/yy"
                                 className="form-input"
                                 ref="date"
-                                type='text'
+                                type='date'
                                 onChange={this.handleChange('date')}
                                 required/>
                         </div>

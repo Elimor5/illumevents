@@ -11,8 +11,7 @@ class Api::EventsController < ApplicationController
   end
 
   def create
-    @event = Event.new(event_params)
-    @event.host = current_user
+    @event = current_user.events.new(event_params)
     @user = @event.host
     if @event.save
       render :show
@@ -48,7 +47,8 @@ class Api::EventsController < ApplicationController
       :city_state_zip,
       :date,
       :time,
-      :description
+      :description,
+      event_tickets_attributes: [:max_quantity, :price, :ticket_type]
     )
   end
 end
