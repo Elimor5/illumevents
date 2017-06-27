@@ -1,3 +1,48 @@
 // Place all the styles related to the api/event_tickets controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.create-tickets-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.ticket-form-input-int {
+  padding-left: 10px;
+  display: block;
+  width: 60px;
+  height: 38px;
+  font-size: 20px;
+  margin-top: 6px;
+  border-radius: 3px;
+  margin-bottom: 30px;
+}
+
+.ticket-form-input-char {
+  padding-left: 10px;
+  display: block;
+  width: 350px;
+  height: 38px;
+  font-size: 20px;
+  margin-top: 6px;
+  margin-right: 20px;
+  border-radius: 3px;
+  margin-bottom: 30px;
+}
+
+.ticket-form {
+  display: flex;
+  justify-content: flex-start;
+  border: solid black 1px;
+}
+
+.tickets-header {
+  width: 50%;
+  display: flex;
+  justify-content: space-around;
+
+}
+
+.add-ticket-button {
+  font-size: 20px
+}

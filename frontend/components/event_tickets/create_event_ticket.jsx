@@ -23,36 +23,34 @@ class CreateEventTicket extends React.Component {
   render() {
     return(
     <section>
-       <form>
-         <label className="form-label">Ticket Type</label>
+       <form className ="ticket-form">
+         <input
+           value={this.state.ticket_type}
+           placeholder="What type of ticket?"
+           className="ticket-form-input-char"
+           ref="ticket_type"
+           type='text'
+           onChange={this.handleChange('ticket_type')}
+           required/>
+
            <input
-             value={this.state.ticket_type}
-             placeholder="What type of ticket?"
-             className="form-input"
-             ref="ticket_type"
+             value={this.state.max_quantity}
+             placeholder="100"
+             className="ticket-form-input-int"
+             ref="max_quantity"
              type='text'
-             onChange={this.handleChange('ticket_type')}
+             onChange={this.handleChange('max_quantity')}
              required/>
 
-           <label className="form-label">Quantity Available</label>
              <input
-               value={this.state.max_quantity}
+               value={this.state.price}
                placeholder="100"
-               className="form-input"
-               ref="max_quantity"
+               className="ticket-form-input-int"
+               ref="price"
                type='text'
-               onChange={this.handleChange('max_quantity')}
+               onChange={this.handleChange('price')}
                required/>
 
-             <label className="form-label">Price</label>
-               <input
-                 value={this.state.price}
-                 placeholder="100"
-                 className="form-input"
-                 ref="price"
-                 type='text'
-                 onChange={this.handleChange('price')}
-                 required/>
        </form>
     </section>
     );

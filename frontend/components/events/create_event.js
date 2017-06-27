@@ -13,10 +13,12 @@ class CreateEvent extends React.Component {
       time: "",
       venue: "",
       address: "",
-      city_state_zip: ""
+      city_state_zip: "",
+      tickets: [<CreateEventTicket />, <CreateEventTicket />]
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.addTicket = this.addTicket.bind(this);
   }
 
   componentDidMount() {
@@ -56,6 +58,12 @@ class CreateEvent extends React.Component {
         this.props.history.push(`/events/${event.id}`);
       });
     }
+  }
+
+  addTicket() {
+
+    let newTickets = this.state.tickets.concat([<CreateEventTicket />])
+    this.setState({ tickets: newTickets });
   }
 
   handleChange(property) {
@@ -152,12 +160,25 @@ class CreateEvent extends React.Component {
                                         type='text'
                                         onChange={this.handleChange('city_state_zip')}
                                         required/>
-
                                       <button className="event-form-button">{this.props.match.params.id ? "EDIT EVENT" : "CREATE EVENT!"}</button>
                 </form>
+                <h1>Create Tickets</h1>
+              <div className="tickets-header">
+                <h2>Ticket Type</h2>
+                <h2>Quantity Available</h2>
+                <h2>Price</h2>
+              </div>
+                <div className= "create-tickets-container">
+                  <ul>
+                    {this.state.tickets.map(ticketForm =>
+                      ticketForm)
+                    }
+                  </ul>
+                  <button className="add-ticket-button" onClick={this.addTicket}>+</button>
+                </div>
             </div>
           </section>
-          <CreateEventTicket />
+
       </section>
     );
   }
