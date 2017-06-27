@@ -17,3 +17,10 @@ Day 4
 * fix description column
 * implement images
 * fix delete item bug
+
+Day 5
+  * See why modal don't stay open with invalid login credentials
+Day 6
+  * Style Create Ticket form
+  * Implement editing/deleting event-tickets
+  * style show page - tickets must be in a modal in the events show page

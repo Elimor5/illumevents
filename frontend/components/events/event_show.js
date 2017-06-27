@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import React from 'react';
 import { fetchSingleEvent, deleteEvent } from '../../actions/event_actions';
 import { Link } from 'react-router-dom';
+import EventTicketShowItem from '../event_tickets/event_ticket_show';
 
 
 class EventShow extends React.Component {
@@ -33,6 +34,7 @@ class EventShow extends React.Component {
 
   render() {
     const { event } = this.props;
+
     if (event)
     return (
       <section>
@@ -50,7 +52,7 @@ class EventShow extends React.Component {
                       <h2 className="event-author">by {event.username}</h2>
                   </div>
                   <div className= "event-show-ticket-summary">
-              
+
                   </div>
               </div>
 
@@ -85,6 +87,13 @@ class EventShow extends React.Component {
                 </div>
               </div>
             </div>
+
+            {event.event_tickets.map(event_ticket =>
+              <li className="event-ticket-list">
+               <EventTicketShowItem key={event_ticket.id} event_ticket = {event_ticket}/>
+              </li>
+            )}
+
 
             <h1>{event.title}</h1>
               <Link to={`/edit/${event.id}`}>Edit </Link>

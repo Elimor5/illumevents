@@ -1,10 +1,13 @@
 import * as EventTicketAPIUtil from '../util/event_ticket_api_util';
 import { receiveErrors, clearErrors } from './error_actions';
-// 
+//
 // export const RECEIVE_EVENT_TICKETS = "RECEIVE_EVENT_TICKETS";
 // export const RECEIVE_EVENT_TICKET = "RECEIVE_EVENT_TICKET";
 export const REMOVE_EVENT_TICKET = "REMOVE_EVENT_TICKET";
 export const EVENT_TICKET_ERROR = "EVENT_TICKET_ERROR";
+
+
+// NOT NECESSARY - EVENT_TICKETS ARE CREATED WHEN AN EVENT IS CREATED!!!!
 
 // export const receiveEventTickets = eventTickets => ({
 //   type: RECEIVE_EVENT_TICKETS,

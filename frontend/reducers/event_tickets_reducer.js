@@ -4,6 +4,8 @@ import { RECEIVE_EVENT_TICKETS,
          EVENT_TICKET_ERROR } from '../actions/event_ticket_actions';
 import merge from 'lodash/merge';
 
+// NOT NECESSARY FOR CREATING EVENTS - EVENT_TICKETS ARE CREATED WHEN AN EVENT IS CREATED!!!!
+
 const eventTicketsReducer = (state = {}, action) => {
   Object.freeze(state);
   let nextState;

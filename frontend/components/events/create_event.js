@@ -111,7 +111,7 @@ class CreateEvent extends React.Component {
   }
 
   render () {
-    debugger
+    
     return (
       <section className="backdrop">
 
