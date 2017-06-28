@@ -32,11 +32,17 @@ export const updateEvent = event => {
   ));
 };
 
-
-
 export const deleteEvent = event => (
   $.ajax({
     method: 'DELETE',
     url: `api/events/${event.id}`
   })
 );
+
+export const purchaseTickets = (ticket_purchases) => (
+  $.ajax({
+    method: 'POST',
+    url: 'api/ticket_purchases',
+    data: {ticket_purchases}
+  })
+)

@@ -24,3 +24,7 @@ Day 6
   * Style Create Ticket form
   * Implement editing/deleting event-tickets
   * style show page - tickets must be in a modal in the events show page
+  * make user show json and add ticket_purchases to user show json
+  * get rid of tickets in event edit form (for now. might want to add the ability to edit tickets later)
+  * fix edit page errors
+  * fix errors for submitting new event with errors in tickets - no errors reducer

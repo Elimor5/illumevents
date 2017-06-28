@@ -89,10 +89,20 @@
   padding: 14px;
   color: #0093D7;
   border-radius: 7px;
+  font-size: 15px;
+  margin-right: 10px;
 }
 
 .event-form-button:hover {
   background-color: #013653;
   cursor: pointer;
   color: white;
+}
+
+.move-button-to-center {
+  margin-left: 188px;
+}
+
+.move-button-to-center-1 {
+  margin-left: 165px;
 }

@@ -9,6 +9,14 @@ class User < ActiveRecord::Base
   class_name: :Event,
   primary_key: :id
 
+  has_many :ticket_purchases,
+    foreign_key: :buyer_id,
+    class_name: :TicketPurchase
+
+  has_many :event_tickets,
+    through: :ticket_purchases,
+    source: :event_ticket
+
 	validates :username, :password_digest, :session_token, presence: true
 	validates :username, uniqueness: true
 	validates :password, length: {minimum: 6}, allow_nil: :true

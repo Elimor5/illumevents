@@ -3,9 +3,18 @@ import React from 'react';
 import { fetchSingleEvent, deleteEvent } from '../../actions/event_actions';
 import { Link } from 'react-router-dom';
 import EventTicketShowItem from '../event_tickets/event_ticket_show';
-
+import { merge, values } from 'lodash';
 
 class EventShow extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.handlePurchaseChange = this.handlePurchaseChange.bind(this);
+    this.state = {
+      purchase_tickets_attributes: {}
+    }
+
+  }
 
   componentDidMount() {
     this.props.fetchSingleEvent(this.props.match.params.id);
@@ -29,7 +38,25 @@ class EventShow extends React.Component {
     return months[this.props.event.date.slice(0,2)];
   }
 
+  handlePurchaseChange(property, index) {
+    return (e) => {
+      const newPurchase = merge({}, this.state.purchase_tickets_attributes, {[index]: {[property]: e.currentTarget.value}})
+      this.setState({ purchase_tickets_attributes: newPurchase });
+    }
+  }
 
+  renderTickets() {
+    return (
+      <div>
+        {this.props.event.event_tickets.map(event_ticket =>
+          <li className="event-ticket-list">
+           <EventTicketShowItem index={event_ticket.id} event_ticket={event_ticket} handlePurchaseChange={this.handlePurchaseChange}/>
+          </li>
+        )}
+      </div>
+    )
+
+  }
 
 
   render() {
@@ -88,11 +115,7 @@ class EventShow extends React.Component {
               </div>
             </div>
 
-            {event.event_tickets.map(event_ticket =>
-              <li className="event-ticket-list">
-               <EventTicketShowItem key={event_ticket.id} event_ticket = {event_ticket}/>
-              </li>
-            )}
+          {this.renderTickets()}
 
 
             <h1>{event.title}</h1>

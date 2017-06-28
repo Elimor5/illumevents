@@ -85,6 +85,7 @@ class CreateEvent extends React.Component {
   }
 
   addTicket() {
+
     let newTickets = this.state.tickets.concat([<CreateEventTicket index={this.state.tickets.length} handleTicketChange={this.handleTicketChange}/>])
     this.setState({ tickets: newTickets });
     let newTicketsAttrs = merge({}, this.state.event_tickets_attributes,
@@ -110,8 +111,39 @@ class CreateEvent extends React.Component {
     };
   }
 
+  renderTicketForm() {
+    return(
+      <section>
+          <h1 className="create-ticket-form-header">Create Tickets</h1>
+        <div className="tickets-header">
+          <h2 className="ticket-type">Ticket Type</h2>
+          <div className="flex-right">
+            <div className="shrink-word">
+              <h2 className="quantity-available">Quantity Available</h2>
+            </div>
+            <h2 className="price">Price</h2>
+          </div>
+        </div>
+          <div className= "create-tickets-container">
+            <ul>
+              <div className="ticket-form-holder">
+                {this.state.tickets.map(ticketForm =>
+                  ticketForm)
+                }
+                <div className="move-button-to-center-1">
+                  <button className="event-form-button" onClick={this.addTicket}> Add Ticket </button>
+                  <button className="event-form-button" onClick={this.removeTicket}> Remove Ticket </button>
+                </div>
+              </div>
+            </ul>
+
+          </div>
+      </section>
+    )
+  }
+
   render () {
-    
+
     return (
       <section className="backdrop">
 
@@ -180,7 +212,7 @@ class CreateEvent extends React.Component {
                                 <label className="form-label">ADDRESS</label>
                                     <input
                                       value={this.state.address}
-                                      placeholder="dd/mm/yy"
+                                      placeholder="123 Anywhere St"
                                       className="form-input"
                                       ref="address"
                                       type='text'
@@ -191,29 +223,19 @@ class CreateEvent extends React.Component {
                                       className="form-label">CITY, STATE, ZIP</label>
                                       <input
                                         value={this.state.city_state_zip}
-                                        placeholder="Like so New York, NY 10004"
+                                        placeholder="New York, NY 10004"
                                         className="form-input"
                                         ref="city_state_zip"
                                         type='text'
                                         onChange={this.handleChange('city_state_zip')}
                                         required/>
-                                      <button className="event-form-button">{this.props.match.params.id ? "EDIT EVENT" : "CREATE EVENT!"}</button>
+
+
+                                      <div className="move-button-to-center">
+                                        <button className="event-form-button">{this.props.match.params.id ? "EDIT EVENT" : "CREATE EVENT!"}</button>
+                                      </div>
                 </form>
-                <h1>Create Tickets</h1>
-              <div className="tickets-header">
-                <h2>Ticket Type</h2>
-                <h2>Quantity Available</h2>
-                <h2>Price</h2>
-              </div>
-                <div className= "create-tickets-container">
-                  <ul>
-                    {this.state.tickets.map(ticketForm =>
-                      ticketForm)
-                    }
-                  </ul>
-                  <button className="add-ticket-button" onClick={this.addTicket}> + </button>
-                  <button className="add-ticket-button" onClick={this.removeTicket}> - </button>
-                </div>
+                {this.renderTicketForm()}
             </div>
           </section>
 
@@ -223,7 +245,7 @@ class CreateEvent extends React.Component {
 }
 
 
-const mapStateToProps = ( { events, session },ownProps) => {
+const mapStateToProps = ( { events, session, errors },ownProps) => {
   return {
     userId: session.currentUser.id,
     event: events[ownProps.match.params.id] || {}
