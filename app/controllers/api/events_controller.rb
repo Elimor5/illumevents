@@ -1,7 +1,7 @@
 class Api::EventsController < ApplicationController
 
   def index
-    debugger
+
     @events = Event.all
   end
 
