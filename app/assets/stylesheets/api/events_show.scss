@@ -87,6 +87,11 @@
   font-size: 20px;
   cursor: pointer;
 }
+.tickets-button:hover {
+  background-color: #0D651B;
+  cursor: pointer;
+  color: white;
+}
 
 .tickets-bar-button-container {
   justify-content: flex-end;
@@ -245,15 +250,15 @@
   height: 17px;
   border: solid #0093D7 2px;
   padding: 14px;
-  background-color: #F6682F;
+  background-color: #09C444;
   color: white;
   border-radius: 7px;
   font-size: 15px;
-  margin-right: 10px;
+  align-self: flex-end;
 }
 
 .ticket-checkout-button:hover {
-  background-color: #013653;
+  background-color: #0D651B;
   cursor: pointer;
   color: white;
 }
