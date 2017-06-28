@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { fetchAllEvents } from '../../actions/event_actions';
 import { allEvents} from '../../reducers/selectors';
 import BrowseEventItem from './browse_event_item';
+import { Link } from 'react-router-dom';
 
 
 class BrowseEvents extends React.Component {
@@ -19,15 +20,23 @@ class BrowseEvents extends React.Component {
     const { events, errors } = this.props;
     return (
       <section>
-        <div className= "spash-container"></div>
-          <div className="homepage-outer-container">
-            <div className="homepage-events">
-              <ul className="browse-events-container">
-                {events.reverse().map(event =>
-                  <BrowseEventItem key={event.id} event={event} />)
-                }
-              </ul>
-            </div>
+
+          <div className="browse-page-outer-container">
+              <div className="categories-google-maps-browse">
+              <h1 className="categories-header"> Categories </h1>
+                {categories.map((category)=>(
+                  <button className="category-button" onClick={() => this.props.requestEvents(category)}><li className="browse-category-list">{category}</li></button>
+                ))}
+              </div>
+              <div className="browse-event-placeholder">
+              </div>
+              <div className="homepage-events">
+                <ul className="browse-events-container">
+                  {events.reverse().map(event =>
+                    <BrowseEventItem key={event.id} event={event} />)
+                  }
+                </ul>
+              </div>
           </div>
       </section>
     );
@@ -44,7 +53,7 @@ return ({
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  requestEvents: () => dispatch(fetchAllEvents()),
+  requestEvents: (category) => dispatch(fetchAllEvents(category)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(BrowseEvents);

@@ -37,3 +37,39 @@
   font-size: 12px;
   font-weight: bold;
 }
+
+.categories-google-maps-browse {
+  width: 250px;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  margin-left: 20px;
+  margin-top: 25px;
+  background-color: white;
+  border: 1px solid gray;
+  height: 800px;
+}
+
+.browse-category-list {
+  color: blue;
+  font-size: 12px;
+  margin: 10px;
+  list-style: none;
+}
+.browse-page-outer-container {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+}
+
+.categories-header {
+  color: #464A4F;
+  font-size: 20px;
+  font-weight: 100;
+  word-wrap: break-word;
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
+.category-button {
+  cursor: pointer;
+}

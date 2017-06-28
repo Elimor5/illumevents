@@ -1,6 +1,7 @@
 class Api::EventsController < ApplicationController
 
   def index
+    debugger
     @events = Event.all
   end
 
@@ -11,13 +12,13 @@ class Api::EventsController < ApplicationController
   end
 
   def create
-    
+
     @event = current_user.events.new(event_params)
     @user = @event.host
     if @event.save
       render :show
     else
-      
+
       render json:  @event.errors.full_messages, status: 422
     end
   end

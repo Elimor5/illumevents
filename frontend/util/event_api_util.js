@@ -1,7 +1,8 @@
-export const fetchAllEvents = () => {
+export const fetchAllEvents = (category) => {
   return $.ajax({
     method: 'GET',
-    url: 'api/events'
+    url: 'api/events',
+    data: { category }
   });
 };
 
@@ -23,7 +24,7 @@ export const createEvent = event => {
 };
 
 export const updateEvent = event => {
-  
+
   return (
     $.ajax({
       method: 'PATCH',
