@@ -16,6 +16,7 @@ class CreateEvent extends React.Component {
       venue: "",
       address: "",
       city_state_zip: "",
+      category: "",
       event_tickets_attributes: {
         0: {
           ticket_type: "",
@@ -47,6 +48,8 @@ class CreateEvent extends React.Component {
     }
   }
 
+
+
   componentWillReceiveProps(nextProps) {
     if (nextProps.event.title) {
       this.setState({
@@ -58,12 +61,14 @@ class CreateEvent extends React.Component {
         venue: nextProps.event.venue,
         address: nextProps.event.address,
         host_id: nextProps.event.host_id,
-        city_state_zip: nextProps.event.city_state_zip
+        city_state_zip: nextProps.event.city_state_zip,
+        category: nextProps.event.category
       });
     }
   }
 
   handleSubmit(e) {
+    debugger
     e.preventDefault();
     if (this.props.match.params.id) {
       const event = merge({}, this.state)
@@ -78,7 +83,7 @@ class CreateEvent extends React.Component {
       const event = merge({}, this.state)
       event.event_tickets_attributes = event_tickets_attributes;
       delete event.tickets;
-
+    debugger
     this.props.createEvent(event)
       .then(({event}) => {
 
@@ -147,6 +152,10 @@ class CreateEvent extends React.Component {
   } else {
     return null;
   }
+  }
+
+  categories() {
+    return ["Auto, Boat & Air", "Business & Professional", "Charity & Causes", "Community & Culture", "Family & Education", "Fashion & Beauty", "Film", "Media & Entertainment", "Food & Drink", "Goverment & Politics", "Health & Wellness", "Hobbies & Special Interest", "Home & Lifestyle", "Music", "Other", "Performing & Visual Arts", "Religion & Spirituality", "Science & Technology", "Seasonal & Holiday", "Sports & Fitness", "Travel & Outdoor" ];
   }
 
   render () {
@@ -227,7 +236,7 @@ class CreateEvent extends React.Component {
                                       required/>
 
                                     <label
-                                      className="form-label">CITY, STATE, ZIP</label>
+                                      className="form-label form-dropdown-label">CITY, STATE, ZIP</label>
                                       <input
                                         value={this.state.city_state_zip}
                                         placeholder="New York, NY 10004"
@@ -237,7 +246,16 @@ class CreateEvent extends React.Component {
                                         onChange={this.handleChange('city_state_zip')}
                                         required/>
 
+                                        <label className="form-dropdown">CATEGORY</label>
+                                          <select onChange={this.handleChange('category')} value={this.state.category} ref="category" placeholder= "Choose a category" className="form-label">
+                                          <option value=""> Select a Category</option>
+                                          {this.categories().map((category)=>(
+                                            <option value={category}> {category} </option>
+                                          ))}
+                                          </select >
+
                                         {this.renderTicketForm()}
+
 
                                       <div className="move-button-to-center">
                                         <button className="event-form-button">{this.props.match.params.id ? "EDIT EVENT" : "CREATE EVENT!"}</button>

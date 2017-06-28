@@ -11,11 +11,13 @@ class Api::EventsController < ApplicationController
   end
 
   def create
+    debugger
     @event = current_user.events.new(event_params)
     @user = @event.host
     if @event.save
       render :show
     else
+      debugger
       render json:  @event.errors.full_messages, status: 422
     end
   end
@@ -48,6 +50,7 @@ class Api::EventsController < ApplicationController
       :date,
       :time,
       :description,
+      :category,
       event_tickets_attributes: [:max_quantity, :price, :ticket_type]
     )
   end

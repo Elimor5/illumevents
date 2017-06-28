@@ -88,7 +88,6 @@ class EventShow extends React.Component {
     purchaseTickets(this.state.purchases).then(() => this.closeModal());
   }
 
-
   render() {
     const { event } = this.props;
     if (event)
@@ -105,7 +104,8 @@ class EventShow extends React.Component {
                 </div>
                   <div className="event-title-container">
                       <h1 className="event-title"> {event.title}</h1>
-                      <h2 className="event-author">by {event.username}</h2>
+                        <h1 className="event-author"> in "{event.category}" </h1>
+                          <h2 className="event-author">by {event.username}</h2>
                   </div>
                   <div className= "event-show-ticket-summary">
 

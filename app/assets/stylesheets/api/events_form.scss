@@ -46,6 +46,13 @@
   margin-bottom: 4px;
 }
 
+.form-dropdown {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top : 4px;
+  margin-bottom: 16px;
+}
+
 .form-input {
   padding-left: 10px;
   display: block;
@@ -91,6 +98,7 @@
   border-radius: 7px;
   font-size: 15px;
   margin-right: 10px;
+  margin-bottom: 7px;
 }
 
 .event-form-button:hover {
@@ -105,4 +113,8 @@
 
 .move-button-to-center-1 {
   margin-left: 165px;
+}
+
+.form-dropdown-label {
+  margin-bottom: 5px;
 }
