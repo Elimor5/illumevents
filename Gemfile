@@ -48,5 +48,6 @@ group :development do
   gem 'pry-rails'
   gem 'annotate'
   gem 'seed_dump'
-
+  gem 'figaro'
+  gem 'paperclip', "~>5.0.0.beta1"
 end
