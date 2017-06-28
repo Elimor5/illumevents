@@ -23,8 +23,8 @@ class CreateEventTicket extends React.Component {
 
   render() {
     return(
-    <section>
-       <form className ="ticket-form">
+    <section className="ticket-form">
+
          <input
            value={this.state.ticket_type}
            placeholder="What type of ticket?"
@@ -52,7 +52,7 @@ class CreateEventTicket extends React.Component {
                onChange={this.handleChange('price')}
                required/>
 
-       </form>
+
     </section>
     );
   }

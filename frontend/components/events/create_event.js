@@ -66,7 +66,10 @@ class CreateEvent extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     if (this.props.match.params.id) {
-      this.props.updateEvent(this.state)
+      const event = merge({}, this.state)
+      delete event.tickets;
+      delete event.event_tickets_attributes;
+      this.props.updateEvent(event)
       .then(({ event }) => {
         this.props.history.push(`/events/${event.id}`);
       })
@@ -112,6 +115,7 @@ class CreateEvent extends React.Component {
   }
 
   renderTicketForm() {
+    if (!this.props.match.params.id) {
     return(
       <section>
           <h1 className="create-ticket-form-header">Create Tickets</h1>
@@ -140,6 +144,9 @@ class CreateEvent extends React.Component {
           </div>
       </section>
     )
+  } else {
+    return null;
+  }
   }
 
   render () {
@@ -230,12 +237,12 @@ class CreateEvent extends React.Component {
                                         onChange={this.handleChange('city_state_zip')}
                                         required/>
 
+                                        {this.renderTicketForm()}
 
                                       <div className="move-button-to-center">
                                         <button className="event-form-button">{this.props.match.params.id ? "EDIT EVENT" : "CREATE EVENT!"}</button>
                                       </div>
                 </form>
-                {this.renderTicketForm()}
             </div>
           </section>
 

@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 class EventTicketShowItem extends React.Component {
   constructor(props) {
@@ -7,18 +7,18 @@ class EventTicketShowItem extends React.Component {
 
   dropDownArray() {
     const end_num = this.props.event_ticket.max_quantity;
-    const numsArray = []
+    const numsArray = [];
       let current_num = 0;
       while (current_num <= 20 && current_num <= end_num ) {
-        numsArray.push(current_num)
-        current_num++
+        numsArray.push(current_num);
+        current_num++;
       }
-      return numsArray
+      return numsArray;
   }
 
 
   render() {
-    const { event_ticket } = this.props
+    const { event_ticket } = this.props;
     return(
       <section className="show-event-item">
         <div className="show-event-item-type-price">
@@ -26,10 +26,10 @@ class EventTicketShowItem extends React.Component {
           <span className="show-ticket-price">Price: ${event_ticket.price} (+ 5.65 FEE)</span>
         </div>
           <div className="show-event-ticket-dropdown">
-            <select className="show-ticket-dropdown">
+            <select onChange={this.props.handlePurchaseChange(this.props.ticketId)} className="show-ticket-dropdown">
               { this.dropDownArray().map((num)=>
-              <option value="{num}">{num}</option>
-              )}
+              <option value={num}>{num}</option>
+            )}
             </select >
             <span className="show-ticket-price">Amount Remaining:  {event_ticket.max_quantity}</span>
           </div>

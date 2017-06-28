@@ -4,19 +4,10 @@ import { fetchSingleEvent, deleteEvent } from '../../actions/event_actions';
 import { Link } from 'react-router-dom';
 import EventTicketShowItem from '../event_tickets/event_ticket_show';
 import { merge, values } from 'lodash';
-import Modal from 'react-modal'
-import { modalStyle } from '../modal/modal_style'
+import Modal from 'react-modal';
+import { modalStyle } from '../modal/modal_style';
+import { purchaseTickets } from '../../util/event_api_util';
 
-// const customStyles = {
-//   content : {
-//     top                   : '50%',
-//     left                  : '20%',
-//     right                 : '20%',
-//     bottom                : '20%',
-//     marginRight           : '-50%',
-//     transform             : 'translate(-50%, -50%)'
-//   }
-// };
 
 class EventShow extends React.Component {
 
@@ -24,13 +15,14 @@ class EventShow extends React.Component {
     super(props);
     this.handlePurchaseChange = this.handlePurchaseChange.bind(this);
     this.state = {
-      purchase_tickets_attributes: {},
+      purchases: [],
       modalIsOpen: false,
-    }
+    };
 
     this.renderTickets = this.renderTickets.bind(this);
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
+    this.purchaseTickets = this.purchaseTickets.bind(this);
   }
 
   componentDidMount() {
@@ -38,11 +30,11 @@ class EventShow extends React.Component {
   }
 
   openModal() {
-    this.setState({modalIsOpen: true})
+    this.setState({modalIsOpen: true});
   }
 
   closeModal() {
-    this.setState({modalIsOpen: false})
+    this.setState({modalIsOpen: false});
   }
 
 
@@ -64,11 +56,18 @@ class EventShow extends React.Component {
     return months[this.props.event.date.slice(0,2)];
   }
 
-  handlePurchaseChange(property, index) {
+  handlePurchaseChange(ticket_id) {
     return (e) => {
-      const newPurchase = merge({}, this.state.purchase_tickets_attributes, {[index]: {[property]: e.currentTarget.value}})
-      this.setState({ purchase_tickets_attributes: newPurchase });
-    }
+      const purchasesCopy = this.state.purchases.slice();
+      const newPurchase = {
+        ticket_id,
+        purchase_quantity: e.currentTarget.value
+      };
+      purchasesCopy.push(newPurchase);
+      this.setState({
+        purchases: purchasesCopy
+      });
+    };
   }
 
   renderTickets() {
@@ -76,18 +75,22 @@ class EventShow extends React.Component {
       <div className="event-show-tickets-container">
         {this.props.event.event_tickets.map(event_ticket =>
           <li className="event-ticket-list">
-           <EventTicketShowItem className="event-show-ticket-item" key={event_ticket.id} index={event_ticket.id} event_ticket={event_ticket} handlePurchaseChange={this.handlePurchaseChange}/>
+           <EventTicketShowItem className="event-show-ticket-item" key={event_ticket.id} ticketId={event_ticket.id} event_ticket={event_ticket} handlePurchaseChange={this.handlePurchaseChange}/>
           </li>
         )}
       </div>
-    )
+    );
 
+  }
+
+  purchaseTickets(e) {
+    e.preventDefault();
+    purchaseTickets(this.state.purchases).then(() => this.closeModal());
   }
 
 
   render() {
     const { event } = this.props;
-
     if (event)
     return (
       <section>
@@ -152,7 +155,7 @@ class EventShow extends React.Component {
             </div>
             <button className="events-show-modal-close" onClick={this.closeModal}>x</button>
            {this.renderTickets()}
-           <button className="ticket-checkout-button"> CHECKOUT </button>
+           <button onClick={this.purchaseTickets} className="ticket-checkout-button"> CHECKOUT </button>
            </Modal>
 
 

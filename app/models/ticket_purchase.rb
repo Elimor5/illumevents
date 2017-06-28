@@ -1,15 +1,15 @@
 class TicketPurchase < ActiveRecord::Base
-  validates: :buyer, :ticket, :purchase_quantity
+  validates :buyer, :ticket, :purchase_quantity, presence: true
 
-  belongs_to :event_ticket,
+  belongs_to :ticket,
     foreign_key: :ticket_id,
-    className: :EventTicket
+    class_name: :EventTicket
 
-  belongs_to :event,
+  has_one :event,
     through: :event_ticket,
     source: :event
 
-  belongs_to :ticket_purchaser,
+  belongs_to :buyer,
     foreign_key: :buyer_id,
     class_name: :User
 end
