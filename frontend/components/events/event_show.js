@@ -4,6 +4,19 @@ import { fetchSingleEvent, deleteEvent } from '../../actions/event_actions';
 import { Link } from 'react-router-dom';
 import EventTicketShowItem from '../event_tickets/event_ticket_show';
 import { merge, values } from 'lodash';
+import Modal from 'react-modal'
+import { modalStyle } from '../modal/modal_style'
+
+// const customStyles = {
+//   content : {
+//     top                   : '50%',
+//     left                  : '20%',
+//     right                 : '20%',
+//     bottom                : '20%',
+//     marginRight           : '-50%',
+//     transform             : 'translate(-50%, -50%)'
+//   }
+// };
 
 class EventShow extends React.Component {
 
@@ -11,14 +24,27 @@ class EventShow extends React.Component {
     super(props);
     this.handlePurchaseChange = this.handlePurchaseChange.bind(this);
     this.state = {
-      purchase_tickets_attributes: {}
+      purchase_tickets_attributes: {},
+      modalIsOpen: false,
     }
 
+    this.renderTickets = this.renderTickets.bind(this);
+    this.openModal = this.openModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
   }
 
   componentDidMount() {
     this.props.fetchSingleEvent(this.props.match.params.id);
   }
+
+  openModal() {
+    this.setState({modalIsOpen: true})
+  }
+
+  closeModal() {
+    this.setState({modalIsOpen: false})
+  }
+
 
   monthParse () {
     const months = {
@@ -47,10 +73,10 @@ class EventShow extends React.Component {
 
   renderTickets() {
     return (
-      <div>
+      <div className="event-show-tickets-container">
         {this.props.event.event_tickets.map(event_ticket =>
           <li className="event-ticket-list">
-           <EventTicketShowItem index={event_ticket.id} event_ticket={event_ticket} handlePurchaseChange={this.handlePurchaseChange}/>
+           <EventTicketShowItem className="event-show-ticket-item" key={event_ticket.id} index={event_ticket.id} event_ticket={event_ticket} handlePurchaseChange={this.handlePurchaseChange}/>
           </li>
         )}
       </div>
@@ -86,7 +112,7 @@ class EventShow extends React.Component {
             </div>
             <div className="tickets-bookmarks-bar">
               <div className="tickets-bar-button-container">
-                <button className="tickets-button"> TICKETS</button>
+                <button className="tickets-button" onClick={this.openModal}> TICKETS</button>
               </div>
             </div>
 
@@ -115,7 +141,15 @@ class EventShow extends React.Component {
               </div>
             </div>
 
-          {this.renderTickets()}
+        <Modal
+          isOpen={this.state.modalIsOpen}
+          contentLabel="Modal"
+          style={modalStyle}
+          onRequestClose={this.closeModal}
+          shouldCloseOnOverlayClick={true}>
+            <button className="events-show-modal-close" onClick={this.closeModal}>x</button>
+           {this.renderTickets()}
+           </Modal>
 
 
             <h1>{event.title}</h1>
@@ -142,7 +176,7 @@ const mapStateToProps = ({ events }, ownProps) => {
 
 const mapDispatchToProps = dispatch => ({
   fetchSingleEvent: (id) => dispatch(fetchSingleEvent(id)),
-  deleteEvent: (event) => dispatch(deleteEvent(event)),
+  deleteEvent: (event) => dispatch(deleteEvent(event))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(EventShow);

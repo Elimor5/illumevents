@@ -4,6 +4,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { hideModal } from '../../actions/modal_actions';
 
+
 class Modal extends React.Component {
   constructor(props) {
     super(props);

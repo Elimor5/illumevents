@@ -64,7 +64,7 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-      height: 136px;
+  height: 136px;
 }
 
 .tickets-bookmarks-bar {
@@ -85,6 +85,7 @@
   border-radius: 6px;
   color: white;
   font-size: 20px;
+  cursor: pointer;
 }
 
 .tickets-bar-button-container {
@@ -151,4 +152,40 @@
   font-weight: 100;
   color: #606368;
 
+}
+
+.events-show-modal-close {
+  font-size: 20px;
+  z-index: 101;
+  position: relative;
+  left: 768px;
+  cursor: pointer;
+  font-size: 30px;
+  color: #515459;
+}
+
+.event-show-tickets-container {
+
+}
+
+.event-ticket-list {
+  list-style: none;
+}
+
+.show-event-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.show-event-item-type-price {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.show-event-ticket-dropdown {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }

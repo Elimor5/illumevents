@@ -21,16 +21,20 @@ class EventTicketShowItem extends React.Component {
     const { event_ticket } = this.props
     return(
       <section className="show-event-item">
-        <span>{event_ticket.ticket_type}</span>
-        <br/>
+        <div className="show-event-item-type-price">
+          <span>{event_ticket.ticket_type}</span>
+          <span>{event_ticket.price}</span>
+        </div>
+          <div className="show-event-ticket-dropdown">
+            <select>
+              { this.dropDownArray().map((num)=>
+              <option value="{num}">{num}</option>
+              )}
+            </select>
+          </div>
+
         <span>{event_ticket.max_quantity}</span>
-        <br/>
-        <span>{event_ticket.price}</span>
-        <select>
-          { this.dropDownArray().map((num)=>
-          <option value="{num}">{num}</option>
-          )}
-        </select>
+
       </section>
     );
   }
