@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170628203837) do
+ActiveRecord::Schema.define(version: 20170628205812) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,17 +28,21 @@ ActiveRecord::Schema.define(version: 20170628203837) do
   add_index "event_tickets", ["event_id"], name: "index_event_tickets_on_event_id", using: :btree
 
   create_table "events", force: :cascade do |t|
-    t.integer  "host_id",        null: false
-    t.string   "title",          null: false
-    t.string   "venue",          null: false
-    t.string   "address",        null: false
-    t.string   "city_state_zip", null: false
-    t.string   "date",           null: false
-    t.string   "time",           null: false
+    t.integer  "host_id",            null: false
+    t.string   "title",              null: false
+    t.string   "venue",              null: false
+    t.string   "address",            null: false
+    t.string   "city_state_zip",     null: false
+    t.string   "date",               null: false
+    t.string   "time",               null: false
     t.text     "description"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
     t.string   "category"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   add_index "events", ["date"], name: "index_events_on_date", using: :btree
@@ -53,15 +57,11 @@ ActiveRecord::Schema.define(version: 20170628203837) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "username",            null: false
-    t.string   "password_digest",     null: false
-    t.string   "session_token",       null: false
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
-    t.string   "avatar_file_name"
-    t.string   "avatar_content_type"
-    t.integer  "avatar_file_size"
-    t.datetime "avatar_updated_at"
+    t.string   "username",        null: false
+    t.string   "password_digest", null: false
+    t.string   "session_token",   null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   add_index "users", ["session_token"], name: "index_users_on_session_token", unique: true, using: :btree

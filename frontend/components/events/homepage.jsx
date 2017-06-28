@@ -19,6 +19,7 @@ class Homepage extends React.Component {
           <div className="homepage-events">
             <ul className="events-container">
               {events.map(event =>
+
                 <HomepageEventItem key={event.id} event={event} />)
               }
             </ul>

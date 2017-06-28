@@ -1,6 +1,9 @@
 class Event < ActiveRecord::Base
   validates :host_id, :title, :venue, :address, :city_state_zip, :date, :category, :time, presence: true
 
+  has_attached_file :image, default_url: "corgi.jpg"
+  validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
+
   belongs_to :host,
   foreign_key: :host_id,
   class_name: :User
