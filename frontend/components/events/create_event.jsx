@@ -3,6 +3,9 @@ import React from 'react';
 import { createEvent, fetchSingleEvent, updateEvent } from '../../actions/event_actions';
 import CreateEventTicket from '../event_tickets/create_event_ticket';
 import { merge, values } from 'lodash';
+import { categories } from './categories';
+
+
 
 class CreateEvent extends React.Component {
   constructor(props) {
@@ -68,7 +71,7 @@ class CreateEvent extends React.Component {
   }
 
   handleSubmit(e) {
-    debugger
+    
     e.preventDefault();
     if (this.props.match.params.id) {
       const event = merge({}, this.state)
@@ -83,7 +86,7 @@ class CreateEvent extends React.Component {
       const event = merge({}, this.state)
       event.event_tickets_attributes = event_tickets_attributes;
       delete event.tickets;
-    debugger
+    
     this.props.createEvent(event)
       .then(({event}) => {
 
@@ -154,9 +157,6 @@ class CreateEvent extends React.Component {
   }
   }
 
-  categories() {
-    return ["Auto, Boat & Air", "Business & Professional", "Charity & Causes", "Community & Culture", "Family & Education", "Fashion & Beauty", "Film", "Media & Entertainment", "Food & Drink", "Goverment & Politics", "Health & Wellness", "Hobbies & Special Interest", "Home & Lifestyle", "Music", "Other", "Performing & Visual Arts", "Religion & Spirituality", "Science & Technology", "Seasonal & Holiday", "Sports & Fitness", "Travel & Outdoor" ];
-  }
 
   render () {
 
@@ -249,7 +249,7 @@ class CreateEvent extends React.Component {
                                         <label className="form-dropdown">CATEGORY</label>
                                           <select onChange={this.handleChange('category')} value={this.state.category} ref="category" placeholder= "Choose a category" className="form-label">
                                           <option value=""> Select a Category</option>
-                                          {this.categories().map((category)=>(
+                                          {categories.map((category)=>(
                                             <option value={category}> {category} </option>
                                           ))}
                                           </select >

@@ -16,4 +16,4 @@ const mapDispatchToProps = (dispatch) => ({
   requestEvents: () => dispatch(fetchAllEvents()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Homepage)
+export default connect(mapStateToProps, mapDispatchToProps)(Homepage);

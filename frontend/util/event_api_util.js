@@ -23,7 +23,7 @@ export const createEvent = event => {
 };
 
 export const updateEvent = event => {
-  debugger
+  
   return (
     $.ajax({
       method: 'PATCH',

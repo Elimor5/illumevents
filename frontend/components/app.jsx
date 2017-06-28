@@ -16,6 +16,7 @@ import NavBarContainer from './nav_bar/nav_bar_container';
 import HomePageContainer from './events/homepage_container';
 import EventShow from './events/event_show';
 import CreateEvent from './events/create_event';
+import BrowseEvents from './events/browse_events';
 
 
 const App = () => (
@@ -27,6 +28,7 @@ const App = () => (
     <NavBarContainer />
       <HashRouter>
         <section>
+          <Route exact path="/browse" component={ BrowseEvents } />
           <Route exact path="/" component={ HomePageContainer } />
           <ProtectedRoute exact path="/new" component={ CreateEvent } />
           <ProtectedRoute exact path="/edit/:id" component={ CreateEvent } />

@@ -11,7 +11,12 @@
 
 .nav-bar-item {
   border-right: 1px solid #EFF2F5;
-  border-left: 1px solid #EFF2F5;
+  display: flex;
+  flex-basis: auto;
+}
+
+.nav-bar-item-user {
+  border-right: 1px solid #EFF2F5;
   display: flex;
   flex-basis: auto;
 }
@@ -19,6 +24,7 @@
 .auth-item-split {
   display: flex;
   flex-basis: auto;
+  border-left: none;
 }
 
 .nav-bar-right {
@@ -58,6 +64,10 @@
   font-size: 12px;
 }
 
+.auth-bar-nav-demo {
+  border-left: 1px solid #EFF2F5;
+}
+
 .nav-button {
   font-family: sans-serif;
   padding: 20px;
@@ -70,4 +80,15 @@
 .right-side-nav {
   display: flex;
   justify-content: flex-end;
+}
+
+.browse-bar-nav {
+  color: #676A6E;
+  font-size: 12px;
+  border-right: none;
+  border-left: 1px solid #EFF2F5;
+}
+
+.signup-nav {
+  border-left: none;
 }

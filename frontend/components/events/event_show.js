@@ -7,7 +7,7 @@ import { merge, values } from 'lodash';
 import Modal from 'react-modal';
 import { modalStyle } from '../modal/modal_style';
 import { purchaseTickets } from '../../util/event_api_util';
-
+import { months } from './date_parse';
 
 class EventShow extends React.Component {
 
@@ -39,21 +39,7 @@ class EventShow extends React.Component {
 
 
   monthParse () {
-    const months = {
-      "01": "JAN",
-      "02": "FEB",
-      "03": "MAR",
-      "04": "APR",
-      "05": "MAY",
-      "06": "JUN",
-      "07": "JUL",
-      "08": "AUG",
-      "09": "SEP",
-      "10": "OCT",
-      "11": "NOV",
-      "12": "DEC"
-    };
-    return months[this.props.event.date.slice(0,2)];
+    months;
   }
 
   handlePurchaseChange(ticket_id) {
