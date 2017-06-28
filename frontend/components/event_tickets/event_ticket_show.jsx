@@ -22,18 +22,19 @@ class EventTicketShowItem extends React.Component {
     return(
       <section className="show-event-item">
         <div className="show-event-item-type-price">
-          <span>{event_ticket.ticket_type}</span>
-          <span>{event_ticket.price}</span>
+          <span className="show-ticket-type"> Ticket Type: {event_ticket.ticket_type}</span>
+          <span className="show-ticket-price">Price: ${event_ticket.price} (+ 5.65 FEE)</span>
         </div>
           <div className="show-event-ticket-dropdown">
-            <select>
+            <select className="show-ticket-dropdown">
               { this.dropDownArray().map((num)=>
               <option value="{num}">{num}</option>
               )}
-            </select>
+            </select >
+            <span className="show-ticket-price">Amount Remaining:  {event_ticket.max_quantity}</span>
           </div>
 
-        <span>{event_ticket.max_quantity}</span>
+
 
       </section>
     );

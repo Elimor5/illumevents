@@ -158,14 +158,17 @@
   font-size: 20px;
   z-index: 101;
   position: relative;
-  left: 768px;
+  left: 684px;
+  bottom: 64px;
   cursor: pointer;
   font-size: 30px;
   color: #515459;
 }
 
 .event-show-tickets-container {
-
+  background-color: #F2F5E6;
+  height: 100%;
+  width: 100%;
 }
 
 .event-ticket-list {
@@ -176,6 +179,11 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  background-color: white;
+  height: 80px;
+  width: 680px;
+  margin: 10px;
+  border: 1px solid gray;
 }
 
 .show-event-item-type-price {
@@ -188,4 +196,64 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+
+.modal-tickets-header {
+  display: flex;
+  justify-content: center;
+  background-color: #F8F8FA;
+  padding: 20px;
+}
+
+.modal-tickets-header-content {
+  font-size: 20px
+}
+
+.show-ticket-type {
+  margin-left: 10px;
+  margin-top: 20px;
+  font-size: 20px;
+  font-weight: 100;
+}
+
+.show-ticket-price {
+  margin-left: 10px;
+  margin-bottom: 10px;
+  font-size: 17px;
+  font-weight: 100;
+  color: #B4B0B0;
+}
+
+.show-ticket-dropdown {
+  margin-right: 20px;
+  margin-top: 20px;
+  width: 50px;
+  height: 80px;
+  align-self: flex-end;
+  font-size: 17px
+}
+
+.show-ticket-price {
+  margin-right: 10px;
+  margin-bottom: 10px;
+  font-size: 17px;
+  font-weight: 100;
+  color: #B4B0B0;
+}
+
+.ticket-checkout-button {
+  height: 17px;
+  border: solid #0093D7 2px;
+  padding: 14px;
+  background-color: #F6682F;
+  color: white;
+  border-radius: 7px;
+  font-size: 15px;
+  margin-right: 10px;
+}
+
+.ticket-checkout-button:hover {
+  background-color: #013653;
+  cursor: pointer;
+  color: white;
 }
