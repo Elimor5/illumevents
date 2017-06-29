@@ -8,9 +8,8 @@ import { Link } from 'react-router-dom';
           <Link to={`/events/${event.id}`}>
             <li className="event-index-item">
 
-                <img className ="homepage-events-img" src="https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F28289286%2F178038225347%2F1%2Foriginal.jpg?h=230&w=460&rect=0%2C8%2C706%2C353&s=fd0837b64033ae8739eb8d189e5a9660"></img>
+                <img className ="homepage-events-img" src={event.image_url} />
                   <div className="homepage-event-date-time">
-                    <img src={event.image_url} />
                     <span className="home-event-item">{event.date}</span>
                     <span className="home-event-item">{event.time}</span>
                   </div>

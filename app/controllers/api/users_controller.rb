@@ -9,6 +9,16 @@ class Api::UsersController < ApplicationController
 		else
 			render json: @user.errors.full_messages, status: 422
 		end
+
+    def show
+      @user = User.find(params[:id])
+
+      if @user && current_user.id == @user.id
+        render :show
+      else
+        render json: @user.errors.full_messages, status: 422
+      end
+    end
 	end
 
 	private

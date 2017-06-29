@@ -1,2 +1,1 @@
-json.partial! "api/events/event", event: @event
-json.extract! @user, :username
+json.extract! @user, :username, :id

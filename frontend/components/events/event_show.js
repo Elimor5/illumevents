@@ -82,7 +82,7 @@ class EventShow extends React.Component {
         <div className="event-show-outer-container">
           <div className="event-show-inner-container">
             <div className="event-pic-title">
-              <img className= "temp-img" src="https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F31999639%2F205801290872%2F1%2Foriginal.jpg?w=800&rect=123%2C57%2C1948%2C974&s=a6cede3ab22535081db025a40f2de16f"></img>
+              <img className= "temp-img" src={event.image_url} />
               <div className="event-title">
                 <div className="event-title-date">
                   <h1 className="event-title-date-item-1">{this.monthParse()}</h1>

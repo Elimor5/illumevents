@@ -29,6 +29,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Unicorn as the app server
 gem 'figaro'
 gem 'seed_dump'
+gem 'aws-sdk', '>= 2.0'
 # gem 'unicorn'
 
 # Use Capistrano for deployment

@@ -20,6 +20,8 @@ class CreateEvent extends React.Component {
       address: "",
       city_state_zip: "",
       category: "",
+      imageFile: null,
+      imageUrl: null,
       event_tickets_attributes: {
         0: {
           ticket_type: "",
@@ -71,7 +73,7 @@ class CreateEvent extends React.Component {
   }
 
   handleSubmit(e) {
-    
+    debugger
     e.preventDefault();
     if (this.props.match.params.id) {
       const event = merge({}, this.state)
@@ -86,7 +88,6 @@ class CreateEvent extends React.Component {
       const event = merge({}, this.state)
       event.event_tickets_attributes = event_tickets_attributes;
       delete event.tickets;
-    
     this.props.createEvent(event)
       .then(({event}) => {
 
@@ -121,6 +122,21 @@ class CreateEvent extends React.Component {
       });
     };
   }
+
+  updateFile() {
+   return (e) => {
+     let file = e.currentTarget.files[0];
+     let fileReader = new FileReader();
+     fileReader.onloadend = function () {
+       this.setState({ imageFile: file, imageUrl: fileReader.result });
+     }.bind(this);
+
+     if(file){
+       fileReader.readAsDataURL(file);
+     }
+   };
+
+ }
 
   renderTicketForm() {
     if (!this.props.match.params.id) {
@@ -214,6 +230,9 @@ class CreateEvent extends React.Component {
                                     required/>
                             </div>
 
+
+
+
                         </div>
                                 <label className="form-label">EVENT DESCRIPTION</label>
                                     <textarea
@@ -256,6 +275,13 @@ class CreateEvent extends React.Component {
 
                                         {this.renderTicketForm()}
 
+                                        <div>
+                                            <label className="form-label">TIME</label>
+                                              <input
+                                               type='file'
+                                                onChange={this.updateFile}
+                                              />
+                                        </div>
 
                                       <div className="move-button-to-center">
                                         <button className="event-form-button">{this.props.match.params.id ? "EDIT EVENT" : "CREATE EVENT!"}</button>
