@@ -35,6 +35,7 @@ class CreateEvent extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.addTicket = this.addTicket.bind(this);
     this.removeTicket = this.removeTicket.bind(this);
+    this.updateFile = this.updateFile.bind(this);
   }
 
   componentDidMount() {
@@ -73,7 +74,7 @@ class CreateEvent extends React.Component {
   }
 
   handleSubmit(e) {
-    debugger
+
     e.preventDefault();
     if (this.props.match.params.id) {
       const event = merge({}, this.state)
@@ -88,9 +89,20 @@ class CreateEvent extends React.Component {
       const event = merge({}, this.state)
       event.event_tickets_attributes = event_tickets_attributes;
       delete event.tickets;
-    this.props.createEvent(event)
-      .then(({event}) => {
+      var formData = new FormData();
+      formData.append("event[title]", this.state.title);
+      formData.append("event[description]", this.state.description);
+      formData.append("event[date]", this.state.date);
+      formData.append("event[time]", this.state.time);
+      formData.append("event[venue]", this.state.venue);
+      formData.append("event[address]", this.state.address);
+      formData.append("event[city_state_zip]", this.state.city_state_zip);
+      formData.append("event[category]", this.state.category);
+      formData.append("event[image]", this.state.imageFile);
+      formData.append("event[event_tickets_attributes]", JSON.stringify(this.state.event_tickets_attributes));
 
+    this.props.createEvent(formData)
+      .then(({ event }) => {
         this.props.history.push(`/events/${event.id}`);
       });
     }
@@ -123,20 +135,17 @@ class CreateEvent extends React.Component {
     };
   }
 
-  updateFile() {
-   return (e) => {
-     let file = e.currentTarget.files[0];
-     let fileReader = new FileReader();
-     fileReader.onloadend = function () {
-       this.setState({ imageFile: file, imageUrl: fileReader.result });
-     }.bind(this);
+  updateFile(e) {
+      var file = e.currentTarget.files[0];
+      var fileReader = new FileReader();
+      fileReader.onloadend = function () {
+        this.setState({ imageFile: file, imageUrl: fileReader.result });
+      }.bind(this);
 
-     if(file){
-       fileReader.readAsDataURL(file);
-     }
-   };
-
- }
+      if (file) {
+        fileReader.readAsDataURL(file);
+      }
+    }
 
   renderTicketForm() {
     if (!this.props.match.params.id) {
@@ -276,7 +285,7 @@ class CreateEvent extends React.Component {
                                         {this.renderTicketForm()}
 
                                         <div>
-                                            <label className="form-label">TIME</label>
+                                            <label className="form-label">Upload Image </label>
                                               <input
                                                type='file'
                                                 onChange={this.updateFile}

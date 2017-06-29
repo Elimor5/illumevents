@@ -17,6 +17,7 @@ class Api::EventsController < ApplicationController
   def create
 
     @event = current_user.events.new(event_params)
+
     @user = @event.host
     if @event.save
       render :show
@@ -46,7 +47,12 @@ class Api::EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(
+
+    event_tickets_attributes = ActionController::Parameters.new(
+      tickets: JSON.parse(params[:event][:event_tickets_attributes])
+    ).permit(tickets: [:ticket_type, :max_quantity, :price])
+
+    event_params = params.require(:event).permit(
       :title,
       :venue,
       :address,
@@ -55,7 +61,15 @@ class Api::EventsController < ApplicationController
       :time,
       :description,
       :category,
-      event_tickets_attributes: [:max_quantity, :price, :ticket_type]
+      :image
     )
+    event_params[:event_tickets_attributes] = event_tickets_attributes[:tickets]
+    event_params
+
   end
+
+  # def event_ticket_params
+  #   .permit(
+  #   )
+  # end
 end

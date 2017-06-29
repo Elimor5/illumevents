@@ -21,8 +21,9 @@ module Illumevents
     # config.i18n.default_locale = :de
     config.paperclip_defaults = {
       :storage => :s3,
-      :url => ":s3_domain_url",
       :path => "/:class/:attachment/:id_partition/:style/:filename",
+      :s3_host_name => "s3-#{ENV["s3_region"]}.amazonaws.com",
+      :url => ":s3_host_name",
       :s3_credentials => {
         :bucket => ENV["s3_bucket"],
         :access_key_id => ENV["s3_access_key_id"],

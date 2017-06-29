@@ -14,13 +14,15 @@ export const fetchSingleEvent = (id) => {
   });
 };
 
-export const createEvent = event => {
+export const createEvent = (formData) => {
  return $.ajax({
-    method: 'POST',
     url: '/api/events',
-    data: { event }
+    method: 'POST',
+    dataType: "json",
+    contentType: false,
+    processData: false,
+    data: formData,
   });
-
 };
 
 export const updateEvent = event => {
