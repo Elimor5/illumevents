@@ -17,6 +17,7 @@ import HomePageContainer from './events/homepage_container';
 import EventShow from './events/event_show';
 import CreateEvent from './events/create_event';
 import BrowseEvents from './events/browse_events';
+import UserDashboard from './user_dashboard/user_dashboard';
 
 
 const App = () => (
@@ -33,6 +34,7 @@ const App = () => (
           <ProtectedRoute exact path="/new" component={ CreateEvent } />
           <ProtectedRoute exact path="/edit/:id" component={ CreateEvent } />
           <Route path="/events/:id" component={ EventShow } />
+          <ProtectedRoute exact path="/dashboard" component={ UserDashboard } />
 
         </section>
       </HashRouter>

@@ -6,7 +6,7 @@ class TicketPurchase < ActiveRecord::Base
     class_name: :EventTicket
 
   has_one :event,
-    through: :event_ticket,
+    through: :ticket,
     source: :event
 
   belongs_to :buyer,

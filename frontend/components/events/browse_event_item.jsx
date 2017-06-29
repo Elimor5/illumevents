@@ -8,7 +8,7 @@ import { months } from './date_parse';
   const parseDate = (date) => {
     return `${months[date.slice(5,7)]} ${date.slice(8,10)}, ${date.slice(0,4)}`;
   }
-  debugger
+
   return(
     <section className="homepage-event-item">
           <Link to={`/events/${event.id}`}>
@@ -29,7 +29,7 @@ import { months } from './date_parse';
                   </div>
                     <span className= "browse-event-title ">{event.title} </span>
                         <span className="event-browse-venue">{event.venue}</span>
-              
+
 
                 </div>
             </li>
