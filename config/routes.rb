@@ -3,10 +3,9 @@ Rails.application.routes.draw do
     resource :user, only: [:show, :create, :update]
     resource :session, only: [:create, :destroy, :show]
     resources :events, only: [:index, :create, :show, :update, :destroy] do
-      resources :bookmarks, only: [:create, :destroy]
+      resource :bookmarks, only: [:create, :destroy]
     end
     resources :ticket_purchases, only: [:create]
-    resources :bookmarks, only: [:index, :create, :show]
     get '/user/show2/:id', to: "users#show2"
   end
 

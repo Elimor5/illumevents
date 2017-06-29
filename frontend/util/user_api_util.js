@@ -9,14 +9,14 @@ export const createBookmark = (eventId) => {
   return $.ajax({
     method: "POST",
     url: `/api/events/${eventId}/bookmarks`,
-    data: { event_id },
+
   });
 };
 
-export const deleteBookmark = (eventId, bookmarkId) => {
+export const deleteBookmark = (eventId) => {
   return $.ajax({
     method: "DELETE",
-    url: `/api/events/${eventId}/bookmarks/${bookmarkId}`
+    url: `/api/events/${eventId}/bookmarks`
   });
 
 };

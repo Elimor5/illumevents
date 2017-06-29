@@ -22,8 +22,13 @@ class Api::UsersController < ApplicationController
   end
 
   def show2
-    @user = User.find(params[:id])
+    @user = User.includes(:bookmarks).find(params[:id])
+    @bookmarked_event_ids = []
 
+    @user.bookmarks.each do |bookmark|
+      @bookmarked_event_ids << bookmark.event_id
+    end
+    
     if @user && current_user.id == @user.id
       render :show2
     else

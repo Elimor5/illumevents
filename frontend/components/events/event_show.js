@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import React from 'react';
 import { fetchSingleEvent, deleteEvent } from '../../actions/event_actions';
+import { createBookmark, deleteBookmark, fetchUserInfo } from '../../actions/user_actions';
 import { Link } from 'react-router-dom';
 import EventTicketShowItem from '../event_tickets/event_ticket_show';
 import { merge, values } from 'lodash';
@@ -23,10 +24,12 @@ class EventShow extends React.Component {
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
     this.purchaseTickets = this.purchaseTickets.bind(this);
+    this.toggleBookmark = this.toggleBookmark.bind(this);
   }
 
   componentDidMount() {
     this.props.fetchSingleEvent(this.props.match.params.id);
+    this.props.fetchUserInfo(this.props.userId)
   }
 
   openModal() {
@@ -56,6 +59,16 @@ class EventShow extends React.Component {
     };
   }
 
+  toggleBookmark () {
+
+    if (this.props.users.bookmarked_events.includes(this.props.event.id)) {
+      this.props.deleteBookmark(this.props.event.id);
+    } else {
+      this.props.createBookmark(this.props.event.id);
+    }
+
+  }
+
   renderTickets() {
     return (
       <div className="event-show-tickets-container">
@@ -75,7 +88,7 @@ class EventShow extends React.Component {
   }
 
   render() {
-    const { event } = this.props;
+    const { event, bookmarks } = this.props;
     if (event)
     return (
       <section>
@@ -101,7 +114,10 @@ class EventShow extends React.Component {
             </div>
             <div className="tickets-bookmarks-bar">
               <div className="tickets-bar-button-container">
-                <button className="tickets-button" onClick={this.openModal}> TICKETS</button>
+                <button className= "bookmarked-event-show"onClick={this.toggleBookmark}>
+                { this.props.users.bookmarked_events.includes(this.props.event.id) ? <i className="fa fa-bookmark" aria-hidden="true"></i> :<i className="fa fa-bookmark-o" aria-hidden="true"></i>}
+                </button>
+                <button className="tickets-button" onClick={this.openModal}>TICKETS</button>
               </div>
             </div>
 
@@ -161,15 +177,21 @@ class EventShow extends React.Component {
 }
 
 
-const mapStateToProps = ({ events }, ownProps) => {
+const mapStateToProps = ({ session, events, users }, ownProps) => {
   return {
-    event: events[ownProps.match.params.id]
+    event: events[ownProps.match.params.id],
+    bookmarks: users.bookmarks,
+    users: users,
+    userId: session.currentUser.id,
   };
 };
 
 const mapDispatchToProps = dispatch => ({
   fetchSingleEvent: (id) => dispatch(fetchSingleEvent(id)),
-  deleteEvent: (event) => dispatch(deleteEvent(event))
+  deleteEvent: (event) => dispatch(deleteEvent(event)),
+  createBookmark: (eventId) => dispatch(createBookmark(eventId)),
+  deleteBookmark: (eventId) => dispatch(deleteBookmark(eventId)),
+  fetchUserInfo: (id) => dispatch(fetchUserInfo(id)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(EventShow);
