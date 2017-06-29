@@ -4,7 +4,9 @@ class User < ActiveRecord::Base
   after_initialize :ensure_session_token
 	before_validation :ensure_session_token_uniqueness
 
-  has_many :events_hostings,
+  has_many :bookmarks
+
+  has_many :events,
   foreign_key: :host_id,
   class_name: :Event,
   primary_key: :id
@@ -20,6 +22,11 @@ class User < ActiveRecord::Base
   has_many :events_attended,
     through: :event_tickets,
     source: :event
+
+  has_many :bookmarked_events,
+    through: :bookmarks,
+    source: :event
+
 
 	validates :username, :password_digest, :session_token, presence: true
 	validates :username, uniqueness: true
