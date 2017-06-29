@@ -32,7 +32,8 @@ class SessionForm extends React.Component {
     e.preventDefault();
     const user = this.state;
     this.props.processForm({user});
-    this.props.hideModal()
+    this.props.hideModal();
+
   }
 
   toggleSignUp() {

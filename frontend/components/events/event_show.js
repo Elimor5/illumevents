@@ -26,6 +26,9 @@ class EventShow extends React.Component {
     this.purchaseTickets = this.purchaseTickets.bind(this);
     this.toggleBookmark = this.toggleBookmark.bind(this);
   }
+  componentWillMount() {
+    this.props.fetchUserInfo(this.props.userId);
+  }
 
   componentDidMount() {
     this.props.fetchSingleEvent(this.props.match.params.id);

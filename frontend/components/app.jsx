@@ -33,7 +33,7 @@ const App = () => (
           <Route exact path="/" component={ HomePageContainer } />
           <ProtectedRoute exact path="/new" component={ CreateEvent } />
           <ProtectedRoute exact path="/edit/:id" component={ CreateEvent } />
-          <Route path="/events/:id" component={ EventShow } />
+          <ProtectedRoute path="/events/:id" component={ EventShow } />
           <ProtectedRoute exact path="/dashboard" component={ UserDashboard } />
 
         </section>
