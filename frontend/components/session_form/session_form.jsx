@@ -32,15 +32,16 @@ class SessionForm extends React.Component {
     e.preventDefault();
     const user = this.state;
     this.props.processForm({user});
-    this.props.hideModal();
-
+    if (this.props.loggedIn) {
+      this.props.hideModal();
+    }
   }
 
   toggleSignUp() {
     this.state.formType === 'login' ? this.setState({formType: 'signup'}) : this.setState({formType: 'login'});
   }
 
-  
+
 
   navLink() {
     if (this.state.formType === 'login') {
@@ -54,7 +55,7 @@ class SessionForm extends React.Component {
     return(
       <ul>
         {this.props.errors.map((error, i) => (
-          <li key={`error-${i}`}>
+          <li className="error-handle" key={`error-${i}`}>
             {error}
           </li>
         ))}
@@ -66,7 +67,9 @@ class SessionForm extends React.Component {
     return (
       <section className="session-modal-container">
         <div className="close-session-modal">
+          <Link to="/">
           <button className="close-button" onClick={this.props.hideModal}>x</button>
+          </Link>
         </div>
         <div>
 
