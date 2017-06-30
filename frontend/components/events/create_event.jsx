@@ -79,7 +79,7 @@ class CreateEvent extends React.Component {
     if (this.props.match.params.id) {
       const event = merge({}, this.state)
       delete event.tickets;
-      delete event.event_tickets_attributes;
+      event.event_tickets_attributes = JSON.stringify({})
       this.props.updateEvent(event)
       .then(({ event }) => {
         this.props.history.push(`/events/${event.id}`);
@@ -90,6 +90,7 @@ class CreateEvent extends React.Component {
       event.event_tickets_attributes = event_tickets_attributes;
       delete event.tickets;
       var formData = new FormData();
+
       formData.append("event[title]", this.state.title);
       formData.append("event[description]", this.state.description);
       formData.append("event[date]", this.state.date);

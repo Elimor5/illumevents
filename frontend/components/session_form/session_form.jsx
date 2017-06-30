@@ -31,9 +31,7 @@ class SessionForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const user = this.state;
-    this.props.processForm({user});
-    if (this.props.loggedIn) {
-      this.props.hideModal();
+    this.props.processForm({user}).then(() => this.props.hideModal());
       // this.forceUpdate();
     }
 
@@ -43,7 +41,7 @@ class SessionForm extends React.Component {
     //   });
     //   logInPromise.then(forceUpdate());
 
-  }
+  
 
   toggleSignUp() {
     this.state.formType === 'login' ? this.setState({formType: 'signup'}) : this.setState({formType: 'login'});

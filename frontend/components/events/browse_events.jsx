@@ -5,6 +5,7 @@ import { fetchAllEvents } from '../../actions/event_actions';
 import { allEvents} from '../../reducers/selectors';
 import BrowseEventItem from './browse_event_item';
 import { Link } from 'react-router-dom';
+import { createBookmark, deleteBookmark, fetchUserInfo } from '../../actions/user_actions';
 
 
 class BrowseEvents extends React.Component {
@@ -14,11 +15,14 @@ class BrowseEvents extends React.Component {
 
   componentDidMount(){
     this.props.requestEvents();
+    if (this.props.loggedIn) {
+      this.props.fetchUserInfo(this.props.userId);
+    }
   }
 
   render() {
     const { events, errors } = this.props;
-  
+
     return (
       <section>
 
@@ -34,7 +38,13 @@ class BrowseEvents extends React.Component {
               <div className="homepage-events">
                 <ul className="browse-events-container">
                   {events.reverse().map(event =>
-                    <BrowseEventItem key={event.id} event={event} />)
+                    <BrowseEventItem
+                    key={event.id}
+                    event={event}
+                    createBookmark={this.props.createBookmark}
+                    deleteBookmark={this.props.deleteBookmark}
+                    loggedIn={this.props.loggedIn}
+                    users={this.props.users} />)
                   }
                 </ul>
               </div>
@@ -45,16 +55,22 @@ class BrowseEvents extends React.Component {
 
 }
 
-const mapStateToProps = ({ events, errors }) => {
+const mapStateToProps = ({ events, errors, users, session }) => {
+
 return ({
   events: allEvents(events),
-  errors
+  users,
+  loggedIn: Boolean(session.currentUser),
+  errors,
 })
 
 };
 
 const mapDispatchToProps = (dispatch) => ({
   requestEvents: (category) => dispatch(fetchAllEvents(category)),
+  fetchUserInfo: (id) => dispatch(fetchUserInfo(id)),
+  createBookmark: (eventId) => dispatch(createBookmark(eventId)),
+  deleteBookmark: (eventId) => dispatch(deleteBookmark(eventId)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(BrowseEvents);

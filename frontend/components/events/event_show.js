@@ -53,7 +53,7 @@ class EventShow extends React.Component {
 
 
   // monthParse () {
-  //   debugger
+  //
   //   months[this.props.event.date.slice(5,7)];
   // }
 
@@ -137,7 +137,7 @@ class EventShow extends React.Component {
                  </div>
                  : null }
                 <button className= "bookmarked-event-show"onClick={this.toggleBookmark}>
-                { this.props.loggedIn ? this.props.users.bookmarked_events.includes(this.props.event.id) ? <i className="fa fa-bookmark" aria-hidden="true"></i> :<i className="fa fa-bookmark-o" aria-hidden="true"></i> : null}
+                { this.props.loggedIn && this.props.users.bookmarked_events && this.props.users.bookmarked_events.includes(this.props.event.id) ? <i className="fa fa-bookmark" aria-hidden="true"></i> : <i className="fa fa-bookmark-o" aria-hidden="true"></i> }
                 </button>
                 <button className="tickets-button" onClick={this.openModal}>TICKETS</button>
                 <div className="space"></div>
