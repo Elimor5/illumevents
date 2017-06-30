@@ -56,7 +56,7 @@ class NavBar extends React.Component {
           </div>
           </section>
             <div className="search-bar-item">
-              <p className="search-bar">(Search bar will go here)</p>
+              
             </div>
 
             <section className="right-side-nav">
