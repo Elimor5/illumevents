@@ -13,11 +13,11 @@ const usersReducer = (state = {}, action) => {
       nextState = merge({}, state);
       const newBookmarkedEvents = [];
       nextState.bookmarked_events.forEach((event_id) =>{
-        if (!nextState.bookmarked_events.includes(action.bookmarkId)) {
+        if (event_id !== action.bookmarkId) {
           newBookmarkedEvents.push(event_id);
         }
       });
-      debugger
+  
       nextState.bookmarked_events = newBookmarkedEvents;
       return nextState;
     default:
