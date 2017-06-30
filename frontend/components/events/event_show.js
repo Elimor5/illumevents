@@ -52,7 +52,8 @@ class EventShow extends React.Component {
 
 
   monthParse () {
-    months;
+    debugger
+    months[this.props.event.date.slice(5,7)]
   }
 
   handlePurchaseChange(ticket_id) {
@@ -70,7 +71,7 @@ class EventShow extends React.Component {
   }
 
   toggleBookmark () {
-    
+
     if (this.props.loggedIn && this.props.users.events.length > 1) {
       if (this.props.users.bookmarked_events.includes(this.props.event.id)) {
         this.props.deleteBookmark(this.props.event.id);
@@ -100,6 +101,7 @@ class EventShow extends React.Component {
 
   render() {
     const { event, bookmarks } = this.props;
+
     if (event)
     return (
       <section>
@@ -110,7 +112,7 @@ class EventShow extends React.Component {
               <div className="event-title">
                 <div className="event-title-date">
                   <h1 className="event-title-date-item-1">{this.monthParse()}</h1>
-                  <h1 className="event-title-date-item-2">{event.date.slice(3,5)}</h1>
+                  <h1 className="event-title-date-item-2">{event.date}</h1>
                 </div>
                   <div className="event-title-container">
                       <h1 className="event-title"> {event.title}</h1>
@@ -125,10 +127,20 @@ class EventShow extends React.Component {
             </div>
             <div className="tickets-bookmarks-bar">
               <div className="tickets-bar-button-container">
+              {(event.host_id === this.props.userId) ?
+                 <div>
+                  <Link className="event-form-button" to={`/edit/${event.id}`}>Edit </Link>
+
+                    <Link to="/">
+                      <button className="event-form-button" onClick={deleteEvent(event)}>Delete</button>
+                    </Link>
+                 </div>
+                 : null }
                 <button className= "bookmarked-event-show"onClick={this.toggleBookmark}>
                 { this.props.loggedIn ? this.props.users.bookmarked_events.includes(this.props.event.id) ? <i className="fa fa-bookmark" aria-hidden="true"></i> :<i className="fa fa-bookmark-o" aria-hidden="true"></i> : null}
                 </button>
                 <button className="tickets-button" onClick={this.openModal}>TICKETS</button>
+                <div className="space"></div>
               </div>
             </div>
 
@@ -172,17 +184,9 @@ class EventShow extends React.Component {
            </Modal>
 
 
-           {(event.host_id === this.props.userId) ?
-              <div>
-               <Link className="event-form-button" to={`/edit/${event.id}`}>Edit </Link>
-
-                 <Link to="/">
-                   <button className="event-form-button" onClick={deleteEvent(event)}>Delete</button>
-                 </Link>
-              </div>
-              : null }
 
 
+              <div className="footer"></div>
 
           </div>
         </div>

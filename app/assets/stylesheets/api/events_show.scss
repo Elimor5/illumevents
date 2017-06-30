@@ -8,13 +8,15 @@
   margin-top: 50px;
   background-color: white;
   justify-content: flex-start;
-  width: 65%;
+  width: 73%;
   border-radius: 10px;
   flex-direction: column;
 }
 
 .temp-img {
   border-radius: 3px;
+  width: 700px;
+  height: 350px;
 }
 
 .event-pic-title {
@@ -50,6 +52,7 @@
   font-weight: bold;
   margin-left: 30px;
   margin-top: 30px;
+  width: 289px;
 }
 
 .event-author {
@@ -76,7 +79,7 @@
 }
 
 .tickets-button {
-  margin-top: 2%;
+  margin-top: 1%;
   margin-right: 15px;
   padding: 10px;
   padding-left: 160px;
@@ -95,6 +98,8 @@
 
 .tickets-bar-button-container {
   justify-content: flex-end;
+  display: flex;
+  align-items: baseline;
 }
 
 .event-show-description-info-container {
@@ -142,6 +147,7 @@
   margin-top: 30px;
   color: #686C75;
   line-height: 150%;
+  padding-bottom: 54px;
 }
 
 .event-description-content {
