@@ -1,74 +1,21 @@
 # Illumevents
 
 
-[Heroku link][heroku]
-
-[Trello link][trello]
+[Heroku link]Live-Site]
 
 [heroku]: http://www.herokuapp.com
-[trello]: https://trello.com/b/cInq0Wn4
 
+Illumevents is an Eventbrite clone built using Ruby on Rails and Postgresql on the backend and React/Redux on the frontend.
 
-# Minimum Viable Product
-  Illumevents is a web application inspired by Eventbrite built using Ruby on Rails on the backend and React/Redux on the frontend. This website will allow users to browse events, bookmark events, create new events, buy tickets for events and sell tickets for events. By the end of week 9, the following features will be implemented with smooth, bug-free navigation, adequate seed data and sufficient CSS styling:
+The web application allows users to browse events, bookmark them for future viewing, create events and purchase events. The actual purchase is not completed, but a purchase object is created, which renders all of the tickets that the user intended to purchase.
 
-  - Hosting on Heroku
-  - New account creation, login and guest/demo login
-  - Events
-  - Registration
-  - Categories  
-  - Bookmark events
-  - Bonus: Google Maps integration
-  - Bonus: Search (autocomplete)
-  - Bonus: Infinite Scroll
-  - Bonus: Ticket Quantity (Quantity Remaining)
+Events: Events are the cornerstone of this web app, Users can conduct basic CRUD interactions, including the venue, address, date and time of the event. Users also have the ability to upload an image of the event, as well as specify the ticket quanity.  
 
-  Design Docs:
-  * [View Wireframes][wireframes]
-  * [React Components][components]
-  * [API endpoints][api-endpoints]
-  * [DB schema][schema]
-  * [Sample State][sample-state]
+Tickets and Bookmarking: Events have the ability to bookmark events for future viewing. Records of the bookmark are kept through a join table. Users can access all bookmarkings through their user dashboard, which is only accessible to the current user. Tickets can be created in bulk at the time of event creation. This is conducted using the "accepts_nested_attributes_for" method in active record. The event create form component listens to changes in each event_ticket's state and keeps it nested in its own state. When the event is created, new ticket objects are created with it as well. Similarly, tickets can be purchased in bulk by using one checkout button to handle the submittal of purchases of multiple tickets, a feature implemented to mimic EventBrite's functionality. purchased tickets appear in the user dashboard as well. 
 
-  [wireframes]: ./Wireframes/
-  [components]: ./react_component_hierarchy.md
-  [sample-state]: ./sample_state.md
-  [api-endpoints]: ./api-endpoints.md
-  [schema]: ./schema.md
+Event Categories: The application uses active record to find events by a categories associated with specific events, allowing the user to easily sort through the database to filter their interests.
 
+Future Plans for implementation:
+The next step in development of Illumevents would be to implement Google Maps functionality, allowing the user to filter results using the Google Maps API.
 
-
-  Feature Implementation Timeline:
-
-  * Phase 1: Backend setup & Frontend User Auth Setup (2 days)
-  * Phase 2: Events (2 days)
-    * Users can create events
-      * Events can be created, deleted or edited through the API
-          * Drag and drop functionality for uploading images to events
-      * Events have many tickets
-    * Users can browse events
-      * Users can bookmark/unbookmark events through the API
-  * Phase 3: Tickets (1 Day)    
-    * Users "register" to events by "purchasing" tickets for events
-    * Limit quantity of tickets available
-    * Purchased tickets appear on User Dashboard under "Purchased Tickets"
-
-  * Phase 4: Categories (2 Days)
-    * Users can specify which category their event falls under when creating a new event
-    * Users can browse/search for events by category
-
-  * Phase 5: Bookmarking Events (1 Day)
-    * Users can bookmark events that they have not already purchased
-    * Events can be bookmarked or unbookmarked from anywhere on the site (Search, Browse, Saved Events)
-    * Bookmarked events appear/disappear from Saved Events tab of User Dashboard upon toggling bookmark icon
-
-  * Bonus Features (TBD)
-    * Infinite Scroll
-      * Scrolling a certain distance on the page leads to a background AJAX call to fetch more events
-    * Google Maps
-      * Interactive map showing the event's location on the event showpage
-      * Interactive map showing multiple events on search results page
-    * Search
-      * Autocomplete search feature allows users to search for events by category or by event name
-    * Event Suggestions
-      * Based on # of clicks per day and User's category history
+Adding search functionality would also be a great feature to implement, allowing the user to select different parameters to filter their results with ease.

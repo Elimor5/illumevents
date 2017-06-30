@@ -1,3 +1,9 @@
+Bookmark.destroy_all
+Event.destroy_all
+User.destroy_all
+TicketPurchase.destroy_all
+EventTicket.destroy_all
+
 Bookmark.create!([
   {user_id: 1, event_id: 1}
 ])
@@ -14,8 +20,8 @@ Event.create!([
   {host_id: 3, title: "React Native Tutorial", venue: "Facebook NYC Headquarters", address: "770 Broadway", city_state_zip: "New York, NY 10003", date: "2017-09-05", time: "8:00PM", description: "We are pleased to present a thorough tutorial on React Native. Our renowned instructor, Mark Zuckerberg's stunt double, Marcus Zuckerfield, will be demoing React Native's powerful capabilities.\n\nReact Native is a technology based on React, written in JavaScript, that can be used to create smartphone apps. \n\nReact Native is unique in that development can be done simultaneously for iOS and for Android. There is no need to create 2 separate apps to run on different platforms. \n\n Marcus is an expert in the technology and can't wait to show off React Native!", category: "Science & Technology", image: "https://s3-us-east-2.amazonaws.com/illumevents1-dev/events/images/000/000/007/original/pexels-photo-249798-coding.jpeg"}
 ])
 EventTicket.create!([
-  {ticket_type: "General Admission", price: 50, event_id: 1, max_quantity: 1000},
-  {ticket_type: "Car Owner Entrance", price: 20, event_id: 1, max_quantity: 500},
+  {ticket_type: "General Admission", price: 50, event_id: 11, max_quantity: 1000},
+  {ticket_type: "Car Owner Entrance", price: 20, event_id: 11, max_quantity: 500},
   {ticket_type: "General Admission", price: 25, event_id: 2, max_quantity: 100},
   {ticket_type: "Nosebleeds", price: 5, event_id: 2, max_quantity: 300},
   {ticket_type: "Front Row", price: 100, event_id: 2, max_quantity: 50},
