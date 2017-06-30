@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
 
   has_many :event_tickets,
     through: :ticket_purchases,
-    source: :event_ticket
+    source: :ticket
 
   has_many :events_attended,
     through: :event_tickets,
