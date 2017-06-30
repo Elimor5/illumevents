@@ -71,7 +71,7 @@
 }
 
 .tickets-bookmarks-bar {
-  height: 61px;
+  height: 67px;
   display: flex;
   justify-content: flex-end;
   border-top: solid #D2D6DF 1px;
@@ -105,6 +105,7 @@
 .event-show-description-info-container {
   display: flex;
   justify-content: flex-start;
+  padding-bottom: 77px;
 }
 
 .space-container {
@@ -272,5 +273,5 @@
   margin-right: 30px;
   margin-left: 10px;
   cursor: pointer;
-  z-index: 100;
+
 }

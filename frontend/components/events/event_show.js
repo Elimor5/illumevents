@@ -25,6 +25,7 @@ class EventShow extends React.Component {
     this.closeModal = this.closeModal.bind(this);
     this.purchaseTickets = this.purchaseTickets.bind(this);
     this.toggleBookmark = this.toggleBookmark.bind(this);
+    // this.monthParse = this.monthParse.bind(this);
   }
   // componentWillMount() {
   //
@@ -51,10 +52,10 @@ class EventShow extends React.Component {
   }
 
 
-  monthParse () {
-    debugger
-    months[this.props.event.date.slice(5,7)]
-  }
+  // monthParse () {
+  //   debugger
+  //   months[this.props.event.date.slice(5,7)];
+  // }
 
   handlePurchaseChange(ticket_id) {
     return (e) => {
@@ -111,7 +112,6 @@ class EventShow extends React.Component {
               <img className= "temp-img" src={event.image_url} />
               <div className="event-title">
                 <div className="event-title-date">
-                  <h1 className="event-title-date-item-1">{this.monthParse()}</h1>
                   <h1 className="event-title-date-item-2">{event.date}</h1>
                 </div>
                   <div className="event-title-container">
