@@ -26,13 +26,16 @@ class EventShow extends React.Component {
     this.purchaseTickets = this.purchaseTickets.bind(this);
     this.toggleBookmark = this.toggleBookmark.bind(this);
   }
-  componentWillMount() {
-    this.props.fetchUserInfo(this.props.userId);
-  }
+  // componentWillMount() {
+  //
+  //   this.props.fetchUserInfo(this.props.userId);
+  // }
+
+
 
   componentDidMount() {
     this.props.fetchSingleEvent(this.props.match.params.id);
-    this.props.fetchUserInfo(this.props.userId)
+    this.props.fetchUserInfo(this.props.userId);
   }
 
   openModal() {
@@ -63,13 +66,13 @@ class EventShow extends React.Component {
   }
 
   toggleBookmark () {
-
-    if (this.props.users.bookmarked_events.includes(this.props.event.id)) {
-      this.props.deleteBookmark(this.props.event.id);
-    } else {
-      this.props.createBookmark(this.props.event.id);
-    }
-
+    if (this.props.loggedIn) {
+      if (this.props.users.bookmarked_events.includes(this.props.event.id)) {
+        this.props.deleteBookmark(this.props.event.id);
+      } else {
+        this.props.createBookmark(this.props.event.id);
+      }
+    } else { null }
   }
 
   renderTickets() {
@@ -118,7 +121,7 @@ class EventShow extends React.Component {
             <div className="tickets-bookmarks-bar">
               <div className="tickets-bar-button-container">
                 <button className= "bookmarked-event-show"onClick={this.toggleBookmark}>
-                { this.props.users.bookmarked_events.includes(this.props.event.id) ? <i className="fa fa-bookmark" aria-hidden="true"></i> :<i className="fa fa-bookmark-o" aria-hidden="true"></i>}
+                { this.props.loggedIn ? this.props.users.bookmarked_events.includes(this.props.event.id) ? <i className="fa fa-bookmark" aria-hidden="true"></i> :<i className="fa fa-bookmark-o" aria-hidden="true"></i> : null}
                 </button>
                 <button className="tickets-button" onClick={this.openModal}>TICKETS</button>
               </div>
@@ -184,6 +187,7 @@ const mapStateToProps = ({ session, events, users }, ownProps) => {
   return {
     event: events[ownProps.match.params.id],
     bookmarks: users.bookmarks,
+    loggedIn: Boolean(session.currentUser),
     users: users,
     userId: session.currentUser.id,
   };

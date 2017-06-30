@@ -34,7 +34,15 @@ class SessionForm extends React.Component {
     this.props.processForm({user});
     if (this.props.loggedIn) {
       this.props.hideModal();
+      // this.forceUpdate();
     }
+
+    // let logInPromise = new Promise(function(resolve, reject) {
+    //     this.processForm({user});
+    //     resolve(this.props.hideModal);
+    //   });
+    //   logInPromise.then(forceUpdate());
+
   }
 
   toggleSignUp() {

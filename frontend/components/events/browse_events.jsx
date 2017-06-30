@@ -18,6 +18,7 @@ class BrowseEvents extends React.Component {
 
   render() {
     const { events, errors } = this.props;
+  
     return (
       <section>
 

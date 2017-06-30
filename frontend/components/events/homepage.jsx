@@ -17,7 +17,7 @@ class Homepage extends React.Component {
   }
 
   render(){
-      const { events, errors } = this.props;
+      const{ events, errors } = this.props
     return(
     <section>
       <div className= "splash-container">
