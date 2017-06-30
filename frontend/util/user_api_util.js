@@ -6,6 +6,7 @@ export const fetchUserInfo = (id) => {
 };
 
 export const createBookmark = (eventId) => {
+
   return $.ajax({
     method: "POST",
     url: `/api/events/${eventId}/bookmarks`,

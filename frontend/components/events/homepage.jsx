@@ -32,7 +32,13 @@ class Homepage extends React.Component {
           <div className="homepage-events">
             <ul className="events-container">
               {events.slice(0,9).map(event =>
-                <HomepageEventItem key={event.id} event={event} />)
+                <HomepageEventItem
+                key={event.id}
+                event={event}
+                createBookmark={this.props.createBookmark}
+                deleteBookmark={this.props.deleteBookmark}
+                loggedIn={this.props.loggedIn}
+                users={this.props.users}/>)
               }
             </ul>
           </div>

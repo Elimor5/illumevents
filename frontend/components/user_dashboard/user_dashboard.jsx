@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { fetchAllEvents } from '../../actions/event_actions';
 import { allEvents} from '../../reducers/selectors';
 import BrowseEventItem from '../events/browse_event_item';
+import { TicketItem } from './user_tickets'
 import { fetchUserInfo } from '../../actions/user_actions';
 import { Link } from 'react-router-dom';
 
@@ -18,7 +19,6 @@ class UserDashboard extends React.Component {
     this.props.requestEvents();
     this.props.fetchUserInfo(this.props.userId);
   }
-
 
 
   render() {
@@ -37,8 +37,13 @@ class UserDashboard extends React.Component {
                   bookmarked_events.push(event);
                 }
                 userEvents = bookmarked_events;
+
+
               });
               break;
+          case "/dashboard/tickets":
+            userEvents = [];
+            break;
         }
 
 
@@ -46,11 +51,11 @@ class UserDashboard extends React.Component {
           <section>
 
               <div className="browse-page-outer-container">
-                  <div className="categories-google-maps-browse">
-                  <h1 className="categories-header"> Categories </h1>
-                    <Link className="button" to="/dashboard/bookmarks">Bookmarks</Link>
-                    <Link className="button" to="/dashboard">Events Hosted</Link>
-                    <Link className="button" to="/dashboard/bookmarks">Bookmarks</Link>
+                  <div className="categories-google-maps-browse-dashboard">
+                  <h1 className="categories-header"> User Dashboard </h1>
+                    <Link className="button browse-category-list" to="/dashboard/bookmarks">Bookmarks</Link>
+                    <Link className="button browse-category-list" to="/dashboard">Events Hosted</Link>
+                    <Link className="button browse-category-list" to="/dashboard/tickets">Tickets</Link>
                   </div>
                   <div className="browse-event-placeholder">
                   </div>
@@ -59,6 +64,11 @@ class UserDashboard extends React.Component {
                       {userEvents.reverse().map(event =>
                         <BrowseEventItem key={event.id} event={event} />)
                       }
+
+                     {this.props.path === "/dashboard/tickets" ?
+                     this.props.users.tickets.map((ticket) =>
+                    <TicketItem key ={ticket.id} ticket = {ticket} />)
+                      : null }
                     </ul>
                   </div>
               </div>

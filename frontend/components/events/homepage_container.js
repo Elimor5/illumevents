@@ -5,12 +5,13 @@ import { fetchUserInfo, createBookmark, deleteBookmark } from '../../actions/use
 import { allEvents } from '../../reducers/selectors';
 import Homepage  from './homepage';
 
-const mapStateToProps = ({ session, events, errors }) => {
+const mapStateToProps = ({ users, session, events, errors }) => {
 
 return ({
   events: allEvents(events),
   loggedIn: Boolean(session.currentUser),
   userId: Boolean(session.currentUser) ? session.currentUser.id : 0,
+  users,
   errors,
 })
 

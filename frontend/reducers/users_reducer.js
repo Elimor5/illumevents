@@ -12,7 +12,7 @@ const usersReducer = (state = {}, action) => {
     case REMOVE_BOOKMARK:
       nextState = merge({}, state);
       const newBookmarkedEvents = [];
-
+      
       nextState.bookmarked_events.forEach((event_id) =>{
         if (!nextState.bookmarked_events.includes(action.bookmarkId)) {
           newBookmarkedEvents.push(event_id);

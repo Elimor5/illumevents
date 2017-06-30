@@ -38,6 +38,10 @@ class EventShow extends React.Component {
     this.props.fetchUserInfo(this.props.userId);
   }
 
+  componentWillMount() {
+    Modal.setAppElement('body');
+  }
+
   openModal() {
     this.setState({modalIsOpen: true});
   }
@@ -66,7 +70,8 @@ class EventShow extends React.Component {
   }
 
   toggleBookmark () {
-    if (this.props.loggedIn) {
+    
+    if (this.props.loggedIn && this.props.users.events.length > 1) {
       if (this.props.users.bookmarked_events.includes(this.props.event.id)) {
         this.props.deleteBookmark(this.props.event.id);
       } else {
@@ -167,11 +172,18 @@ class EventShow extends React.Component {
            </Modal>
 
 
-            <h1>{event.title}</h1>
-              <Link to={`/edit/${event.id}`}>Edit </Link>
-                <Link to="/">
-                  <button onClick={deleteEvent(event)}>Delete</button>
-                </Link>
+           {(event.host_id === this.props.userId) ?
+              <div>
+               <Link className="event-form-button" to={`/edit/${event.id}`}>Edit </Link>
+
+                 <Link to="/">
+                   <button className="event-form-button" onClick={deleteEvent(event)}>Delete</button>
+                 </Link>
+              </div>
+              : null }
+
+
+
           </div>
         </div>
       </section>

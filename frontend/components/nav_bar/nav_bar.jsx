@@ -18,7 +18,9 @@ class NavBar extends React.Component {
       return (
         <div className="auth-item-split">
           <Link className="nav-button nav-bar-item-user auth-bar-nav" to="/dashboard">{this.props.currentUser.username}</Link>
+          <Link to="/">
           <button className="nav-button auth-bar-nav" onClick={this.props.logout}>LOG OUT</button>
+          </Link>
         </div>
       );
     } else {
