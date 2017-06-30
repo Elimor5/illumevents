@@ -40,6 +40,8 @@ class SessionForm extends React.Component {
     this.state.formType === 'login' ? this.setState({formType: 'signup'}) : this.setState({formType: 'login'});
   }
 
+  
+
   navLink() {
     if (this.state.formType === 'login') {
       return <button className="button" onClick={this.toggleSignUp}>sign up</button>;

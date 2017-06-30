@@ -35,7 +35,7 @@
   flex-direction: column;
   justify-content: space-between;
   list-style: none;
-  border: solid gray 1px;
+  border: solid #DFDFE1 1px;
   background-color: white;
   margin-top: 36px;
   height: 285px;
@@ -76,4 +76,27 @@
 
 .homepage-address {
   margin-right: 5px;
+}
+
+.center-heading {
+  display: flex;
+  justify-content: center;
+  background-color: #F8F8FA;
+  height: 20px;
+  text-align: justify;
+
+}
+
+.splash-image {
+  height: 700px;
+  width: 2000px;
+}
+
+.vertical-spacing {
+  height: 20px;
+}
+
+.footer {
+  height: 100px;
+  background-color: #F8F8FA;
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import HomepageEventItem from './homepage_event_item';
-// import Splash from 'react-splash'
+
 
 class Homepage extends React.Component {
   constructor(props) {
@@ -20,21 +20,25 @@ class Homepage extends React.Component {
       const { events, errors } = this.props;
     return(
     <section>
-      <div className= "spash-container">
-
-
+      <div className= "splash-container">
+      <img className="splash-image" src="https://static.pexels.com/photos/154147/pexels-photo-154147.jpeg"/>
       </div>
+        <div className="vertical-spacing"></div>
+          <div className="center-heading">
+
+            <h1> Trending Events Near You </h1>
+          </div>
         <div className="homepage-outer-container">
           <div className="homepage-events">
             <ul className="events-container">
-              {events.map(event =>
-
+              {events.slice(0,9).map(event =>
                 <HomepageEventItem key={event.id} event={event} />)
               }
             </ul>
           </div>
-        </div>
 
+        </div>
+        <div className="footer"></div>
 
     </section>
     );
