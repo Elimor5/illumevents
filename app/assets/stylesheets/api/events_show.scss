@@ -79,7 +79,7 @@
 }
 
 .tickets-button {
-  margin-top: 1%;
+  margin-top: 11px;
   margin-right: 15px;
   padding: 10px;
   padding-left: 160px;
@@ -268,10 +268,19 @@
 }
 
 .bookmarked-event-show {
-  font-size: 30px;
+  font-size: 34px;
   color: #2B5770;
-  margin-right: 30px;
-  margin-left: 10px;
+  margin-right: 17px;
+  margin-bottom: 15px;
   cursor: pointer;
+  align-self: flex-end;
+}
 
+.bookmark-home-page-item {
+  font-size: 26px;
+  color: #2B5770;
+  margin-right: 13px;
+  margin-bottom: 5px;
+  cursor: pointer;
+  align-self: flex-end;
 }

@@ -17,7 +17,7 @@ class CreateEventTicket extends React.Component {
       this.setState({
         [property]: e.target.value
       });
-      this.props.handleTicketChange(property,this.props.index)(e)
+      this.props.handleTicketChange(property,this.props.index)(e);
     };
   }
 

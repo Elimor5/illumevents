@@ -16,9 +16,9 @@ export const removeBookmark = bookmarkId => ({
 
 
 
-export const fetchUserInfo = id => dispatch => (
-  EventAPIUtil.fetchUserInfo(id).then(userInfo => dispatch(receiveUserInfo(userInfo)))
-);
+export const fetchUserInfo = id => dispatch => {
+  return EventAPIUtil.fetchUserInfo(id).then(userInfo => dispatch(receiveUserInfo(userInfo)));
+};
 
 export const createBookmark = eventId => dispatch => (
   EventAPIUtil.createBookmark(eventId).
@@ -26,7 +26,7 @@ export const createBookmark = eventId => dispatch => (
 );
 
 export const deleteBookmark = (eventId) => dispatch => {
-  
+
   return EventAPIUtil.deleteBookmark(eventId).
     then(bookmarkId => dispatch(removeBookmark(bookmarkId)));
 };

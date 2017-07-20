@@ -28,7 +28,7 @@ class Api::UsersController < ApplicationController
     @user.bookmarks.each do |bookmark|
       @bookmarked_event_ids << bookmark.event_id
     end
-    
+
     if @user && current_user.id == @user.id
       render :show2
     else

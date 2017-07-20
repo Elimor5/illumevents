@@ -9,12 +9,17 @@ class Homepage extends React.Component {
 
   componentDidMount(){
     this.props.requestEvents();
-
     if (this.props.loggedIn) {
       this.props.fetchUserInfo(this.props.userId);
     }
 
   }
+
+  // componentWillReceiveProps(nextProps) {
+  //   if (this.props.userId) {
+  //     this.setState({loggedIn: "true"});
+  //   }
+  // }
 
   render(){
       const{ events, errors } = this.props

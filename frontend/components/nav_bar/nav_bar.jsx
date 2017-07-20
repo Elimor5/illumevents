@@ -13,6 +13,12 @@ class NavBar extends React.Component {
   this.demoLogIn = this.demoLogIn.bind(this);
   }
 
+  // componentWillReceiveProps(nextProps) {
+  //   if (nextProps.loggedIn) {
+  //     this.props.fetchUserInfo(nextProps.userId);
+  //   }
+  // }
+
   renderAuthLinks() {
     if (this.props.currentUser) {
       return (
@@ -34,14 +40,12 @@ class NavBar extends React.Component {
             <button className="nav-button nav-bar-item auth-bar-nav " onClick={this.props.showLogInModal}>
               LOG IN
             </button>
-            <button className="nav-button auth-bar-nav auth-bar-nav-demo" onClick={this.demoLogIn}> DEMO </button>
           </div>
         );
       }
   }
   demoLogIn() {
     this.props.login({ user: {username: "username", password: "password"}})
-    // .then(this.history.push('/'))
   }
 
   render() {
@@ -56,7 +60,7 @@ class NavBar extends React.Component {
           </div>
           </section>
             <div className="search-bar-item">
-              
+
             </div>
 
             <section className="right-side-nav">

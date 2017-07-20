@@ -7,19 +7,25 @@ class SessionForm extends React.Component {
     this.state = {
       username: '',
       password: '',
-      formType: this.props.formType
-
+      formType: this.props.formType,
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.navLink = this.navLink.bind(this);
     this.toggleSignUp = this.toggleSignUp.bind(this);
-
+    this.demoLogIn = this.demoLogIn.bind(this);
+    this.hideModal = this.hideModal.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.loggedIn) {
       this.props.history.push('/');
+      this.props.fetchUserInfo(nextProps.userId);
     }
+  }
+
+  demoLogIn() {
+    this.props.loginUser({ user: {username: "username", password: "password"}}).then(
+      () => this.props.hideModal());
   }
 
   update(field) {
@@ -30,18 +36,17 @@ class SessionForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    const handleAction = this.state.formType === "login" ? this.props.loginUser : this.props.signupUser;
     const user = this.state;
-    this.props.processForm({user}).then(() => this.props.hideModal());
-      // this.forceUpdate();
+    handleAction({user}).then(
+      () => this.props.hideModal());
     }
 
-    // let logInPromise = new Promise(function(resolve, reject) {
-    //     this.processForm({user});
-    //     resolve(this.props.hideModal);
-    //   });
-    //   logInPromise.then(forceUpdate());
-
-  
+  hideModal() {
+    debugger
+    this.props.hideModal();
+    this.props.clearErrors();
+  }
 
   toggleSignUp() {
     this.state.formType === 'login' ? this.setState({formType: 'signup'}) : this.setState({formType: 'login'});
@@ -58,15 +63,15 @@ class SessionForm extends React.Component {
   }
 
   renderErrors() {
-    return(
-      <ul>
-        {this.props.errors.map((error, i) => (
-          <li className="error-handle" key={`error-${i}`}>
-            {error}
-          </li>
-        ))}
-      </ul>
-    );
+      return(
+        <ul>
+          {this.props.errors.map((error, i) => (
+            <li className="error-handle" key={`error-${i}`}>
+              {error}
+            </li>
+          ))}
+        </ul>
+      );
   }
 
   render() {
@@ -74,7 +79,7 @@ class SessionForm extends React.Component {
       <section className="session-modal-container">
         <div className="close-session-modal">
           <Link to="/">
-          <button className="close-button" onClick={this.props.hideModal}>x</button>
+          <button className="close-button" onClick={this.hideModal}>x</button>
           </Link>
         </div>
         <div>
@@ -82,10 +87,10 @@ class SessionForm extends React.Component {
           <div className="session-modal-form-container">
 
             <h1 className="session-modal-greeting">Let's get started</h1>
-          </div>
             <h2 className="session-modal-form-signup-login">
               Enter your email to {this.state.formType} or {this.navLink()}
             </h2>
+          </div>
             <form onSubmit={this.handleSubmit} className="login-form-box">
 
               <br/>
@@ -117,6 +122,8 @@ class SessionForm extends React.Component {
                   <input className="session-submit" type="submit" value="Get Started" />
                 </div>
             </form>
+            <button className="demo-button" onClick={this.demoLogIn}> DEMO </button>
+
         </div>
       </section>
     );

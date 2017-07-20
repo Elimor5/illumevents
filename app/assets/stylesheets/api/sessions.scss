@@ -25,7 +25,7 @@
   letter-spacing: -.1px;
   text-align: center;
   margin-bottom: 14px;
-
+  margin-left: 61px;
 }
 
 .session-modal-form-container {
@@ -40,7 +40,8 @@
   font-size: 16px;
   font-weight: 100;
   margin-bottom: 30px;
-  margin-left: 20px;
+  margin-left: 62px;
+  margin-top: 10px;
 }
 
 .link {
@@ -77,9 +78,9 @@
 }
 
 .login-form {
-  padding: 1px;
-  margin-right: 29px;
-  margin-left: -33px;
+  // padding: 1px;
+  // margin-right: 29px;
+  // margin-left: -33px;
 }
 
 .session-submit {
@@ -96,6 +97,26 @@
 }
 
 .session-submit:hover {
+  background-color: #F95654;
+  cursor: pointer;
+}
+
+.demo-button {
+  padding: 10px;
+  padding-left: 0px;
+  padding-right: 0px;
+  font-size: 20px;
+  background-color: #F6682F;
+  border: none;
+  color: white;
+  border-radius: 51px;
+  align-self: center;
+  width: 133%;
+  margin-top: 10px;
+  text-align: center
+}
+
+.demo-button:hover {
   background-color: #F95654;
   cursor: pointer;
 }
@@ -125,6 +146,7 @@
 }
 
 .error-handle {
+  text-align: center;
   list-style: none;
   color: red;
 }

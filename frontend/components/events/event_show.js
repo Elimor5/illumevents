@@ -37,10 +37,7 @@ class EventShow extends React.Component {
   componentDidMount() {
     this.props.fetchSingleEvent(this.props.match.params.id);
     this.props.fetchUserInfo(this.props.userId);
-  }
-
-  componentWillMount() {
-    Modal.setAppElement('body');
+    window.scrollTo(0, 0);
   }
 
   openModal() {
@@ -73,7 +70,7 @@ class EventShow extends React.Component {
 
   toggleBookmark () {
 
-    if (this.props.loggedIn && this.props.users.events.length > 1) {
+    if (this.props.loggedIn) {
       if (this.props.users.bookmarked_events.includes(this.props.event.id)) {
         this.props.deleteBookmark(this.props.event.id);
       } else {
