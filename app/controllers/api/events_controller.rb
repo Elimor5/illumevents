@@ -31,7 +31,7 @@ class Api::EventsController < ApplicationController
     @user = current_user
     @event = current_user.events.find(params[:id])
     @event.destroy
-    render :show
+    render json: ["event deleted"]
   end
 
   def update
@@ -47,7 +47,7 @@ class Api::EventsController < ApplicationController
   private
 
   def event_params
-    
+
     event_tickets_attributes = ActionController::Parameters.new(
       tickets: JSON.parse(params[:event][:event_tickets_attributes])
     ).permit(tickets: [:ticket_type, :max_quantity, :price])

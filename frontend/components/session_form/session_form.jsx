@@ -43,7 +43,6 @@ class SessionForm extends React.Component {
     }
 
   hideModal() {
-    debugger
     this.props.hideModal();
     this.props.clearErrors();
   }
