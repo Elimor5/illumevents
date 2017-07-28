@@ -49,6 +49,7 @@ class SessionForm extends React.Component {
 
   toggleSignUp() {
     this.state.formType === 'login' ? this.setState({formType: 'signup'}) : this.setState({formType: 'login'});
+    this.props.clearErrors();
   }
 
 
@@ -84,7 +85,7 @@ class SessionForm extends React.Component {
         <div>
 
           <div className="session-modal-form-container">
-
+            <h1 className="session-form-logo">I</h1>
             <h1 className="session-modal-greeting">Let's get started</h1>
             <h2 className="session-modal-form-signup-login">
               Enter your email to {this.state.formType} or {this.navLink()}

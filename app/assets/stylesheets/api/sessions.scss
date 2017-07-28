@@ -31,7 +31,7 @@
 .session-modal-form-container {
   display: flex;
   flex-direction: column;
-  margin-top: 100px;
+  margin-top: 69px;
 }
 
 .session-modal-form-signup-login {
@@ -41,7 +41,6 @@
   font-weight: 100;
   margin-bottom: 30px;
   margin-left: 62px;
-  margin-top: 10px;
 }
 
 .link {
@@ -135,8 +134,14 @@
   font-size: 20px;
   z-index: 101;
   position: fixed;
+  border-radius: 50%;
   top: 50px;
   cursor: pointer;
+  color: #676A6E;
+}
+
+close-button:hover {
+  color: black;
 }
 
 .button {
@@ -149,4 +154,18 @@
   text-align: center;
   list-style: none;
   color: red;
+}
+
+.session-form-logo {
+  border-radius: 50%;
+  background-color: #F6682F;
+  height: 70px;
+  width: 70px;
+  color: white;
+  margin-left: 150px;
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 36px;
+  font-family: sans-serif;
+  line-height: 67px;
 }

@@ -15,6 +15,8 @@
   flex-basis: auto;
 }
 
+
+
 .nav-bar-item-user {
   border-right: 1px solid #EFF2F5;
   display: flex;
@@ -57,11 +59,20 @@
   color: #549AC0;
   font-weight: bolder;
   font-size: 12px;
+  transition: all .5s ease;
+}
+
+.event-bar-nav:hover {
+  color: black;
 }
 
 .auth-bar-nav {
   color: #676A6E;
   font-size: 12px;
+}
+
+.auth-bar-nav:hover {
+  background-color: #EFF2F5;
 }
 
 .auth-bar-nav-demo {
@@ -88,6 +99,10 @@
   font-size: 12px;
   border-right: none;
   border-left: 1px solid #EFF2F5;
+}
+
+.browse-bar-nav:hover {
+  background-color: #EFF2F5;
 }
 
 .signup-nav {
