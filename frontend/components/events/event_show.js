@@ -25,6 +25,7 @@ class EventShow extends React.Component {
     this.closeModal = this.closeModal.bind(this);
     this.purchaseTickets = this.purchaseTickets.bind(this);
     this.toggleBookmark = this.toggleBookmark.bind(this);
+    this.removeEvent = this.removeEvent.bind(this);
     // this.monthParse = this.monthParse.bind(this);
   }
   // componentWillMount() {
@@ -79,6 +80,10 @@ class EventShow extends React.Component {
     } else { null }
   }
 
+  removeEvent () {
+    this.props.deleteEvent(this.props.event);
+  }
+
   renderTickets() {
     return (
       <div className="event-show-tickets-container">
@@ -129,7 +134,7 @@ class EventShow extends React.Component {
                   <Link className="event-form-button" to={`/edit/${event.id}`}>Edit </Link>
 
                     <Link to="/">
-                      <button className="event-form-button" onClick={deleteEvent(event)}>Delete</button>
+                      <button className="event-form-button" onClick={this.removeEvent}>Delete</button>
                     </Link>
                  </div>
                  : null }

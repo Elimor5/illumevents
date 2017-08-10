@@ -26,7 +26,6 @@ export const createBookmark = eventId => dispatch => (
 );
 
 export const deleteBookmark = (eventId) => dispatch => {
-
   return EventAPIUtil.deleteBookmark(eventId).
     then(bookmarkId => dispatch(removeBookmark(bookmarkId)));
 };

@@ -52,9 +52,8 @@ export const updateEvent = event => dispatch => (
   EventAPIUtil.updateEvent(event).then(event => dispatch(receiveEvent(event)))
 );
 
-export const deleteEvent = event => dispatch => {
-  return EventAPIUtil.deleteEvent(event)
-    .then(event => dispatch(removeEvent(event)));
+export const deleteEvent = (event) => dispatch => {
+  return EventAPIUtil.deleteEvent(event).then(dispatch(removeEvent(event)));
 };
 
 export const purchaseTickets = ticketPurchases => dispatch => {

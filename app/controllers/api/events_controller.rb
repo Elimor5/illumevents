@@ -31,7 +31,9 @@ class Api::EventsController < ApplicationController
     @user = current_user
     @event = current_user.events.find(params[:id])
     @event.destroy
-    render json: ["event deleted"]
+    @event.event_tickets.destroy_all
+    @event.bookmarks.destroy_all
+    render :show
   end
 
   def update

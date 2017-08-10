@@ -19,6 +19,7 @@ const eventsReducer = (state = {}, action) => {
     case REMOVE_EVENT:
       nextState = merge({}, state);
       delete nextState[action.event.id];
+      debugger
       return nextState;
     case EVENT_ERROR:
       alert(action.error);
