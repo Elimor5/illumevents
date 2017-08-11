@@ -1,10 +1,13 @@
 import React from 'react';
 import HomepageEventItem from './homepage_event_item';
-
+import ReactGA from 'react-ga';
 
 class Homepage extends React.Component {
   constructor(props) {
     super(props);
+
+    ReactGA.initialize('UA-104443574-1');
+    ReactGA.pageview(window.location.pathname);
   }
 
   componentDidMount(){
@@ -20,6 +23,8 @@ class Homepage extends React.Component {
   //     this.setState({loggedIn: "true"});
   //   }
   // }
+
+
 
   render(){
       const{ events, errors } = this.props
