@@ -70,8 +70,4 @@ class Api::EventsController < ApplicationController
 
   end
 
-  # def event_ticket_params
-  #   .permit(
-  #   )
-  # end
 end

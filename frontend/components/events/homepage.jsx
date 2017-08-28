@@ -1,6 +1,7 @@
 import React from 'react';
 import HomepageEventItem from './homepage_event_item';
 import ReactGA from 'react-ga';
+import HomepageSlider from './homepage_slider';
 
 class Homepage extends React.Component {
   constructor(props) {
@@ -8,31 +9,22 @@ class Homepage extends React.Component {
 
     ReactGA.initialize('UA-104443574-1');
     ReactGA.pageview(window.location.pathname);
+
   }
 
   componentDidMount(){
     this.props.requestEvents();
+
     if (this.props.loggedIn) {
       this.props.fetchUserInfo(this.props.userId);
     }
-
   }
 
-  // componentWillReceiveProps(nextProps) {
-  //   if (this.props.userId) {
-  //     this.setState({loggedIn: "true"});
-  //   }
-  // }
-
-
-
   render(){
-      const{ events, errors } = this.props
+      const{ events, errors } = this.props;
     return(
     <section>
-      <div className= "splash-container">
-      <img className="splash-image" src="https://static.pexels.com/photos/154147/pexels-photo-154147.jpeg"/>
-      </div>
+      <HomepageSlider />
         <div className="vertical-spacing"></div>
           <div className="center-heading">
 

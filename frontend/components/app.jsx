@@ -9,8 +9,6 @@ import {
   HashRouter
 } from 'react-router-dom';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
-
-// import GreetingContainer from './greeting/greeting_container';
 import SessionFormContainer from './session_form/session_form_container';
 import NavBarContainer from './nav_bar/nav_bar_container';
 import HomePageContainer from './events/homepage_container';
@@ -35,17 +33,9 @@ const App = () => (
           <ProtectedRoute exact path="/edit/:id" component={ CreateEvent } />
           <ProtectedRoute path="/events/:id" component={ EventShow } />
           <ProtectedRoute exact path="/dashboard" component={ UserDashboard } />
-
         </section>
       </HashRouter>
   </div>
 );
 
 export default App;
-// <Switch>
-//   < AuthRoute path="/login" component={SessionFormContainer} />
-//   < AuthRoute path="/signup" component={SessionFormContainer} />
-// </Switch>
-//
-// <AuthRoute exact path="/login" component= { SessionFormContainer }/>
-// <AuthRoute exact path="/signup" component= { SessionFormContainer }/>

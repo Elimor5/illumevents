@@ -48,7 +48,9 @@ class SessionForm extends React.Component {
   }
 
   toggleSignUp() {
-    this.state.formType === 'login' ? this.setState({formType: 'signup'}) : this.setState({formType: 'login'});
+    this.state.formType === 'login' ?
+    this.setState({formType: 'signup'}) :
+    this.setState({formType: 'login'});
     this.props.clearErrors();
   }
 
