@@ -6,7 +6,7 @@ const HomepageSlider = () => {
     dots: false,
     fade: true,
     autoplay: true,
-    autoplaySpeed: 2500,
+    autoplaySpeed: 3000,
     pauseOnHover: true,
     arrows: false
   };
