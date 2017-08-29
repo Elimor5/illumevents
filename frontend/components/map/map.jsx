@@ -11,6 +11,8 @@ class Map extends React.Component {
       zoom: 13
     };
     this.map = new google.maps.Map(this.mapNode, mapOptions);
+    debugger
+    console.log(test);
   }
 
 
