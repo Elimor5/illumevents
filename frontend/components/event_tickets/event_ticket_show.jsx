@@ -28,7 +28,7 @@ class EventTicketShowItem extends React.Component {
           <div className="show-event-ticket-dropdown">
             <select onChange={this.props.handlePurchaseChange(this.props.ticketId)} className="show-ticket-dropdown">
               { this.dropDownArray().map((num)=>
-              <option value={num}>{num}</option>
+              <option key={num} value={num}>{num}</option>
             )}
             </select >
             <span className="show-ticket-price">Amount Remaining:  {event_ticket.max_quantity}</span>

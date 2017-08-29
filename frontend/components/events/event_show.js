@@ -9,6 +9,7 @@ import Modal from 'react-modal';
 import { modalStyle } from '../modal/modal_style';
 import { purchaseTickets } from '../../util/event_api_util';
 import { months } from './date_parse';
+import Map from '../map/map';
 
 class EventShow extends React.Component {
 
@@ -86,13 +87,13 @@ class EventShow extends React.Component {
 
   renderTickets() {
     return (
-      <div className="event-show-tickets-container">
-        {this.props.event.event_tickets.map(event_ticket =>
-          <li className="event-ticket-list">
-           <EventTicketShowItem className="event-show-ticket-item" key={event_ticket.id} ticketId={event_ticket.id} event_ticket={event_ticket} handlePurchaseChange={this.handlePurchaseChange}/>
+      <ul className="event-show-tickets-container">
+        {this.props.event.event_tickets.map((event_ticket, idx) =>
+          <li key={idx} className="event-ticket-list">
+           <EventTicketShowItem className="event-show-ticket-item" ticketId={event_ticket.id} event_ticket={event_ticket} handlePurchaseChange={this.handlePurchaseChange}/>
           </li>
         )}
-      </div>
+      </ul>
     );
 
   }
@@ -185,10 +186,8 @@ class EventShow extends React.Component {
            <button onClick={this.purchaseTickets} className="ticket-checkout-button"> CHECKOUT </button>
            </Modal>
 
-
-
-
-              <div className="footer"></div>
+           <Map address={event.address}/>
+           <div className="footer"></div>
 
           </div>
         </div>
