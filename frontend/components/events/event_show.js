@@ -186,7 +186,7 @@ class EventShow extends React.Component {
            <button onClick={this.purchaseTickets} className="ticket-checkout-button"> CHECKOUT </button>
            </Modal>
 
-           <Map address={event.address}/>
+           <Map address={event.address} cityStateZip={event.city_state_zip}/>
            <div className="footer"></div>
 
           </div>
