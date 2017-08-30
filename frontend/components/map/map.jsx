@@ -30,7 +30,7 @@ class Map extends React.Component {
      const mapOptions = {
        center: { lat, lng },
        zoom: 16,
-       gestureHandling: 'greedy'
+       gestureHandling: 'auto'
      };
      this.map = new google.maps.Map(this.mapNode, mapOptions);
      this.setMarker(lat,lng, this.map);

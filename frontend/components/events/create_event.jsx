@@ -110,7 +110,6 @@ class CreateEvent extends React.Component {
   }
 
   addTicket() {
-
     let newTickets = this.state.tickets.concat([<CreateEventTicket index={this.state.tickets.length} handleTicketChange={this.handleTicketChange}/>])
     this.setState({ tickets: newTickets });
     let newTicketsAttrs = merge({}, this.state.event_tickets_attributes,
@@ -279,7 +278,7 @@ class CreateEvent extends React.Component {
                                           <select onChange={this.handleChange('category')} value={this.state.category} ref="category" placeholder= "Choose a category" className="form-label">
                                           <option value=""> Select a Category</option>
                                           {categories.map((category)=>(
-                                            <option value={category}> {category} </option>
+                                            <option key={category} value={category}> {category} </option>
                                           ))}
                                           </select >
 
