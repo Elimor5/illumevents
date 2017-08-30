@@ -29,7 +29,7 @@ class CreateEvent extends React.Component {
           price: null
         }
       },
-      tickets: [<CreateEventTicket index={0} handleTicketChange={this.handleTicketChange}/>]
+      tickets: [<CreateEventTicket key={0} index={0} handleTicketChange={this.handleTicketChange}/>]
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -109,8 +109,9 @@ class CreateEvent extends React.Component {
     }
   }
 
-  addTicket() {
-    let newTickets = this.state.tickets.concat([<CreateEventTicket index={this.state.tickets.length} handleTicketChange={this.handleTicketChange}/>])
+  addTicket(e) {
+    e.preventDefault();
+    let newTickets = this.state.tickets.concat([<CreateEventTicket key={this.state.tickets.length} index={this.state.tickets.length} handleTicketChange={this.handleTicketChange}/>])
     this.setState({ tickets: newTickets });
     let newTicketsAttrs = merge({}, this.state.event_tickets_attributes,
       {[newTickets.length-1]: {ticket_type: "",
@@ -120,7 +121,8 @@ class CreateEvent extends React.Component {
     this.setState({event_tickets_attributes: newTicketsAttrs});
   }
 
-  removeTicket() {
+  removeTicket(e) {
+    e.preventDefault();
     let newTickets = this.state.tickets.slice(0,this.state.tickets.length - 1)
     let newTicketsAttrs = merge({}, this.state.event_tickets_attributes);
     delete newTicketsAttrs[newTickets.length];
