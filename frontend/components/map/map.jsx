@@ -29,7 +29,8 @@ class Map extends React.Component {
 
      const mapOptions = {
        center: { lat, lng },
-       zoom: 16
+       zoom: 16,
+       gestureHandling: 'greedy'
      };
      this.map = new google.maps.Map(this.mapNode, mapOptions);
      this.setMarker(lat,lng, this.map);
