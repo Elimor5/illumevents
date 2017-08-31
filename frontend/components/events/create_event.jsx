@@ -107,7 +107,7 @@ class CreateEvent extends React.Component {
         formData.append("event[event_tickets_attributes]", JSON.stringify(that.state.event_tickets_attributes));
         formData.append("event[lat]", that.state.lat);
         formData.append("event[lng]", that.state.lng);
-        debugger
+        
         return that.props.createEvent(formData)
       })
         .then(({ event }) => {
