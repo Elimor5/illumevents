@@ -27,12 +27,8 @@ class EventShow extends React.Component {
     this.purchaseTickets = this.purchaseTickets.bind(this);
     this.toggleBookmark = this.toggleBookmark.bind(this);
     this.removeEvent = this.removeEvent.bind(this);
-    // this.monthParse = this.monthParse.bind(this);
   }
-  // componentWillMount() {
-  //
-  //   this.props.fetchUserInfo(this.props.userId);
-  // }
+
 
 
 
@@ -186,7 +182,7 @@ class EventShow extends React.Component {
            <button onClick={this.purchaseTickets} className="ticket-checkout-button"> CHECKOUT </button>
            </Modal>
 
-           <Map address={event.address} cityStateZip={event.city_state_zip}/>
+           <Map id={event.id} lat={event.lat} lng={event.lng}/>
            <div className="footer"></div>
 
           </div>

@@ -3,11 +3,8 @@ import React from 'react';
 class Map extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      lat: "",
-      lng: ""
-    };
     this.setMarker = this.setMarker.bind(this);
+    this.retriveLocation = this.retriveLocation.bind(this);
   }
 
   componentDidMount() {
@@ -15,28 +12,17 @@ class Map extends React.Component {
   }
 
   retriveLocation() {
-    const apiKey = window.googleMapsKey;
-    const address = this.props.address.concat(" ",this.props.cityStateZip).split(" ").join("_");
+    const { id } = this.props;
+    const { lat, lng } = this.props;
 
-    $.ajax({
-      method: 'get',
-      url: `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${apiKey}`
-    })
-    .then(data => {
-     const latLong = data.results[0].geometry.location;
-     const lat = Math.round(latLong.lat * 10000) / 10000;
-     const lng = Math.round(latLong.lng * 10000) / 10000;
+   const mapOptions = {
+     center: { lat, lng },
+     zoom: 16,
+     gestureHandling: 'auto'
+   };
 
-     const mapOptions = {
-       center: { lat, lng },
-       zoom: 16,
-       gestureHandling: 'auto'
-     };
-     this.map = new google.maps.Map(this.mapNode, mapOptions);
-     this.setMarker(lat,lng, this.map);
-   }, err => {
-     alert("Could not retrieve location");
-   });
+   this.map = new google.maps.Map(this.mapNode, mapOptions);
+   this.setMarker(lat,lng, this.map);
   }
 
   setMarker(lat,lng, map) {

@@ -22,6 +22,8 @@ class CreateEvent extends React.Component {
       category: "",
       imageFile: null,
       imageUrl: null,
+      lat: "",
+      lng: "",
       event_tickets_attributes: {
         0: {
           ticket_type: "",
@@ -36,6 +38,7 @@ class CreateEvent extends React.Component {
     this.addTicket = this.addTicket.bind(this);
     this.removeTicket = this.removeTicket.bind(this);
     this.updateFile = this.updateFile.bind(this);
+    this.setLatLng = this.setLatLng.bind(this);
   }
 
   componentDidMount() {
@@ -74,7 +77,6 @@ class CreateEvent extends React.Component {
   }
 
   handleSubmit(e) {
-
     e.preventDefault();
     if (this.props.match.params.id) {
       const event = merge({}, this.state)
@@ -89,24 +91,29 @@ class CreateEvent extends React.Component {
       const event = merge({}, this.state)
       event.event_tickets_attributes = event_tickets_attributes;
       delete event.tickets;
-      var formData = new FormData();
+      const formData = new FormData();
+      const that = this;
 
-      formData.append("event[title]", this.state.title);
-      formData.append("event[description]", this.state.description);
-      formData.append("event[date]", this.state.date);
-      formData.append("event[time]", this.state.time);
-      formData.append("event[venue]", this.state.venue);
-      formData.append("event[address]", this.state.address);
-      formData.append("event[city_state_zip]", this.state.city_state_zip);
-      formData.append("event[category]", this.state.category);
-      formData.append("event[image]", this.state.imageFile);
-      formData.append("event[event_tickets_attributes]", JSON.stringify(this.state.event_tickets_attributes));
-
-    this.props.createEvent(formData)
-      .then(({ event }) => {
-        this.props.history.push(`/events/${event.id}`);
-      });
-    }
+      this.setLatLng().then(() => {
+        formData.append("event[title]", that.state.title);
+        formData.append("event[description]", that.state.description);
+        formData.append("event[date]", that.state.date);
+        formData.append("event[time]", that.state.time);
+        formData.append("event[venue]", that.state.venue);
+        formData.append("event[address]", that.state.address);
+        formData.append("event[city_state_zip]", that.state.city_state_zip);
+        formData.append("event[category]", that.state.category);
+        formData.append("event[image]", that.state.imageFile);
+        formData.append("event[event_tickets_attributes]", JSON.stringify(that.state.event_tickets_attributes));
+        formData.append("event[lat]", that.state.lat);
+        formData.append("event[lng]", that.state.lng);
+        debugger
+        return that.props.createEvent(formData)
+      })
+        .then(({ event }) => {
+          that.props.history.push(`/events/${event.id}`);
+        });
+      }
   }
 
   addTicket(e) {
@@ -182,6 +189,26 @@ class CreateEvent extends React.Component {
   } else {
     return null;
   }
+  }
+
+  setLatLng() {
+    const apiKey = window.googleMapsKey;
+    const address = this.state.address.concat(" ",this.state.city_state_zip).split(" ").join("_");
+
+    return $.ajax({
+      method: 'get',
+      url: `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${apiKey}`
+    })
+    .then(data => {
+      const latLong = data.results[0].geometry.location;
+      const lat = Math.round(latLong.lat * 10000) / 10000;
+      const lng = Math.round(latLong.lng * 10000) / 10000;
+
+      this.setState({
+        lat,
+        lng
+      });
+   });
   }
 
 

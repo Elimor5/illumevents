@@ -17,7 +17,7 @@ class Api::EventsController < ApplicationController
   def create
 
     @event = current_user.events.new(event_params)
-
+    debugger
     @user = @event.host
     if @event.save
       render :show
@@ -63,7 +63,9 @@ class Api::EventsController < ApplicationController
       :time,
       :description,
       :category,
-      :image
+      :image,
+      :lat,
+      :lng
     )
     event_params[:event_tickets_attributes] = event_tickets_attributes[:tickets]
     event_params
