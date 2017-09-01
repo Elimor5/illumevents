@@ -182,7 +182,11 @@ class EventShow extends React.Component {
            <button onClick={this.purchaseTickets} className="ticket-checkout-button"> CHECKOUT </button>
            </Modal>
 
-           <Map id={event.id} lat={event.lat} lng={event.lng}/>
+           <Map
+             zoom={16}
+             lat={event.lat}
+             lng={event.lng}
+             style="event-show-map-container"/>
            <div className="footer"></div>
 
           </div>

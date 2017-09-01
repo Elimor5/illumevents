@@ -1,4 +1,4 @@
-import { categories } from './categories';
+import CategoriesTable  from './categories';
 import React from 'react';
 import { connect } from 'react-redux';
 import { fetchAllEvents } from '../../actions/event_actions';
@@ -20,19 +20,14 @@ class BrowseEvents extends React.Component {
     }
   }
 
+
   render() {
     const { events, errors } = this.props;
 
     return (
       <section>
-
           <div className="browse-page-outer-container">
-              <div className="categories-google-maps-browse">
-              <h1 className="categories-header"> Categories </h1>
-                {categories.map((category)=>(
-                  <button className="category-button" onClick={() => this.props.requestEvents(category)}><li className="browse-category-list">{category}</li></button>
-                ))}
-              </div>
+              <CategoriesTable requestEvents={this.props.requestEvents} />
               <div className="browse-event-placeholder">
               </div>
               <div className="homepage-events">

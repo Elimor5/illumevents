@@ -37,8 +37,6 @@ class UserDashboard extends React.Component {
                   bookmarked_events.push(event);
                 }
                 userEvents = bookmarked_events;
-
-
               });
               break;
           case "/dashboard/tickets":
