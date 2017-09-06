@@ -1,11 +1,15 @@
 class Api::EventsController < ApplicationController
 
   def index
-    if params[:category]
-      @events = Event.where(category: params[:category])
-    else
-      @events = Event.all
-    end
+    filters = params[:filters]
+
+    @events =  filters[:bounds] ? Event.in_bounds(filters[:bounds]) : Event.all
+
+    # if params[:category]
+    #   @events = Event.where(category: params[:category])
+    # else
+    #   @events = Event.all
+    # end
   end
 
   def show
@@ -15,7 +19,6 @@ class Api::EventsController < ApplicationController
   end
 
   def create
-
     @event = current_user.events.new(event_params)
     @user = @event.host
     if @event.save

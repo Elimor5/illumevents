@@ -18,4 +18,13 @@ class Event < ActiveRecord::Base
   inverse_of: :event
 
   accepts_nested_attributes_for :event_tickets
+
+  def self.in_bounds(bounds)
+    self.where("lat < ?", bounds[:NE][:lat])
+    .where("lng < ?", bounds[:NE][:lng])
+    .where("lat > ?", bounds[:SW][:lat])
+    .where("lng > ?", bounds[:SW][:lng])
+  end 
+
+
 end

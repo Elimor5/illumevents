@@ -1,8 +1,8 @@
-export const fetchAllEvents = (category) => {
+export const fetchAllEvents = (filters) => {
   return $.ajax({
     method: 'GET',
     url: 'api/events',
-    data: { category }
+    data: { filters }
   });
 };
 

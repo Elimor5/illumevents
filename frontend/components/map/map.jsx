@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { allEvents} from '../../reducers/selectors';
+import { updateFilter } from '../../actions/filter_actions';
 
 class Map extends React.Component {
   constructor(props) {
@@ -34,6 +35,7 @@ class Map extends React.Component {
      gestureHandling: 'auto',
      fullscreenControl: false,
      mapTypeControl: false,
+     disableAutoPan: true,
    };
 
    this.map = new google.maps.Map(this.mapNode, mapOptions);
@@ -41,6 +43,18 @@ class Map extends React.Component {
 
    if (this.props.style === "event-show-map-container") {
      this.setMarker(lat,lng, this.map);
+   }
+
+   if (this.props.style === "browse-events-map-container") {
+     this.map.addListener('idle', () => {
+       const mapBounds = this.map.getBounds();
+       const bounds = {
+         NE: { lng: mapBounds.b.f, lat: mapBounds.f.f },
+         SW: { lng: mapBounds.b.b, lat: mapBounds.f.b}
+       }
+
+       this.props.updateFilter("bounds", bounds);
+     });
    }
   }
 
@@ -50,16 +64,12 @@ class Map extends React.Component {
     });
   }
 
-  removeMarkers() {
-
-  }
-
   setMarker(lat,lng, map, event) {
     const position = new google.maps.LatLng(lat, lng);
     const marker = new google.maps.Marker({
       position,
       map,
-      animation: google.maps.Animation.DROP
+      // animation: google.maps.Animation.DROP
     });
 
     if (this.props.style === "browse-events-map-container") {
@@ -97,6 +107,10 @@ class Map extends React.Component {
     return ({
       events: allEvents(events)
     });
-  }
+  };
 
-  export default connect(mapStateToProps)(Map);
+  const mapDispatchtoProps = (dispatch) => ({
+    updateFilter: (filter, value) => dispatch(updateFilter(filter, value)),
+  });
+
+  export default connect(mapStateToProps, mapDispatchtoProps)(Map);
