@@ -4,7 +4,7 @@ class Api::EventsController < ApplicationController
     filters = params[:filters]
 
     @events =  filters[:bounds] ? Event.in_bounds(filters[:bounds]) : Event.all
-
+    @events = filters[:category] != "" ? @events.where(category: filters[:category]) : @events
     # if params[:category]
     #   @events = Event.where(category: params[:category])
     # else

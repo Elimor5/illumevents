@@ -1,7 +1,7 @@
 import CategoriesTable  from './categories';
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchAllEvents } from '../../actions/event_actions';
+import { updateFilter } from '../../actions/filter_actions';
 import { allEvents} from '../../reducers/selectors';
 import BrowseEventItem from './browse_event_item';
 import { Link } from 'react-router-dom';
@@ -14,10 +14,10 @@ class BrowseEvents extends React.Component {
   }
 
   componentDidMount(){
-    this.props.requestEvents();
-    if (this.props.loggedIn) {
-      this.props.fetchUserInfo(this.props.userId);
-    }
+    // // this.props.requestEvents();
+    // if (this.props.loggedIn) {
+    //   this.props.fetchUserInfo(this.props.userId);
+    // }
   }
 
 
@@ -27,7 +27,7 @@ class BrowseEvents extends React.Component {
     return (
       <section>
           <div className="browse-page-outer-container">
-              <CategoriesTable requestEvents={this.props.requestEvents} />
+              <CategoriesTable updateFilter={this.props.updateFilter} />
               <div className="browse-event-placeholder">
               </div>
               <div className="homepage-events">
@@ -62,7 +62,7 @@ return ({
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  requestEvents: (category) => dispatch(fetchAllEvents(category)),
+  updateFilter: (filter, value) => dispatch(updateFilter(filter, value)),
   fetchUserInfo: (id) => dispatch(fetchUserInfo(id)),
   createBookmark: (eventId) => dispatch(createBookmark(eventId)),
   deleteBookmark: (eventId) => dispatch(deleteBookmark(eventId)),

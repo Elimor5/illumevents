@@ -40,6 +40,11 @@
   font-size: 12px;
 }
 
+#infowindow-event-title:hover {
+  color: blue;
+  cursor: pointer;
+}
+
 #map-placeholder {
   flex-basis: 10%
 }

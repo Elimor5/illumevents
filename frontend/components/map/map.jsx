@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { allEvents} from '../../reducers/selectors';
 import { updateFilter } from '../../actions/filter_actions';
+import { withRouter } from 'react-router-dom';
+import HomepageEventItem from '../events/homepage_event_item'
 
 class Map extends React.Component {
   constructor(props) {
@@ -35,7 +37,6 @@ class Map extends React.Component {
      gestureHandling: 'auto',
      fullscreenControl: false,
      mapTypeControl: false,
-     disableAutoPan: true,
    };
 
    this.map = new google.maps.Map(this.mapNode, mapOptions);
@@ -81,19 +82,25 @@ class Map extends React.Component {
       '</div>'
       const infowindow = new google.maps.InfoWindow({
         content: contentString,
+        disableAutoPan: true,
+        closeBoxURL: "",
       });
 
       this.state.markers.push(marker);
-      marker.addListener('mouseover',() =>{
+      
+      marker.addListener('mouseover',() => {
         infowindow.open(map, marker)
       });
 
-      marker.addListener('mouseout', function() {
+      marker.addListener('click', () => {
+        this.props.history.push(`events/${event.id}`);
+      });
+
+      marker.addListener('mouseout',() => {
         infowindow.close();
       });
+
     }
-
-
   }
 
   render() {
@@ -113,4 +120,4 @@ class Map extends React.Component {
     updateFilter: (filter, value) => dispatch(updateFilter(filter, value)),
   });
 
-  export default connect(mapStateToProps, mapDispatchtoProps)(Map);
+  export default withRouter(connect(mapStateToProps, mapDispatchtoProps)(Map));

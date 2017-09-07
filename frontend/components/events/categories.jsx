@@ -1,6 +1,6 @@
 import React from 'react';
 import Map from '../map/map';
-const CategoriesTable = ({requestEvents}) => {
+const CategoriesTable = ({ updateFilter }) => {
 
   const categories = [
   "Auto, Boat & Air",
@@ -33,8 +33,9 @@ const CategoriesTable = ({requestEvents}) => {
         lat={40.7831}
         lng={-73.9712} />
       <h1 className="categories-header"> Categories </h1>
+      <button className="category-button" onClick={() => updateFilter("category", "")}><li className="browse-category-list">All Categories</li></button>
         {categories.map((category)=>(
-          <button key={category} className="category-button" onClick={() => requestEvents(category)}><li className="browse-category-list">{category}</li></button>
+          <button key={category} className="category-button" onClick={() => updateFilter("category", category)}><li className="browse-category-list">{category}</li></button>
         ))}
     </div>
   );
