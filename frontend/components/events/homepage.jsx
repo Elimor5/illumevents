@@ -13,12 +13,14 @@ class Homepage extends React.Component {
   }
 
   componentDidMount(){
+    this.props.clearFilters();
     this.props.requestEvents();
-
     if (this.props.loggedIn) {
       this.props.fetchUserInfo(this.props.userId);
     }
   }
+
+
 
   render(){
       const{ events, errors } = this.props;

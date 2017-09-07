@@ -2,9 +2,12 @@ class Api::EventsController < ApplicationController
 
   def index
     filters = params[:filters]
-
-    @events =  filters[:bounds] ? Event.in_bounds(filters[:bounds]) : Event.all
-    @events = filters[:category] != "" ? @events.where(category: filters[:category]) : @events
+    if filters
+      @events =  filters[:bounds] ? Event.in_bounds(filters[:bounds]) : Event.all
+      @events = filters[:category] != "" ? @events.where(category: filters[:category]) : @events
+    else
+      @events = Event.all
+    end
     # if params[:category]
     #   @events = Event.where(category: params[:category])
     # else
