@@ -23,14 +23,14 @@ export const categories = [
   "Seasonal & Holiday",
   "Sports & Fitness",
   "Travel & Outdoor" ];
-  
+
 const CategoriesTable = ({ updateFilter }) => {
 
   return(
     <div className="categories-google-maps-browse">
       <Map
         style="browse-events-map-container"
-        zoom ={10}
+        zoom ={9}
         lat={40.7831}
         lng={-73.9712} />
       <h1 className="categories-header"> Categories </h1>

@@ -48,3 +48,31 @@
 #map-placeholder {
   flex-basis: 10%
 }
+
+.map-overlay-search {
+  position: absolute;
+  bottom: 15%;
+  margin: 0 auto;
+  left: 11%;
+  height: 17px;
+  border: solid white 2px;
+  padding: 6px 25px 8px 25px;
+  border-radius: 5px;
+  background-color: white;
+  font-family: sans-serif;
+  color: #0093D7;
+  font-size: 17px;
+}
+
+.map-overlay-search:hover {
+  cursor: pointer;
+  color: black;
+}
+
+.map-container {
+  position: relative;
+}
+
+.map-overlay-hidden {
+  display: none;
+}

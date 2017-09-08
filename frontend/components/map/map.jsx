@@ -11,10 +11,14 @@ class Map extends React.Component {
     this.state = {
       map: "",
       markers: [],
+      overlay: false,
+      counter: 0,
+      bounds: ""
     };
     this.setMarker = this.setMarker.bind(this);
     this.retriveLocation = this.retriveLocation.bind(this);
     this.eventMarkers = this.eventMarkers.bind(this);
+    this.toggleOverlay = this.toggleOverlay.bind(this);
   }
 
   componentDidMount() {
@@ -54,7 +58,12 @@ class Map extends React.Component {
          SW: { lng: mapBounds.b.b, lat: mapBounds.f.b}
        }
 
-       this.props.updateFilter("bounds", bounds);
+       if (this.state.counter < 1) {
+         this.props.updateFilter("bounds", bounds);
+         this.setState({ counter: 1});
+       } else {
+         this.setState({ bounds, overlay: true });
+       }
      });
    }
   }
@@ -63,6 +72,11 @@ class Map extends React.Component {
     events.map((event) => {
       this.setMarker(event.lat, event.lng, map, event);
     });
+  }
+
+  toggleOverlay() {
+    this.props.updateFilter("bounds",this.state.bounds)
+    this.setState({ overlay: false });
   }
 
   setMarker(lat,lng, map, event) {
@@ -87,7 +101,7 @@ class Map extends React.Component {
       });
 
       this.state.markers.push(marker);
-      
+
       marker.addListener('mouseover',() => {
         infowindow.open(map, marker)
       });
@@ -105,7 +119,10 @@ class Map extends React.Component {
 
   render() {
     return(
-      <div id={this.props.style} ref={ map => this.mapNode = map }></div>
+      <div className="map-container">
+        <div id={this.props.style} ref={ map => this.mapNode = map }></div>
+        <button className={this.state.overlay ? "map-overlay-search" : "map-overlay-hidden" } onClick={this.toggleOverlay}> Search this area</button>
+    </div>
     );
   }
 }
