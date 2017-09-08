@@ -3,7 +3,7 @@ import React from 'react';
 import { createEvent, fetchSingleEvent, updateEvent } from '../../actions/event_actions';
 import CreateEventTicket from '../event_tickets/create_event_ticket';
 import { merge, values } from 'lodash';
-import { categories } from './categories';
+import { categories } from '../browse_events/categories';
 
 
 
@@ -107,7 +107,7 @@ class CreateEvent extends React.Component {
         formData.append("event[event_tickets_attributes]", JSON.stringify(that.state.event_tickets_attributes));
         formData.append("event[lat]", that.state.lat);
         formData.append("event[lng]", that.state.lng);
-        
+
         return that.props.createEvent(formData)
       })
         .then(({ event }) => {

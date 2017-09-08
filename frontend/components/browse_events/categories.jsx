@@ -1,8 +1,7 @@
 import React from 'react';
 import Map from '../map/map';
-const CategoriesTable = ({ updateFilter }) => {
 
-  const categories = [
+export const categories = [
   "Auto, Boat & Air",
   "Business & Professional",
   "Charity & Causes",
@@ -24,6 +23,8 @@ const CategoriesTable = ({ updateFilter }) => {
   "Seasonal & Holiday",
   "Sports & Fitness",
   "Travel & Outdoor" ];
+  
+const CategoriesTable = ({ updateFilter }) => {
 
   return(
     <div className="categories-google-maps-browse">

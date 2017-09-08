@@ -3,7 +3,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { fetchAllEvents } from '../../actions/event_actions';
 import { allEvents} from '../../reducers/selectors';
-import BrowseEventItem from '../events/browse_event_item';
+import BrowseEventItem from '../browse_events/browse_event_item';
 import { TicketItem } from './user_tickets'
 import { fetchUserInfo } from '../../actions/user_actions';
 import { Link } from 'react-router-dom';

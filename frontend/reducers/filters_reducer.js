@@ -4,6 +4,7 @@ import merge from 'lodash/merge';
 const defaultFilters = Object.freeze({
   bounds: {},
   category: null,
+  date: null,
 });
 
 const filtersReducer = (state = defaultFilters, action) => {

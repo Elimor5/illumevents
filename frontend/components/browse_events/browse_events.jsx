@@ -7,7 +7,6 @@ import BrowseEventItem from './browse_event_item';
 import { Link } from 'react-router-dom';
 import { createBookmark, deleteBookmark, fetchUserInfo } from '../../actions/user_actions';
 
-
 class BrowseEvents extends React.Component {
   constructor(props) {
     super(props);

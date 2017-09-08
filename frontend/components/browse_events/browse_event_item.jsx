@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { months } from './date_parse';
+import { months } from '../events/date_parse';
 
   const BrowseEventItem = ({ event }) => {
 

@@ -14,7 +14,7 @@ import NavBarContainer from './nav_bar/nav_bar_container';
 import HomePageContainer from './events/homepage_container';
 import EventShow from './events/event_show';
 import CreateEvent from './events/create_event';
-import BrowseEvents from './events/browse_events';
+import BrowseEvents from './browse_events/browse_events';
 import UserDashboard from './user_dashboard/user_dashboard';
 
 
