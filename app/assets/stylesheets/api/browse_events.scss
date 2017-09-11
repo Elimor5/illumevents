@@ -39,7 +39,7 @@
 }
 
 .categories-google-maps-browse {
-  width: 250px;
+  width: 16%;
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
@@ -95,4 +95,10 @@
 .event-browse-venue {
   margin-top: 20px;
   color: #BBBCC0;
+}
+
+.event-browse-map-error {
+  margin-top: 26px;
+  margin-left: 18%;
+  color: red;
 }

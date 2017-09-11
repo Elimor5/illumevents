@@ -21,16 +21,17 @@ class BrowseEvents extends React.Component {
 
 
   render() {
-    const { events, errors } = this.props;
+    const { events, errors, filters, updateFilter } = this.props;
 
     return (
       <section>
           <div className="browse-page-outer-container">
-              <CategoriesTable updateFilter={this.props.updateFilter} />
+              <CategoriesTable updateFilter={updateFilter} />
               <div className="browse-event-placeholder">
               </div>
               <div className="homepage-events">
                 <ul className="browse-events-container">
+                {filters["errors"] ? <h1 className="event-browse-map-error">{filters["errors"]}</h1> : null}  
                   {events.reverse().map(event =>
                     <BrowseEventItem
                     key={event.id}
@@ -49,13 +50,14 @@ class BrowseEvents extends React.Component {
 
 }
 
-const mapStateToProps = ({ events, errors, users, session }) => {
+const mapStateToProps = ({ events, errors, users, session, filters }) => {
 
 return ({
   events: allEvents(events),
   users,
   loggedIn: Boolean(session.currentUser),
   errors,
+  filters
 })
 
 };

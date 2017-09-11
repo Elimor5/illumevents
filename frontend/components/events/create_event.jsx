@@ -4,6 +4,7 @@ import { createEvent, fetchSingleEvent, updateEvent } from '../../actions/event_
 import CreateEventTicket from '../event_tickets/create_event_ticket';
 import { merge, values } from 'lodash';
 import { categories } from '../browse_events/categories';
+import { retriveLocationFromAddress } from '../../util/google_maps_api_util'
 
 
 
@@ -334,7 +335,7 @@ class CreateEvent extends React.Component {
 }
 
 
-const mapStateToProps = ( { events, session, errors },ownProps) => {
+const mapStateToProps = ({ events, session, errors },ownProps) => {
   return {
     userId: session.currentUser.id,
     event: events[ownProps.match.params.id] || {}

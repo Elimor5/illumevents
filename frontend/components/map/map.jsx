@@ -29,6 +29,16 @@ class Map extends React.Component {
     if (this.props.style === "browse-events-map-container") {
       if (this.state.markers.length !== 0) {this.state.markers.forEach(marker => marker.setMap(null));}
       this.eventMarkers(nextProps.events, this.state.map);
+
+      this.state.map.setCenter({
+        lat: nextProps.lat,
+        lng: nextProps.lng,
+      });
+
+      if (nextProps.lat !== this.props.lat && nextProps.lng !== this.props.lng) {
+        this.setState({ counter: 0 });
+      }
+
     }
   }
 
