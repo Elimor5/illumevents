@@ -1,7 +1,7 @@
 class Event < ActiveRecord::Base
   validates :host_id, :title, :venue, :address, :city_state_zip, :date, :category, :time, presence: true
 
-  has_attached_file :image, default_url: "corgi.jpg"
+  has_attached_file :image, :s3_protocol => :https, default_url: "corgi.jpg"
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
 
   has_many :bookmarks
@@ -24,7 +24,7 @@ class Event < ActiveRecord::Base
     .where("lng < ?", bounds[:NE][:lng])
     .where("lat > ?", bounds[:SW][:lat])
     .where("lng > ?", bounds[:SW][:lng])
-  end 
+  end
 
 
 end

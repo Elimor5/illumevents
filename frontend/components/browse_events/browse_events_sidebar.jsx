@@ -3,31 +3,9 @@ import Map from '../map/map';
 import { connect } from 'react-redux';
 import { updateCity, updateFilterErrors, clearFilterErrors } from '../../actions/filter_actions';
 import { retriveLocationFromAddress } from '../../util/google_maps_api_util';
+import { categories } from './categories'
 
-export const categories = [
-  "Auto, Boat & Air",
-  "Business & Professional",
-  "Charity & Causes",
-  "Community & Culture",
-  "Family & Education",
-  "Fashion & Beauty",
-  "Film",
-  "Media & Entertainment",
-  "Food & Drink",
-  "Goverment & Politics",
-  "Health & Wellness",
-  "Hobbies & Special Interest",
-  "Home & Lifestyle",
-  "Music",
-  "Other",
-  "Performing & Visual Arts",
-  "Religion & Spirituality",
-  "Science & Technology",
-  "Seasonal & Holiday",
-  "Sports & Fitness",
-  "Travel & Outdoor" ];
-
-class CategoriesTable extends React.Component {
+class BrowseEventsSidebar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -124,4 +102,4 @@ const mapDispatchtoProps = dispatch => ({
   clearFilterErrors: () => dispatch(clearFilterErrors),
 });
 
-export default connect(mapStateToProps, mapDispatchtoProps)(CategoriesTable);
+export default connect(mapStateToProps, mapDispatchtoProps)(BrowseEventsSidebar);

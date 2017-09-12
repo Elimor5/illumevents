@@ -1,4 +1,4 @@
-import CategoriesTable  from './categories';
+import BrowseEventsSidebar from './browse_events_sidebar';
 import React from 'react';
 import { connect } from 'react-redux';
 import { updateFilter } from '../../actions/filter_actions';
@@ -26,12 +26,12 @@ class BrowseEvents extends React.Component {
     return (
       <section>
           <div className="browse-page-outer-container">
-              <CategoriesTable updateFilter={updateFilter} />
+              <BrowseEventsSidebar updateFilter={updateFilter} />
               <div className="browse-event-placeholder">
               </div>
               <div className="homepage-events">
                 <ul className="browse-events-container">
-                {filters["errors"] ? <h1 className="event-browse-map-error">{filters["errors"]}</h1> : null}  
+                {filters["errors"] ? <h1 className="event-browse-map-error">{filters["errors"]}</h1> : null}
                   {events.reverse().map(event =>
                     <BrowseEventItem
                     key={event.id}
