@@ -68,11 +68,11 @@ class CategoriesTable extends React.Component {
   }
 
   getLocation() {
-    console.log("test");
-    // this.setState({
-    //   lat: 40.7831,
-    //   lng: -73.9712
-    // })
+    this.setState({ searchByCity: true })
+    this.setState({
+      lat: 40.7831,
+      lng: -73.9712
+    })
   }
 
   render() {

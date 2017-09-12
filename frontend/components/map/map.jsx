@@ -30,8 +30,7 @@ class Map extends React.Component {
       if (this.state.markers.length !== 0) {this.state.markers.forEach(marker => marker.setMap(null));}
       this.eventMarkers(nextProps.events, this.state.map);
 
-
-      if ((nextProps.lat !== this.props.lat && nextProps.lng !== this.props.lng) && nextProps.searchByCity) {
+      if ((nextProps.lat !== this.props.lat && nextProps.lng !== this.props.lng) || nextProps.searchByCity) {
         this.setState({
           counter: 0,
           overlay: false
