@@ -102,3 +102,38 @@
   margin-left: 18%;
   color: red;
 }
+
+.browse-event-city-select {
+  max-width: 58%;
+  margin-left: 14%;
+  height: 71%;
+  border-radius: 4px;
+  font-size: 20px;
+  margin-bottom: 3%;
+  font-weight: lighter;
+  padding-left: 40px;
+}
+
+.browse-event-city-select:focus {
+  outline: none;
+  border:1px solid #39C2C9;
+}
+
+.browse-event-search-bar-container {
+  position: relative;
+  height: 7%;
+}
+
+.fa-map-marker-search-bar {
+  content: "\f041";
+  position: absolute;
+  bottom: 37%;
+  left: 17%;
+  font-size: 270% !important;
+  color: #D2D6DF;
+}
+
+.fa-map-marker-search-bar:hover {
+  cursor: pointer;
+  color: #39C2C9;
+}

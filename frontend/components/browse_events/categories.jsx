@@ -33,12 +33,15 @@ class CategoriesTable extends React.Component {
     this.state = {
       city: "",
       lat: 40.7831,
-      lng: -73.9712
+      lng: -73.9712,
+      searchByCity: false,
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
     this.clearField = this.clearField.bind(this);
+    this.getLocation = this.getLocation.bind(this);
+    this.resetSearchByCity = this.resetSearchByCity.bind(this);
   }
 
   handleChange(e) {
@@ -55,21 +58,21 @@ class CategoriesTable extends React.Component {
   handleKeyPress(event) {
     if (event.key === 'Enter') {
       retriveLocationFromAddress(this, this.state.city, this.props.updateFilterErrors);
+      this.setState({ searchByCity: true })
       this.props.clearFilterErrors();
-      // return $.ajax({
-      //   method: 'get',
-      //   url: `https://maps.googleapis.com/maps/api/geocode/json?address=${this.props.filters.city}&key=${window.googleMapsKey}`
-      // }).then(data => {
-      //     const latLong = data.results[0].geometry.location;
-      //     const lat = Math.round(latLong.lat * 10000) / 10000;
-      //     const lng = Math.round(latLong.lng * 10000) / 10000;
-      //
-      //     this.setState({
-      //       lat,
-      //       lng
-      //     });
-      // });
     }
+  }
+
+  resetSearchByCity() {
+    this.setState({ searchByCity: false });
+  }
+
+  getLocation() {
+    console.log("test");
+    // this.setState({
+    //   lat: 40.7831,
+    //   lng: -73.9712
+    // })
   }
 
   render() {
@@ -80,15 +83,24 @@ class CategoriesTable extends React.Component {
           style="browse-events-map-container"
           zoom ={9}
           lat={this.state.lat}
-          lng={this.state.lng} />
-        <input
-          value={this.props.filters}
-          type= 'text'
-          ref={el => this.inputCity = el}
-          onChange={this.handleChange()}
-          onKeyPress={this.handleKeyPress}
-          onClick={this.clearField}
-          />
+          lng={this.state.lng}
+          searchByCity={this.state.searchByCity}
+          resetSearchByCity={this.resetSearchByCity}
+         />
+        <div className="browse-event-search-bar-container">
+          <button onClick={this.getLocation}>
+            <i className="fa fa-map-marker fa-map-marker-search-bar" aria-hidden="true"></i>
+          </button>
+          <input
+            value={this.props.filters}
+            type= 'text'
+            className='browse-event-city-select'
+            ref={el => this.inputCity = el}
+            onChange={this.handleChange()}
+            onKeyPress={this.handleKeyPress}
+            onClick={this.clearField}
+            />
+        </div>
 
         <h1 className="categories-header"> Categories </h1>
         <button className="category-button" onClick={() => updateFilter("category", "")}><li className="browse-category-list">All Categories</li></button>

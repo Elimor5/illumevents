@@ -30,13 +30,17 @@ class Map extends React.Component {
       if (this.state.markers.length !== 0) {this.state.markers.forEach(marker => marker.setMap(null));}
       this.eventMarkers(nextProps.events, this.state.map);
 
-      this.state.map.setCenter({
-        lat: nextProps.lat,
-        lng: nextProps.lng,
-      });
 
-      if (nextProps.lat !== this.props.lat && nextProps.lng !== this.props.lng) {
-        this.setState({ counter: 0 });
+      if ((nextProps.lat !== this.props.lat && nextProps.lng !== this.props.lng) && nextProps.searchByCity) {
+        this.setState({
+          counter: 0,
+          overlay: false
+         });
+        this.state.map.setCenter({
+          lat: nextProps.lat,
+          lng: nextProps.lng,
+        });
+        this.props.resetSearchByCity();
       }
 
     }
@@ -68,10 +72,10 @@ class Map extends React.Component {
          SW: { lng: mapBounds.b.b, lat: mapBounds.f.b}
        }
 
-       if (this.state.counter < 1) {
+       if (this.state.counter < 1 ) {
          this.props.updateFilter("bounds", bounds);
          this.setState({ counter: 1});
-       } else {
+       } else if (this.state.counter >= 1 && !this.props.searchByCity) {
          this.setState({ bounds, overlay: true });
        }
      });
