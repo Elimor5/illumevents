@@ -1,7 +1,7 @@
 import React from 'react';
 import Map from '../map/map';
 import { connect } from 'react-redux';
-import { updateCity, updateFilterErrors, clearFilterErrors } from '../../actions/filter_actions';
+import { updateFilterErrors, clearFilterErrors } from '../../actions/filter_actions';
 import { retriveLocationFromAddress } from '../../util/google_maps_api_util';
 import { categories } from './categories'
 
@@ -16,10 +16,14 @@ class BrowseEventsSidebar extends React.Component {
     };
 
     this.handleChange = this.handleChange.bind(this);
-    this.handleKeyPress = this.handleKeyPress.bind(this);
     this.clearField = this.clearField.bind(this);
     this.getLocation = this.getLocation.bind(this);
     this.resetSearchByCity = this.resetSearchByCity.bind(this);
+    this.setAutoComplete = this.setAutoComplete.bind(this);
+  }
+
+  componentDidMount() {
+    this.setAutoComplete();
   }
 
   handleChange(e) {
@@ -34,11 +38,9 @@ class BrowseEventsSidebar extends React.Component {
   }
 
   handleKeyPress(event) {
-    if (event.key === 'Enter') {
       retriveLocationFromAddress(this, this.state.city, this.props.updateFilterErrors);
       this.setState({ searchByCity: true })
       this.props.clearFilterErrors();
-    }
   }
 
   resetSearchByCity() {
@@ -48,7 +50,7 @@ class BrowseEventsSidebar extends React.Component {
   getLocation() {
     this.setState({ searchByCity: true })
 
-    const  options = {
+    const options = {
       enableHighAccuracy: true,
       timeout: 5000,
       maximumAge: 0
@@ -66,11 +68,12 @@ class BrowseEventsSidebar extends React.Component {
         method: 'GET',
         url: `https://maps.googleapis.com/maps/api/geocode/json?latlng=${crd.latitude},${crd.longitude}&key=${window.googleMapsKey}`
       }).then((data) => {
-        const city = data.results[0].address_components[2].long_name
-        this.inputCity.value = city;
+
+        const city = data.results[0].address_components[2].long_name;
+        const state = data.results[0].address_components[5].long_name;
+
+        this.inputCity.value = `${city}, ${state}`;
       });
-
-
     };
 
     const error = (err) => {
@@ -80,8 +83,24 @@ class BrowseEventsSidebar extends React.Component {
       });
     };
 
-navigator.geolocation.getCurrentPosition(success, error, options);
+    navigator.geolocation.getCurrentPosition(success, error, options);
+  }
 
+  setAutoComplete() {
+    const input = this.inputCity;
+    const autocomplete = new google.maps.places.Autocomplete(input);
+
+    autocomplete.addListener('place_changed', () => {
+      const data = autocomplete.getPlace();
+      if (data.geometry) {
+        const lat = data.geometry.location.lat();
+        const lng = data.geometry.location.lng();
+        this.setState({ lat, lng });
+        this.inputCity.value = data.formatted_address;
+      } else {
+        this.handleKeyPress(data.name);
+      }
+    });
   }
 
   render() {
@@ -101,12 +120,11 @@ navigator.geolocation.getCurrentPosition(success, error, options);
             <i className="fa fa-map-marker fa-map-marker-search-bar" aria-hidden="true"></i>
           </button>
           <input
-            value={this.props.filters}
+            value={this.state.city}
             type= 'text'
             className='browse-event-city-select'
             ref={el => this.inputCity = el}
             onChange={this.handleChange()}
-            onKeyPress={this.handleKeyPress}
             onClick={this.clearField}
             />
         </div>
@@ -121,16 +139,10 @@ navigator.geolocation.getCurrentPosition(success, error, options);
   }
 }
 
-const mapStateToProps = ({ filters }) => {
-  return {
-    city: filters["city"],
-  };
-};
 
 const mapDispatchtoProps = dispatch => ({
-  updateCity: (value) => dispatch(updateCity(value)),
   updateFilterErrors: (error) => dispatch(updateFilterErrors(error)),
   clearFilterErrors: () => dispatch(clearFilterErrors),
 });
 
-export default connect(mapStateToProps, mapDispatchtoProps)(BrowseEventsSidebar);
+export default connect(null, mapDispatchtoProps)(BrowseEventsSidebar);

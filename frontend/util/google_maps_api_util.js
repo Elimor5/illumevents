@@ -17,7 +17,9 @@ export const retriveLocationFromAddress = (context, address, errorHandler) => {
         lng
       });
     } else {
-      errorHandler("Sorry, we don't understand your location");
+        if (errorHandler) {
+          errorHandler("Sorry, we don't understand your location");
+        }
     }
  });
 };

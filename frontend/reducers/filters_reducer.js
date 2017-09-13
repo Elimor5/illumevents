@@ -9,7 +9,6 @@ const defaultFilters = Object.freeze({
   bounds: {},
   category: null,
   date: null,
-  city: null,
   errors: "",
 });
 
@@ -22,9 +21,6 @@ const filtersReducer = (state = defaultFilters, action) => {
       return merge({}, state, newFilter);
     case CLEAR_FILTER:
       return merge({}, state, defaultFilters);
-    case UPDATE_CITY:
-      newFilter = {["city"]: action.value};
-      return merge({}, state, newFilter);
     case FILTER_ERROR:
       newFilter = {["errors"]: action.error };
       return merge({}, state, newFilter);

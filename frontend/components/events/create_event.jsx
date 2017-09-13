@@ -39,7 +39,6 @@ class CreateEvent extends React.Component {
     this.addTicket = this.addTicket.bind(this);
     this.removeTicket = this.removeTicket.bind(this);
     this.updateFile = this.updateFile.bind(this);
-    this.setLatLng = this.setLatLng.bind(this);
   }
 
   componentDidMount() {
@@ -94,8 +93,9 @@ class CreateEvent extends React.Component {
       delete event.tickets;
       const formData = new FormData();
       const that = this;
+      const address = this.state.address.concat(" ",this.state.city_state_zip).split(" ").join("_");
 
-      this.setLatLng().then(() => {
+      retriveLocationFromAddress(this, address).then(() => {
         formData.append("event[title]", that.state.title);
         formData.append("event[description]", that.state.description);
         formData.append("event[date]", that.state.date);
@@ -190,26 +190,6 @@ class CreateEvent extends React.Component {
   } else {
     return null;
   }
-  }
-
-  setLatLng() {
-    const apiKey = window.googleMapsKey;
-    const address = this.state.address.concat(" ",this.state.city_state_zip).split(" ").join("_");
-
-    return $.ajax({
-      method: 'get',
-      url: `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${apiKey}`
-    })
-    .then(data => {
-      const latLong = data.results[0].geometry.location;
-      const lat = Math.round(latLong.lat * 10000) / 10000;
-      const lng = Math.round(latLong.lng * 10000) / 10000;
-
-      this.setState({
-        lat,
-        lng
-      });
-   });
   }
 
 

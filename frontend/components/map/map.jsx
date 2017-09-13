@@ -39,6 +39,7 @@ class Map extends React.Component {
           lat: nextProps.lat,
           lng: nextProps.lng,
         });
+        this.state.map.setZoom(this.props.zoom)
         this.props.resetSearchByCity();
       }
 
@@ -74,8 +75,9 @@ class Map extends React.Component {
        if (this.state.counter < 1 ) {
          this.props.updateFilter("bounds", bounds);
          this.setState({ counter: 1});
+         this.state.map.setZoom(this.props.zoom)
        } else if (this.state.counter >= 1 && !this.props.searchByCity) {
-         this.setState({ bounds, overlay: true });
+           this.setState({ bounds, overlay: true });
        }
      });
    }
