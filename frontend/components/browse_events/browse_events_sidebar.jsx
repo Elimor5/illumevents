@@ -47,10 +47,41 @@ class BrowseEventsSidebar extends React.Component {
 
   getLocation() {
     this.setState({ searchByCity: true })
-    this.setState({
-      lat: 40.7831,
-      lng: -73.9712
-    })
+
+    const  options = {
+      enableHighAccuracy: true,
+      timeout: 5000,
+      maximumAge: 0
+    };
+
+    const success = (pos) => {
+      const crd = pos.coords;
+
+      this.setState({
+        lat: crd.latitude,
+        lng: crd.longitude
+      });
+
+      $.ajax({
+        method: 'GET',
+        url: `https://maps.googleapis.com/maps/api/geocode/json?latlng=${crd.latitude},${crd.longitude}&key=${window.googleMapsKey}`
+      }).then((data) => {
+        const city = data.results[0].address_components[2].long_name
+        this.inputCity.value = city;
+      });
+
+
+    };
+
+    const error = (err) => {
+      this.setState({
+        lat: 40.7831,
+        lng: -73.9712
+      });
+    };
+
+navigator.geolocation.getCurrentPosition(success, error, options);
+
   }
 
   render() {
