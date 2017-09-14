@@ -1,7 +1,6 @@
 import BrowseEventsSidebar from './browse_events_sidebar';
 import React from 'react';
 import { connect } from 'react-redux';
-import { updateFilter } from '../../actions/filter_actions';
 import { allEvents} from '../../reducers/selectors';
 import BrowseEventItem from './browse_event_item';
 import { Link } from 'react-router-dom';
@@ -21,12 +20,12 @@ class BrowseEvents extends React.Component {
 
 
   render() {
-    const { events, errors, filters, updateFilter } = this.props;
+    const { events, errors, filters } = this.props;
 
     return (
       <section>
           <div className="browse-page-outer-container">
-              <BrowseEventsSidebar updateFilter={updateFilter} />
+              <BrowseEventsSidebar />
               <div className="browse-event-placeholder">
               </div>
               <div className="homepage-events">
@@ -63,7 +62,6 @@ return ({
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  updateFilter: (filter, value) => dispatch(updateFilter(filter, value)),
   fetchUserInfo: (id) => dispatch(fetchUserInfo(id)),
   createBookmark: (eventId) => dispatch(createBookmark(eventId)),
   deleteBookmark: (eventId) => dispatch(deleteBookmark(eventId)),

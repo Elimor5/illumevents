@@ -1,9 +1,11 @@
 import React from 'react';
 import Map from '../map/map';
 import { connect } from 'react-redux';
-import { updateFilterErrors, clearFilterErrors } from '../../actions/filter_actions';
+import { updateFilter, Errors, clearFilterErrors } from '../../actions/filter_actions';
 import { retriveLocationFromAddress } from '../../util/google_maps_api_util';
-import { categories } from './categories'
+import { Categories } from './categories_sidebar';
+import {categories} from './categories';
+import merge from 'lodash/merge';
 
 class BrowseEventsSidebar extends React.Component {
   constructor(props) {
@@ -13,6 +15,12 @@ class BrowseEventsSidebar extends React.Component {
       lat: 40.7831,
       lng: -73.9712,
       searchByCity: false,
+      subCategoriesOpen: {
+        "category": false,
+        "eventType": false,
+        "date": false,
+        "price": false
+      }
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -20,15 +28,16 @@ class BrowseEventsSidebar extends React.Component {
     this.getLocation = this.getLocation.bind(this);
     this.resetSearchByCity = this.resetSearchByCity.bind(this);
     this.setAutoComplete = this.setAutoComplete.bind(this);
+    this.toggleSubCategories = this.toggleSubCategories.bind(this);
   }
 
   componentDidMount() {
     this.setAutoComplete();
   }
 
-  handleChange(e) {
+  handleChange() {
     return(e) => {
-      this.setState({ city: e.target.value})
+      this.setState({ city: e.target.value});
     };
   }
 
@@ -39,7 +48,7 @@ class BrowseEventsSidebar extends React.Component {
 
   handleKeyPress(event) {
       retriveLocationFromAddress(this, this.state.city, this.props.updateFilterErrors);
-      this.setState({ searchByCity: true })
+      this.setState({ searchByCity: true });
       this.props.clearFilterErrors();
   }
 
@@ -48,7 +57,7 @@ class BrowseEventsSidebar extends React.Component {
   }
 
   getLocation() {
-    this.setState({ searchByCity: true })
+    this.setState({ searchByCity: true });
 
     const options = {
       enableHighAccuracy: true,
@@ -103,6 +112,13 @@ class BrowseEventsSidebar extends React.Component {
     });
   }
 
+  toggleSubCategories(e) {
+    const subCategory = e.currentTarget.title;
+    const toggled = {[subCategory]: !this.state.subCategoriesOpen[subCategory]};
+    const nextState = merge({}, this.state.subCategoriesOpen, toggled);
+    this.setState({ subCategoriesOpen: nextState });
+  }
+
   render() {
     const { updateFilter } = this.props;
     return(
@@ -128,12 +144,21 @@ class BrowseEventsSidebar extends React.Component {
             onClick={this.clearField}
             />
         </div>
-
-        <h1 className="categories-header"> Categories </h1>
-        <button className="category-button" onClick={() => updateFilter("category", "")}><li className="browse-category-list">All Categories</li></button>
-          {categories.map((category)=>(
-            <button key={category} className="category-button" onClick={() => updateFilter("category", category)}><li className="browse-category-list">{category}</li></button>
-          ))}
+          <div className="category-buttons">
+            <div className="subcategory-bottom-background">
+              <button
+                onClick={this.toggleSubCategories}
+                title="category"
+                className="category-button"
+                >
+                <h1 className="category-button-text">CATEGORY</h1>
+                <i className="category-button-text fa fa-angle-down" aria-hidden="true"></i>
+              </button>
+              {this.state.subCategoriesOpen["category"] ?
+                <Categories updateFilter={this.props.updateFilter}/> :
+                  console.log("close")}
+            </div>
+          </div>
       </div>
     );
   }
@@ -141,6 +166,7 @@ class BrowseEventsSidebar extends React.Component {
 
 
 const mapDispatchtoProps = dispatch => ({
+  updateFilter: (filter, value) => dispatch(updateFilter(filter, value)),
   updateFilterErrors: (error) => dispatch(updateFilterErrors(error)),
   clearFilterErrors: () => dispatch(clearFilterErrors),
 });

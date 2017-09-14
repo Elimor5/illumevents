@@ -39,16 +39,22 @@
 }
 
 .categories-google-maps-browse {
-  width: 16%;
+  width: 18%;
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
   margin-left: 20px;
   margin-top: 25px;
-  background-color: white;
-  border: 1px solid #DFDFE1;
-  height: 1093px;
 }
+
+@media screen and (min-width: 1025px) and (max-width: 1640px) {
+    .categories-google-maps-browse {
+        width: 25%;
+    }
+    .map-overlay-search {
+      left: 16%;
+    }
+}​
 
 .browse-category-list {
   color: blue;
@@ -72,8 +78,9 @@
   margin-left: 10px;
   margin-bottom: 10px;
 }
-.category-button {
+.subcategory-button {
   cursor: pointer;
+  list-style: none;
 }
 
 .browse-event-title {
@@ -112,16 +119,18 @@
   margin-bottom: 3%;
   font-weight: lighter;
   padding-left: 40px;
+  border: 1px solid #D2D6DF;
 }
 
 .browse-event-city-select:focus {
   outline: none;
-  border:1px solid #39C2C9;
+  border:1px solid #0278b8;
 }
 
 .browse-event-search-bar-container {
   position: relative;
   height: 7%;
+  background-color: white;
 }
 
 .fa-map-marker-search-bar {
@@ -135,5 +144,66 @@
 
 .fa-map-marker-search-bar:hover {
   cursor: pointer;
-  color: #39C2C9;
+  color: #0278b8;
+}
+
+.category-button {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 93%;
+  margin: 10px;
+  cursor: pointer;
+}
+
+.category-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  border-bottom: 1px solid #D2D6DF;
+}
+
+.category-button-text {
+  font-size: 20px !important;
+  color: #0278b8;
+  font-weight: 400;
+  font-family: Roboto;
+  cursor: pointer;
+}
+
+.category-button-text:hover {
+  color: black;
+  cursor: pointer;
+}
+
+.subcategory-bottom-background {
+  border-bottom: 1px solid #D2D6DF;
+  width: 74%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.browse-category-list-item {
+  list-style: none;
+}
+
+.list-item-container {
+  width: 100%;
+}
+
+.subcategory-link {
+  color: #0278b8;
+  font-weight: 400;
+  font-family: Roboto;
+  cursor: pointer;
+  font-size: 18px;
+  margin: 1px 3px 12px 11px;
+}
+
+.subcategory-link:hover {
+  color: black;
 }
