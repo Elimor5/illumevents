@@ -167,7 +167,7 @@
 }
 
 .category-button-text {
-  font-size: 20px !important;
+  font-size: 20px;
   color: #0278b8;
   font-weight: 400;
   font-family: Roboto;
@@ -189,12 +189,17 @@
   cursor: pointer;
 }
 
+.remove-bottom-underline {
+  border-bottom: none;
+}
+
 .browse-category-list-item {
   list-style: none;
 }
 
 .list-item-container {
   width: 100%;
+  margin-top: 22px;
 }
 
 .subcategory-link {
@@ -208,4 +213,13 @@
 
 .subcategory-link:hover {
   color: black;
+}
+
+.subcategory-selected {
+  color: black !important;
+  font-weight: bold;
+}
+
+.angle {
+  font-size: 25px !important;
 }

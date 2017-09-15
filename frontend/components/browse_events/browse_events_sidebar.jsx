@@ -3,8 +3,7 @@ import Map from '../map/map';
 import { connect } from 'react-redux';
 import { updateFilter, Errors, clearFilterErrors } from '../../actions/filter_actions';
 import { retriveLocationFromAddress } from '../../util/google_maps_api_util';
-import { Categories } from './categories_sidebar';
-import {categories} from './categories';
+import SubCategory from './sub_category';
 import merge from 'lodash/merge';
 
 class BrowseEventsSidebar extends React.Component {
@@ -17,7 +16,6 @@ class BrowseEventsSidebar extends React.Component {
       searchByCity: false,
       subCategoriesOpen: {
         "category": false,
-        "eventType": false,
         "date": false,
         "price": false
       }
@@ -119,8 +117,33 @@ class BrowseEventsSidebar extends React.Component {
     this.setState({ subCategoriesOpen: nextState });
   }
 
+  renderSubCategory(subCategory) {
+    const upperCase = subCategory.toUpperCase();
+    const bottomUnderline = subCategory === "price" ? "remove-bottom-underline" : "";
+
+    return(
+      <div key={subCategory} className={`${bottomUnderline} subcategory-bottom-background`} >
+        <button
+          onClick={this.toggleSubCategories}
+          title={subCategory}
+          className="category-button"
+          >
+          <h1 className="category-button-text">{upperCase}</h1>
+          {this.state.subCategoriesOpen[subCategory] ?
+            <i className="category-button-text angle fa fa-angle-up" aria-hidden="true"></i> :
+            <i className="category-button-text angle fa fa-angle-down" aria-hidden="true"></i>
+            }
+          </button>
+          {this.state.subCategoriesOpen[subCategory] ?
+            <SubCategory subCategory={subCategory} /> :
+            null}
+      </div>
+    );
+  }
+
   render() {
     const { updateFilter } = this.props;
+    const subCategories = Object.keys(this.state.subCategoriesOpen);
     return(
       <div className="categories-google-maps-browse">
         <Map
@@ -145,24 +168,20 @@ class BrowseEventsSidebar extends React.Component {
             />
         </div>
           <div className="category-buttons">
-            <div className="subcategory-bottom-background">
-              <button
-                onClick={this.toggleSubCategories}
-                title="category"
-                className="category-button"
-                >
-                <h1 className="category-button-text">CATEGORY</h1>
-                <i className="category-button-text fa fa-angle-down" aria-hidden="true"></i>
-              </button>
-              {this.state.subCategoriesOpen["category"] ?
-                <Categories updateFilter={this.props.updateFilter}/> :
-                  console.log("close")}
-            </div>
+              {subCategories.map((subCategory) =>(
+                this.renderSubCategory(subCategory)
+              ))}
           </div>
       </div>
     );
   }
 }
+
+// const mapStateToProps = ({ filters }) => {
+//     return {
+//       filters: filters,
+//     };
+// };
 
 
 const mapDispatchtoProps = dispatch => ({

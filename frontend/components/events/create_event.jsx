@@ -3,7 +3,7 @@ import React from 'react';
 import { createEvent, fetchSingleEvent, updateEvent } from '../../actions/event_actions';
 import CreateEventTicket from '../event_tickets/create_event_ticket';
 import { merge, values } from 'lodash';
-import { categories } from '../browse_events/categories';
+import { categories } from '../browse_events/categories_detail';
 import { retriveLocationFromAddress } from '../../util/google_maps_api_util'
 
 

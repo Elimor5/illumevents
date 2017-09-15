@@ -9,6 +9,7 @@ const defaultFilters = Object.freeze({
   bounds: {},
   category: null,
   date: null,
+  price: null,
   errors: "",
 });
 

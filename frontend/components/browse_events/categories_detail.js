@@ -1,4 +1,5 @@
 export const categories = [
+  "All Categories",
   "Auto, Boat & Air",
   "Business & Professional",
   "Charity & Causes",
@@ -20,3 +21,20 @@ export const categories = [
   "Seasonal & Holiday",
   "Sports & Fitness",
   "Travel & Outdoor" ];
+
+export const dates = [
+  "All Dates",
+  "Today",
+  "Tomorrow",
+  "This Week",
+  "This Weekend",
+  "Next Week",
+  "This Month",
+  "Custom Date"
+];
+
+export const prices = [
+  "Any",
+  "Paid",
+  "Free"
+];
