@@ -50,10 +50,12 @@ class UserDashboard extends React.Component {
 
               <div className="browse-page-outer-container">
                   <div className="categories-google-maps-browse-dashboard">
-                  <h1 className="categories-header"> User Dashboard </h1>
-                    <Link className="button browse-category-list" to="/dashboard/bookmarks">Bookmarks</Link>
-                    <Link className="button browse-category-list" to="/dashboard">Events Hosted</Link>
-                    <Link className="button browse-category-list" to="/dashboard/tickets">Tickets</Link>
+                    <div className="user-dashboard-outer-display">
+                      <h1 className="categories-header"> User Dashboard </h1>
+                      <Link className=".subcategory-link" to="/dashboard/bookmarks">Bookmarks</Link>
+                      <Link className=".subcategory-link" to="/dashboard">Events Hosted</Link>
+                      <Link className=".subcategory-link" to="/dashboard/tickets">Tickets</Link>
+                    </div>
                   </div>
                   <div className="browse-event-placeholder">
                   </div>

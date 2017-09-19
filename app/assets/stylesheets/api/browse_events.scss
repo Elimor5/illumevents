@@ -186,7 +186,7 @@
   justify-content: space-between;
   align-items: center;
   flex-direction: column;
-  cursor: pointer;
+  // cursor: pointer;
 }
 
 .remove-bottom-underline {
@@ -222,4 +222,39 @@
 
 .angle {
   font-size: 25px !important;
+}
+
+.custom-date-range-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.hide-custom-date-range {
+  display: none;
+}
+
+.custom-date-input {
+  height: 90%;
+  border-radius: 4px;
+  font-size: 16px;
+  margin-bottom: 3%;
+  font-weight: lighter;
+  padding-left: 13px;
+  width: 75%;
+  margin: 4px 0 10px 0;
+  border: 1px solid #D2D6DF;
+  align-self: center;
+}
+
+.custom-date-submit {
+  text-align: center;
+  font-size: 18px;
+  color: white;
+  background-color: #0278b8;
+  padding: 7px;
+  border-radius: 4px;
+  width: 76%;
+  align-self: center;
+  margin-bottom: 10px;
+  font-family: sans-serif;
 }

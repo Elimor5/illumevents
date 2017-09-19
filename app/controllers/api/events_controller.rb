@@ -5,6 +5,11 @@ class Api::EventsController < ApplicationController
     if filters
       @events =  filters[:bounds] ? Event.in_bounds(filters[:bounds]) : Event.all
       @events = filters[:category] != "" ? @events.where(category: filters[:category]) : @events
+      @events = filters[:price] != "" ?
+        filters[:price] == "Free" ?
+          @events.joins(:event_tickets).where(event_tickets: {price: 0}) :
+           @events.joins(:event_tickets).where.not(event_tickets: {price: 0}) :
+            @events      
     else
       @events = Event.all
     end

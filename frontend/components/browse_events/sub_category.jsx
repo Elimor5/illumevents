@@ -8,14 +8,26 @@ class SubCategory extends React.Component {
     super(props);
     this.state = {
       clicked: null,
-      subCategory: null
+      subCategory: null,
+      startDate: "",
+      endDate: "",
     };
 
     this.handleClick = this.handleClick.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentWillMount() {
     this.selectSubcategoryType();
+  }
+
+  componentDidMount() {
+  }
+
+  getDate() {
+    const date = new Date().toJSON().slice(0,10);
+    this.setState({ startDate: date, endDate: date });
+
   }
 
   selectSubcategoryType() {
@@ -33,9 +45,28 @@ class SubCategory extends React.Component {
   }
 
   handleClick(e) {
-    const subCategory = categories[0] === e.target.innerText ? "" : e.target.innerText;
-    this.props.updateFilter(this.props.subCategory, subCategory);
+    const subCategory = this.state.subCategory[0] === e.target.innerText ? "" : e.target.innerText;
+    if (subCategory !== "Custom Date") {
+      this.props.updateFilter(this.props.subCategory, subCategory);
+      window.scrollTo(0, 0);
+    }
     this.setState({ clicked: e.target.innerText});
+  }
+
+  handleChange(property) {
+    return(e) => {
+      this.setState({
+        [property]: e.target.value
+      });
+    };
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    debugger
+    const customDateRange = this.state.startDate.concat("_", this.state.endDate);
+    this.props.updateFilter("date", customDateRange);
+    window.scrollTo(0, 0);
   }
 
   render() {
@@ -47,6 +78,27 @@ class SubCategory extends React.Component {
             <button className={`subcategory-link ${this.state.clicked === category ? "subcategory-selected" : ""}`} onClick={this.handleClick} >{category} </button>
           </li>
         ))}
+        {this.props.subCategory === "date" ?
+        <div className={`${this.state.clicked === "Custom Date" ? "" : "hide-custom-date-range"} custom-date-range-container`}>
+            <label className="custom-date-label"> Start Date</label>
+            <input
+              value={this.state.startDate}
+              placeholder="test"
+              type="date"
+              onChange={this.handleChange("startDate")}
+              className="custom-date-input"
+              />
+            <label className="custom-date-label"> End Date</label>
+            <input
+              value={this.state.endDate}
+              placeholder={this.state.endDate}
+              type="date"
+              onChange={this.handleChange("endDate")}
+              className="custom-date-input"
+              />
+            <button className="custom-date-submit" onClick={this.handleSubmit}> UPDATE</button>
+        </div> :
+        null}
       </div>
     );
   }
