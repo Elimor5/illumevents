@@ -8,10 +8,13 @@ export const EVENT_ERROR = "EVENT_ERROR";
 
 
 // sync actions
-export const receiveEvents = events => ({
-  type: RECEIVE_EVENTS,
-  events
-});
+export const receiveEvents = ({ events, count }) => {
+  return {
+    type: RECEIVE_EVENTS,
+    events,
+    count
+  };
+};
 
 export const receiveEvent = event => ({
   type: RECEIVE_EVENT,

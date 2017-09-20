@@ -14,11 +14,8 @@ class Api::EventsController < ApplicationController
     else
       @events = Event.all
     end
-    # if params[:category]
-    #   @events = Event.where(category: params[:category])
-    # else
-    #   @events = Event.all
-    # end
+
+    @count = @events.count
   end
 
   def show

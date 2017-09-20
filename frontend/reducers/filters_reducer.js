@@ -3,6 +3,7 @@ import { UPDATE_FILTER,
          UPDATE_CITY,
          FILTER_ERROR,
          CLEAR_FILTER_ERRORS } from '../actions/filter_actions';
+import { RECEIVE_EVENTS } from '../actions/event_actions';
 import merge from 'lodash/merge';
 
 const defaultFilters = Object.freeze({
@@ -11,6 +12,7 @@ const defaultFilters = Object.freeze({
   date: null,
   price: null,
   errors: "",
+  eventCount: "",
 });
 
 const filtersReducer = (state = defaultFilters, action) => {
@@ -27,6 +29,9 @@ const filtersReducer = (state = defaultFilters, action) => {
       return merge({}, state, newFilter);
     case CLEAR_FILTER_ERRORS:
       newFilter = {["errors"]: ""};
+      return merge({}, state, newFilter);
+    case RECEIVE_EVENTS:
+      newFilter = {["eventCount"]: action.count};
       return merge({}, state, newFilter);
     default:
       return state;

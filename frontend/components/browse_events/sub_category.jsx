@@ -63,7 +63,7 @@ class SubCategory extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    debugger
+    
     const customDateRange = this.state.startDate.concat("_", this.state.endDate);
     this.props.updateFilter("date", customDateRange);
     window.scrollTo(0, 0);
