@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { parseDate, months } from './date_parse';
 
   const HomepageEventItem = ({ event, users, loggedIn, createBookmark, deleteBookmark}) => {
   const toggleBookmark = (e) => {
@@ -21,7 +22,7 @@ import { Link } from 'react-router-dom';
           <Link to={`/events/${event.id}`}>
           <img className ="homepage-events-img" src={event.image_url} />
             <div className="homepage-event-date-time">
-              <span className="home-event-item">{event.date}</span>
+              <span className="home-event-item">{parseDate(event.date)}</span>
               <span className="home-event-item">{event.time}</span>
             </div>
               <span className= "home-event-title ">{event.title} </span>

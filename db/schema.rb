@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170830211540) do
+ActiveRecord::Schema.define(version: 20170919225907) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,7 +43,6 @@ ActiveRecord::Schema.define(version: 20170830211540) do
     t.string   "venue",              null: false
     t.string   "address",            null: false
     t.string   "city_state_zip",     null: false
-    t.string   "date",               null: false
     t.string   "time",               null: false
     t.text     "description"
     t.datetime "created_at",         null: false
@@ -55,9 +54,9 @@ ActiveRecord::Schema.define(version: 20170830211540) do
     t.datetime "image_updated_at"
     t.float    "lat"
     t.float    "lng"
+    t.datetime "date",               null: false
   end
 
-  add_index "events", ["date"], name: "index_events_on_date", using: :btree
   add_index "events", ["host_id"], name: "index_events_on_host_id", using: :btree
 
   create_table "ticket_purchases", force: :cascade do |t|

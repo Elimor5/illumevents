@@ -8,7 +8,7 @@ import { merge, values } from 'lodash';
 import Modal from 'react-modal';
 import { modalStyle } from '../modal/modal_style';
 import { purchaseTickets } from '../../util/event_api_util';
-import { months } from './date_parse';
+import { months, parseDate } from './date_parse';
 import Map from '../map/map';
 
 class EventShow extends React.Component {
@@ -111,7 +111,7 @@ class EventShow extends React.Component {
               <img className= "temp-img" src={event.image_url} />
               <div className="event-title">
                 <div className="event-title-date">
-                  <h1 className="event-title-date-item-2">{event.date}</h1>
+                  <h1 className="event-title-date-item-2">{parseDate(event.date)}</h1>
                 </div>
                   <div className="event-title-container">
                       <h1 className="event-title"> {event.title}</h1>

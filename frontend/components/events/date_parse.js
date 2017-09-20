@@ -12,3 +12,7 @@ export const months = {
   "11": "NOV",
   "12": "DEC"
 };
+
+export const parseDate = (date) => {
+  return `${months[date.slice(5,7)]} ${date.slice(8,10)}, ${date.slice(0,4)}`;
+}

@@ -1,14 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { months } from '../events/date_parse';
+import { months, parseDate } from '../events/date_parse';
 
   const BrowseEventItem = ({ event }) => {
-
-
-  const parseDate = (date) => {
-    return `${months[date.slice(5,7)]} ${date.slice(8,10)}, ${date.slice(0,4)}`;
-  }
-
+    
   return(
     <section className="homepage-event-item">
           <Link to={`/events/${event.id}`}>

@@ -9,7 +9,8 @@ class Api::EventsController < ApplicationController
         filters[:price] == "Free" ?
           @events.joins(:event_tickets).where(event_tickets: {price: 0}) :
            @events.joins(:event_tickets).where.not(event_tickets: {price: 0}) :
-            @events      
+            @events
+      @events = filters[:date] != "" ? @events.filter_by_date(filters[:date]) : @events
     else
       @events = Event.all
     end

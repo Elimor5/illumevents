@@ -26,5 +26,34 @@ class Event < ActiveRecord::Base
     .where("lng > ?", bounds[:SW][:lng])
   end
 
+  def self.filter_by_date(filter)
+    next_week = Date.today.next_week
+    case filter
+    when "Today"
+      self.where(date: Date.today)
+    when "Tomorrow"
+      self.where(date: Date.today + 1)
+    when "This Week"
+      start_date = Date.today
+      end_date = next_week - 2
+      self.where(date: start_date..end_date)
+    when "This Weekend"
+      sat = Date.today.next_week - 2
+      sun = sat + 1
+      self.where(date: sat..sun)
+    when "Next Week"
+      self.where(date: next_week - 1..next_week + 6)
+    when "This Month"
+      start_date = Date.today.at_beginning_of_month.next_month
+      end_date = start_date.next_month
+      self.where(date: Date.today..end_date)
+    else
+      dates = filter.split("_")
+      start_date = Date.parse(dates.first)
+      end_date = Date.parse(dates.last)
+      self.where(date: start_date..end_date)
+    end
+  end
+
 
 end
