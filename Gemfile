@@ -54,4 +54,5 @@ group :development do
   gem 'binding_of_caller'
   gem 'pry-rails'
   gem 'annotate'
+  gem 'faker', :git => 'git://github.com/stympy/faker.git', :branch => 'master'
 end

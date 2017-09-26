@@ -73,6 +73,7 @@
 
 .auth-bar-nav:hover {
   background-color: #EFF2F5;
+  cursor: pointer;
 }
 
 .auth-bar-nav-demo {
@@ -89,6 +90,10 @@
   white-space: nowrap;
 }
 
+.nav-button:hover {
+  cursor: pointer
+}
+
 .right-side-nav {
   display: flex;
   justify-content: flex-end;
@@ -103,6 +108,7 @@
 
 .browse-bar-nav:hover {
   background-color: #EFF2F5;
+  cursor: pointer;
 }
 
 .signup-nav {

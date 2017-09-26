@@ -1,3 +1,29 @@
+require 'faker'
+
+categories = [
+  "All Categories",
+  "Auto, Boat & Air",
+  "Business & Professional",
+  "Charity & Causes",
+  "Community & Culture",
+  "Family & Education",
+  "Fashion & Beauty",
+  "Film",
+  "Media & Entertainment",
+  "Food & Drink",
+  "Goverment & Politics",
+  "Health & Wellness",
+  "Hobbies & Special Interest",
+  "Home & Lifestyle",
+  "Music",
+  "Other",
+  "Performing & Visual Arts",
+  "Religion & Spirituality",
+  "Science & Technology",
+  "Seasonal & Holiday",
+  "Sports & Fitness",
+  "Travel & Outdoor" ]
+
 Bookmark.destroy_all
 Event.destroy_all
 User.destroy_all
@@ -28,6 +54,12 @@ Event.create!([
   {host_id: 5, title: "Paragliding Adventure!", lat: 41.2543, lng: -74.4919, venue: "Vernon Paragliding Lodge", address: "1567 Vernon Boulevard", city_state_zip: "Vernon NJ 07418", date: Date.parse("2017-07-03"), time: "12:00PM", description: "Get ready for one of the funnest and most exciting experiences of your life! We are offering parasailing lessons for anyone interested in living life on the edge. No previous experience necessary! Just a will to take risks and an appetite for adventure. We will be taking off from 300 feet above sea level. You will have the opportunity to see the world from a perspective you have never seen before. This is a once in a lifetime opportunity. Don't miss out!!!!", category: "Home & Lifestyle", image:"https://s3.us-east-2.amazonaws.com/illumevents1-dev/events/images/000/000/143/original/pexels-photo-382177paragliding.jpeg"},
   {host_id: 3, title: "React Native Tutorial", lat: 40.7306, lng: -73.9915, venue: "Facebook NYC Headquarters", address: "770 Broadway", city_state_zip: "New York, NY 10003", date: Date.parse("2017-09-05"), time: "8:00PM", description: "We are pleased to present a thorough tutorial on React Native. Our renowned instructor, Mark Zuckerberg's stunt double, Marcus Zuckerfield, will be demoing React Native's powerful capabilities.\n\nReact Native is a technology based on React, written in JavaScript, that can be used to create smartphone apps. \n\nReact Native is unique in that development can be done simultaneously for iOS and for Android. There is no need to create 2 separate apps to run on different platforms. \n\n Marcus is an expert in the technology and can't wait to show off React Native!", category: "Science & Technology", image: "https://s3.us-east-2.amazonaws.com/illumevents1-dev/events/images/000/000/144/original/pexels-photo-249798-coding.jpeg"}
 ])
+
+500.times do
+  Event.create!(
+  {host_id: rand(4), title: Faker::MostInterestingManInTheWorld.quote, venue: Faker::University.name, address: Faker::Pokemon.location, city_state_zip: Faker::Address.city, time: "12:00 PM", date: Faker::Date.between(Date.today, 1.year.from_now), lat:40.730610, lng: -73.935242, category: categories.sample, image: Faker::Fillmurray.image}
+  )
+end
 
 EventTicket.create!([
   {ticket_type: "General Admission", price: 50, event_id: 1, max_quantity: 1000},

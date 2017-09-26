@@ -39,6 +39,7 @@ class CreateEvent extends React.Component {
     this.addTicket = this.addTicket.bind(this);
     this.removeTicket = this.removeTicket.bind(this);
     this.updateFile = this.updateFile.bind(this);
+    this.categories = categories.slice(1, categories.length);
   }
 
   componentDidMount() {
@@ -287,7 +288,7 @@ class CreateEvent extends React.Component {
                                         <label className="form-dropdown">CATEGORY</label>
                                           <select onChange={this.handleChange('category')} value={this.state.category} ref="category" placeholder= "Choose a category" className="form-label">
                                           <option value=""> Select a Category</option>
-                                          {categories.map((category)=>(
+                                          {this.categories.map((category)=>(
                                             <option key={category} value={category}> {category} </option>
                                           ))}
                                           </select >

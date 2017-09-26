@@ -1,3 +1,11 @@
+GIT
+  remote: git://github.com/stympy/faker.git
+  revision: dfb0762fffe7cd5ba80a6de726e063b2bf6e6240
+  branch: master
+  specs:
+    faker (1.8.4)
+      i18n (~> 0.5)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -193,6 +201,7 @@ DEPENDENCIES
   binding_of_caller
   byebug
   coffee-rails (~> 4.1.0)
+  faker!
   figaro
   jbuilder (~> 2.0)
   jquery-rails
