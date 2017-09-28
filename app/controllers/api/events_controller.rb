@@ -2,6 +2,7 @@ class Api::EventsController < ApplicationController
 
   def index
     filters = params[:filters]
+
     if filters
       @events =  filters[:bounds] ? Event.in_bounds(filters[:bounds]) : Event.all
       @events = filters[:category] != "" ? @events.where(category: filters[:category]) : @events
@@ -11,11 +12,14 @@ class Api::EventsController < ApplicationController
            @events.joins(:event_tickets).where.not(event_tickets: {price: 0}) :
             @events
       @events = filters[:date] != "" ? @events.filter_by_date(filters[:date]) : @events
+      @page_results = @events.limit(15).offset((filters[:page].to_i - 1) * 15)
     else
-      @events = Event.all
+      @events = Event.where(:id => 1..9)
+      @page_results = @events
     end
 
     @count = @events.count
+
   end
 
   def show

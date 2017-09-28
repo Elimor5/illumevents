@@ -5,6 +5,7 @@ import { allEvents} from '../../reducers/selectors';
 import BrowseEventItem from './browse_event_item';
 import { Link } from 'react-router-dom';
 import { createBookmark, deleteBookmark, fetchUserInfo } from '../../actions/user_actions';
+import PaginationBar from './pagination_bar';
 
 class BrowseEvents extends React.Component {
   constructor(props) {
@@ -21,7 +22,6 @@ class BrowseEvents extends React.Component {
 
   render() {
     const { events, errors, filters } = this.props;
-
     return (
       <section>
           <div className="browse-page-outer-container">
@@ -43,6 +43,9 @@ class BrowseEvents extends React.Component {
                 </ul>
               </div>
           </div>
+          <div className="browse-page-footer">
+            <PaginationBar count={this.props.count} />
+          </div>
       </section>
     );
   }
@@ -50,14 +53,14 @@ class BrowseEvents extends React.Component {
 }
 
 const mapStateToProps = ({ events, errors, users, session, filters }) => {
-
-return ({
-  events: allEvents(events),
-  users,
-  loggedIn: Boolean(session.currentUser),
-  errors,
-  filters
-})
+  return ({
+    events: allEvents(events),
+    users,
+    loggedIn: Boolean(session.currentUser),
+    errors,
+    filters,
+    count: filters.eventCount,
+  });
 
 };
 

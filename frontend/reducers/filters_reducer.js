@@ -13,6 +13,7 @@ const defaultFilters = Object.freeze({
   price: null,
   errors: "",
   eventCount: "",
+  page: 1,
 });
 
 const filtersReducer = (state = defaultFilters, action) => {
@@ -20,7 +21,12 @@ const filtersReducer = (state = defaultFilters, action) => {
 
   switch (action.type) {
     case UPDATE_FILTER:
-      let newFilter = {[action.filter]: action.value};
+      let newFilter;
+
+      newFilter = action.filter === "page" ?
+       { "page": action.value } :
+       { [action.filter]: action.value, "page": 1, };
+
       return merge({}, state, newFilter);
     case CLEAR_FILTER:
       return merge({}, state, defaultFilters);

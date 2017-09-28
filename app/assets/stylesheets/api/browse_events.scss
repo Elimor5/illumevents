@@ -70,6 +70,14 @@
   min-height: 1500px;
 }
 
+.browse-page-footer {
+  background-color: #F8F8FA;
+  height: 115px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .categories-header {
   color: #464A4F;
   font-size: 20px;
@@ -257,4 +265,33 @@
   align-self: center;
   margin-bottom: 10px;
   font-family: sans-serif;
+}
+
+.pagination-nav-button {
+  font-size: 20px;
+  padding: 10px 15px 10px 15px;
+  color: #007f8c;
+}
+
+.selected-pagination-nav-button {
+  font-size: 20px;
+  padding: 10px 15px 10px 15px;
+  color: black;
+  background-color: white;
+}
+
+.pagination-nav-button:hover, .pagination-arrow:hover {
+  background-color: #F2F2F2;
+  cursor: pointer;
+}
+
+.pagination-arrow {
+  font-size: 30px !important;
+  padding: 10px 15px 10px 15px;
+  margin: 0 20px 0 20px;
+  color: #007f8c;
+}
+
+.gray-arrow {
+  color: #D3D3D3;
 }
