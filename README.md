@@ -21,6 +21,12 @@ Events have the ability to bookmark events for future viewing. Records of the bo
 
 The application uses active record to find events by a categories associated with specific events, allowing the user to easily sort through the database to filter their interests.
 
+### Browsing Events
+
+Illumevents takes advantage of Activerecord's powerful querying capabilities to sort through the database based on several filters, including geolocation coordinates, date, category, and cost. Illumevents utilizes redux to pass the filters through to the backend and filter through the database in one query, limiting strain on the backend and increasing efficiency. Results are organzied into pages to limit strain on the database.
+
+![browse_events](./docs/browse_events.png)
+
 ### Planned Features
 
 Future Plans for implementation:
