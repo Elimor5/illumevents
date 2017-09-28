@@ -12,6 +12,7 @@ class Api::EventsController < ApplicationController
            @events.joins(:event_tickets).where.not(event_tickets: {price: 0}) :
             @events
       @events = filters[:date] != "" ? @events.filter_by_date(filters[:date]) : @events
+      @events = @events.order(date: :asc)
       @page_results = @events.limit(15).offset((filters[:page].to_i - 1) * 15)
     else
       @events = Event.where(:id => 1..9)

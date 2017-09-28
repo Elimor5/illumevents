@@ -55,4 +55,6 @@ group :development do
   gem 'pry-rails'
   gem 'annotate'
   gem 'faker', :git => 'git://github.com/stympy/faker.git', :branch => 'master'
+  gem 'ffaker'
+  gem 'random_images', '~> 0.0.6'
 end

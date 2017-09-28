@@ -1,4 +1,20 @@
 require 'faker'
+require 'ffaker'
+
+concert_images = [
+
+                 "https://images.pexels.com/photos/2143/lights-party-dancing-music.jpg?w=1260&h=750&auto=compress&cs=tinysrgb",
+                 "https://images.pexels.com/photos/219101/pexels-photo-219101.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
+                 "https://images.pexels.com/photos/167605/pexels-photo-167605.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
+                 "https://images.pexels.com/photos/9137/night-vintage-music-bokeh.jpg?w=1260&h=750&auto=compress&cs=tinysrgb",
+                 "https://images.pexels.com/photos/96380/pexels-photo-96380.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
+                 "https://images.pexels.com/photos/8263/pexels-photo.jpg?w=1260&h=750&auto=compress&cs=tinysrgb",
+                 "https://images.pexels.com/photos/417458/pexels-photo-417458.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
+                 "https://images.pexels.com/photos/542553/pexels-photo-542553.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
+                 ]
+# require 'image_suckr'
+#
+# suckr = ImageSuckr::GoogleSuckr.new
 
 categories = [
   "All Categories",
@@ -55,9 +71,19 @@ Event.create!([
   {host_id: 3, title: "React Native Tutorial", lat: 40.7306, lng: -73.9915, venue: "Facebook NYC Headquarters", address: "770 Broadway", city_state_zip: "New York, NY 10003", date: Faker::Date.between(Date.today, 1.year.from_now), time: "8:00PM", description: "We are pleased to present a thorough tutorial on React Native. Our renowned instructor, Mark Zuckerberg's stunt double, Marcus Zuckerfield, will be demoing React Native's powerful capabilities.\n\nReact Native is a technology based on React, written in JavaScript, that can be used to create smartphone apps. \n\nReact Native is unique in that development can be done simultaneously for iOS and for Android. There is no need to create 2 separate apps to run on different platforms. \n\n Marcus is an expert in the technology and can't wait to show off React Native!", category: "Science & Technology", image: "https://s3.us-east-2.amazonaws.com/illumevents1-dev/events/images/000/000/144/original/pexels-photo-249798-coding.jpeg"}
 ])
 
-500.times do
+250.times do
+  artist = FFaker::Music.artist
+
   Event.create!(
-  {host_id: rand(1..5), title: Faker::MostInterestingManInTheWorld.quote, venue: Faker::University.name, address: Faker::Pokemon.location, city_state_zip: Faker::Address.city, time: "12:00 PM", date: Faker::Date.between(Date.today, 1.year.from_now), lat:40.730610, lng: -73.935242, category: categories.sample}
+    {host_id: rand(1..5), title: artist + " concert", venue: "Madison Square Garden", address: "4 Pennsylvania Plaza", city_state_zip: "New York, NY 10001", time: "7:00 PM", date: Faker::Date.between(Date.today, 1.year.from_now), lat:40.7503540, lng: -73.9933710, category: categories.sample, image: concert_images.sample}
+  )
+end
+
+250.times do
+  artist = FFaker::Music.artist
+
+  Event.create!(
+  {host_id: rand(1..5), title: artist + " concert", venue: "Barclays Center", address: "620 Atlantic Ave", city_state_zip: "Brooklyn, NY 11217", time: "7:00 PM", date: Faker::Date.between(Date.today, 1.year.from_now), lat:40.6826570, lng: -73.9752820, category: categories.sample, image: concert_images.sample }
   )
 end
 
