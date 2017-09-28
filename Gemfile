@@ -31,6 +31,8 @@ gem 'figaro'
 gem 'seed_dump'
 gem 'aws-sdk', '>= 2.0'
 # gem 'unicorn'
+gem 'faker', :git => 'git://github.com/stympy/faker.git', :branch => 'master'
+gem 'ffaker'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -54,7 +56,5 @@ group :development do
   gem 'binding_of_caller'
   gem 'pry-rails'
   gem 'annotate'
-  gem 'faker', :git => 'git://github.com/stympy/faker.git', :branch => 'master'
-  gem 'ffaker'
-  gem 'random_images', '~> 0.0.6'
+
 end

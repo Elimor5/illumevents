@@ -154,8 +154,6 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     rake (12.0.0)
-    random_images (0.0.6)
-      nokogiri (>= 1.4.2)
     rdoc (4.3.0)
     sass (3.4.24)
     sass-rails (5.0.6)
@@ -214,7 +212,6 @@ DEPENDENCIES
   pry-rails
   rails (= 4.2.8)
   rails_12factor
-  random_images (~> 0.0.6)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   seed_dump
