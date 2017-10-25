@@ -1,15 +1,16 @@
 .homepage-outer-container {
   display: flex;
-  justify-content: center;
-  background-color: #F8F8FA;
+    justify-content: center;
+    background-color: #F8F8FA;
+    flex-direction: column;
+    align-items: center;
 }
 
 .homepage-events {
   display: flex;
-
   flex-direction: row;
   justify-content: space-between;
-  width: 1095px;
+  width: 60%;
 }
 
 .homepage-event-item {
@@ -84,7 +85,7 @@
   background-color: #F8F8FA;
   height: 20px;
   text-align: justify;
-
+  margin-top: 6%;
 }
 
 .splash-image {
@@ -96,6 +97,22 @@
   width: 100%;
   height: 500px !important;
   overflow: hidden;
+}
+
+.homepage-search-bar-container-inner {
+  height: 50%;
+  width: 60%;
+  position: absolute;
+  margin-top: -7%;
+  border-radius: 10px;
+  box-shadow: 0 1px 3px 0 rgba(0,0,0,.25);
+  opacity: .99;
+  background: linear-gradient( rgba(255, 255, 255, 0.9) 0%, white 25%);
+}
+
+.homepage-search-bar-container-outer {
+  display: flex;
+  justify-content: center;
 }
 
 .vertical-spacing {

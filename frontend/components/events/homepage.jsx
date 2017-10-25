@@ -20,19 +20,18 @@ class Homepage extends React.Component {
     }
   }
 
-
-
   render(){
       const{ events, errors } = this.props;
     return(
     <section>
       <HomepageSlider />
-        <div className="vertical-spacing"></div>
+        <div className="homepage-outer-container">
+          <div className="homepage-search-bar-container-outer">
+            <div className="homepage-search-bar-container-inner"> </div>
+          </div>
           <div className="center-heading">
-
             <h1> Trending Events Near You </h1>
           </div>
-        <div className="homepage-outer-container">
           <div className="homepage-events">
             <ul className="events-container">
               {events.slice(0,9).map(event =>
