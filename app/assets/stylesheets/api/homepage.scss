@@ -105,14 +105,63 @@
   position: absolute;
   margin-top: -7%;
   border-radius: 10px;
-  box-shadow: 0 1px 3px 0 rgba(0,0,0,.25);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.25);
   opacity: .99;
-  background: linear-gradient( rgba(255, 255, 255, 0.9) 0%, white 25%);
+  background: linear-gradient(rgba(255, 255, 255, 0.9) 0%, white 25%);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
 .homepage-search-bar-container-outer {
   display: flex;
   justify-content: center;
+}
+
+.homepage-search-bar-banner-container {
+  width: 60%;
+  margin-bottom: 41px;
+}
+
+.homepage-search-bar-banner {
+  font-family: sans-serif;
+  font-size: 43px;
+  /* color: orange; */
+  text-align: center;
+  font-weight: 100;
+  color: #F86820;
+}
+
+.homepage-search-bar-bars-container {
+  display: flex;
+  justify-content: center;
+  width: 74%;
+}
+
+.homepage-search-bar-input {
+  width: 26%;
+  background-color: white;
+  height: 44px;
+  border-radius: 1px;
+  border: 1px solid gainsboro;
+}
+
+.homepage-search-bar-button {
+  height: 47px;
+  width: 20%;
+  background-color: #F86820;
+  border-radius: 6px;
+  color: #fff;
+  font-family: sans-serif;
+  font-size: 19px;
+  text-align: center;
+}
+
+.homepage-search-bar-button:hover {
+  cursor: pointer;
+  background-color: #b73a08;
+  color: #fff;
 }
 
 .vertical-spacing {
