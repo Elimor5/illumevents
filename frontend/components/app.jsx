@@ -1,6 +1,7 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import Modal from './modal/modal';
+import Footer from './footer.jsx';
 import {
   Route,
   Redirect,
@@ -35,6 +36,7 @@ const App = () => (
           <ProtectedRoute exact path="/dashboard" component={ UserDashboard } />
         </section>
       </HashRouter>
+    <Footer />  
   </div>
 );
 

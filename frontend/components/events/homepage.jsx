@@ -48,7 +48,6 @@ class Homepage extends React.Component {
           </div>
 
         </div>
-        <div className="footer"></div>
 
     </section>
     );

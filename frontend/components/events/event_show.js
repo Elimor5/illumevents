@@ -187,7 +187,6 @@ class EventShow extends React.Component {
              lat={event.lat}
              lng={event.lng}
              style="event-show-map-container"/>
-           <div className="footer"></div>
 
           </div>
         </div>
