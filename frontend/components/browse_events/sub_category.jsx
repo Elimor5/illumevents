@@ -22,6 +22,14 @@ class SubCategory extends React.Component {
   }
 
   componentDidMount() {
+
+    const { filters, subCategory } = this.props;
+    const clicked = filters[subCategory] ;
+
+    if (filters[subCategory]) {
+      this.setState({ clicked });
+    }
+    console.log("test");
   }
 
   getDate() {
@@ -63,7 +71,7 @@ class SubCategory extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    
+
     const customDateRange = this.state.startDate.concat("_", this.state.endDate);
     this.props.updateFilter("date", customDateRange);
     window.scrollTo(0, 0);

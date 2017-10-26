@@ -43,7 +43,7 @@ class EventsSearchBar extends React.Component {
     } else {
       this.updateLocationFilter();
       this.updateDateFilter();
-      this.props.history.push();
+      this.props.history.push("/browse");
     }
 
     // this.props.history.push("/browse");

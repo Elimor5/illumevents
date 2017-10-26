@@ -51,7 +51,6 @@ class Map extends React.Component {
 
   retrieveLocation() {
     const { lat, lng } = this.props.coordinates.lat ? this.props.coordinates : this.props;
-    debugger
 
    const mapOptions = {
      center: { lat, lng },

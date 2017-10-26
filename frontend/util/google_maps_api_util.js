@@ -11,7 +11,7 @@ export const retriveLocationFromAddress = (context, address, errorHandler) => {
       const latLong = data.results[0].geometry.location;
       const lat = Math.round(latLong.lat * 10000) / 10000;
       const lng = Math.round(latLong.lng * 10000) / 10000;
-      debugger
+  
       context.setState({
         lat,
         lng
