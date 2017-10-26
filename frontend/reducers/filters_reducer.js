@@ -1,5 +1,5 @@
 import { UPDATE_FILTER,
-         CLEAR_FILTER,
+         CLEAR_ALL_FILTERS,
          UPDATE_CITY,
          FILTER_ERROR,
          CLEAR_FILTER_ERRORS } from '../actions/filter_actions';
@@ -9,6 +9,7 @@ import merge from 'lodash/merge';
 const defaultFilters = Object.freeze({
   bounds: {},
   category: null,
+  coordinates: {},
   date: null,
   price: null,
   errors: "",
@@ -28,8 +29,8 @@ const filtersReducer = (state = defaultFilters, action) => {
        { [action.filter]: action.value, "page": 1, };
 
       return merge({}, state, newFilter);
-    case CLEAR_FILTER:
-      return merge({}, state, defaultFilters);
+    case CLEAR_ALL_FILTERS:
+      return merge({}, state,  defaultFilters);
     case FILTER_ERROR:
       newFilter = {["errors"]: action.error };
       return merge({}, state, newFilter);

@@ -16,13 +16,13 @@ class Map extends React.Component {
       bounds: ""
     };
     this.setMarker = this.setMarker.bind(this);
-    this.retriveLocation = this.retriveLocation.bind(this);
+    this.retrieveLocation = this.retrieveLocation.bind(this);
     this.eventMarkers = this.eventMarkers.bind(this);
     this.toggleOverlay = this.toggleOverlay.bind(this);
   }
 
   componentDidMount() {
-    this.retriveLocation();
+    this.retrieveLocation();
   }
 
   componentWillReceiveProps(nextProps) {
@@ -35,19 +35,23 @@ class Map extends React.Component {
           counter: 0,
           overlay: false
          });
-        this.state.map.setCenter({
-          lat: nextProps.lat,
-          lng: nextProps.lng,
-        });
-        this.state.map.setZoom(this.props.zoom)
-        this.props.resetSearchByCity();
+         if (this.state.map) {
+           this.state.map.setCenter({
+             lat: nextProps.lat,
+             lng: nextProps.lng,
+           });
+
+           this.state.map.setZoom(this.props.zoom)
+           this.props.resetSearchByCity();
+         }
       }
 
     }
   }
 
-  retriveLocation() {
-    const { lat, lng } = this.props;
+  retrieveLocation() {
+    const { lat, lng } = this.props.coordinates.lat ? this.props.coordinates : this.props;
+    debugger
 
    const mapOptions = {
      center: { lat, lng },
@@ -73,13 +77,14 @@ class Map extends React.Component {
        }
 
        if (this.state.counter < 1 ) {
-         this.props.updateFilter("bounds", bounds);
+         this.props.updateFilter("bounds",bounds);
          this.setState({ counter: 1});
          this.state.map.setZoom(this.props.zoom)
        } else if (this.state.counter >= 1 && !this.props.searchByCity) {
            this.setState({ bounds, overlay: true });
        }
      });
+
    }
   }
 
@@ -142,9 +147,10 @@ class Map extends React.Component {
   }
 }
 
-  const mapStateToProps = ({ events }) => {
+  const mapStateToProps = ({ events, filters }) => {
     return ({
-      events: allEvents(events)
+      events: allEvents(events),
+      coordinates: filters.coordinates
     });
   };
 

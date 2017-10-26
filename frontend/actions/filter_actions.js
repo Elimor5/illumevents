@@ -1,5 +1,5 @@
 export const UPDATE_FILTER = 'UPDATE_FILTER';
-export const CLEAR_FILTER = 'CLEAR_FILTER';
+export const CLEAR_ALL_FILTERS = 'CLEAR_ALL_FILTERS';
 export const FILTER_ERROR = 'FILTER_ERROR';
 export const CLEAR_FILTER_ERRORS = 'CLEAR_FILTER_ERRORS';
 import { fetchAllEvents } from './event_actions';
@@ -10,10 +10,9 @@ export const changeFilter = (filter, value) => ({
   value
 });
 
-export const clearFilter = () => ({
-  type: CLEAR_FILTER,
+export const clearAllFilters = () => ({
+  type: CLEAR_ALL_FILTERS,
 });
-
 
 export const filterErrors = (error) => ({
   type: FILTER_ERROR,
@@ -30,7 +29,7 @@ export const updateFilter = (filter, value) => (dispatch, getState) => {
 };
 
 export const clearFilters = () => dispatch => {
-  dispatch(clearFilter());
+  dispatch(clearAllFilter());
 };
 
 export const updateFilterErrors = (error) => dispatch => {

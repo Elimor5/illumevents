@@ -33,6 +33,7 @@ class BrowseEventsSidebar extends React.Component {
     this.setAutoComplete();
   }
 
+
   handleChange() {
     return(e) => {
       this.setState({ city: e.target.value});
@@ -141,9 +142,18 @@ class BrowseEventsSidebar extends React.Component {
     );
   }
 
+  // setLatLng() {
+  //   if (this.props.coordinates) {
+  //     const { lat, lng } = this.props.coordinates;
+  //     this.setState({ lat, lng });
+  //     console.log(this.state);
+  //   }
+  // }
+
   render() {
-    const { updateFilter } = this.props;
+    const { updateFilter, lat, lng } = this.props;
     const subCategories = Object.keys(this.state.subCategoriesOpen);
+
     return(
       <div className="categories-google-maps-browse">
         <Map
@@ -177,11 +187,11 @@ class BrowseEventsSidebar extends React.Component {
   }
 }
 
-// const mapStateToProps = ({ filters }) => {
-//     return {
-//       filters: filters,
-//     };
-// };
+const mapStateToProps = ({ filters }) => {
+    return {
+      coordinates: filters.coordinates,
+    };
+};
 
 
 const mapDispatchtoProps = dispatch => ({
@@ -190,4 +200,4 @@ const mapDispatchtoProps = dispatch => ({
   clearFilterErrors: () => dispatch(clearFilterErrors),
 });
 
-export default connect(null, mapDispatchtoProps)(BrowseEventsSidebar);
+export default connect(mapStateToProps, mapDispatchtoProps)(BrowseEventsSidebar);

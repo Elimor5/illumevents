@@ -14,7 +14,7 @@ class Homepage extends React.Component {
   }
 
   componentDidMount(){
-    this.props.clearFilters();
+    this.props.clearAllFilters();
     this.props.requestEvents();
     if (this.props.loggedIn) {
       this.props.fetchUserInfo(this.props.userId);

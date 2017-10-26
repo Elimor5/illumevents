@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 
 import { fetchAllEvents } from '../../actions/event_actions';
 import { fetchUserInfo, createBookmark, deleteBookmark } from '../../actions/user_actions';
-import { clearFilters } from '../../actions/filter_actions';
+import { clearAllFilters } from '../../actions/filter_actions';
 import { allEvents } from '../../reducers/selectors';
 import Homepage  from './homepage';
 
@@ -23,7 +23,7 @@ const mapDispatchToProps = (dispatch) => ({
   fetchUserInfo: (id) => dispatch(fetchUserInfo(id)),
   createBookmark: (eventId) => dispatch(createBookmark(eventId)),
   deleteBookmark: (eventId) => dispatch(deleteBookmark(eventId)),
-  clearFilters: () => dispatch(clearFilters()),
+  clearAllFilters: () => dispatch(clearAllFilters()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Homepage);
