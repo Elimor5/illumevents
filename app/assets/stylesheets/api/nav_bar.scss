@@ -1,0 +1,116 @@
+.nav-bar-container {
+  display: flex;
+  height: 63px;
+  width: 100%;
+  border-bottom: 1px solid #EFF2F5;
+  justify-content: space-between;
+}
+.login-container {
+  display: flex;
+}
+
+.nav-bar-item {
+  border-right: 1px solid #EFF2F5;
+  display: flex;
+  flex-basis: auto;
+}
+
+
+
+.nav-bar-item-user {
+  border-right: 1px solid #EFF2F5;
+  display: flex;
+  flex-basis: auto;
+}
+
+.auth-item-split {
+  display: flex;
+  flex-basis: auto;
+  border-left: none;
+}
+
+.nav-bar-right {
+  display: flex;
+  justify-content: space-between;
+  align-self: center;
+}
+
+.logo {
+  color: #F6682F;
+  font-family: sans-serif;
+  font-weight: bolder;
+  font-size: 20px;
+  padding: 24px;
+}
+
+.search-bar-item {
+  border-right: 1px solid #EFF2F5;
+  display: flex;
+  flex-basis: 51%;
+  border-right: none;
+}
+
+.search-bar {
+  align-self: center;
+  margin-left: 15px;
+}
+
+.event-bar-nav {
+  color: #0278b8;
+  font-weight: bolder;
+  font-size: 12px;
+  transition: all .5s ease;
+}
+
+.event-bar-nav:hover {
+  color: black;
+}
+
+.auth-bar-nav {
+  color: #676A6E;
+  font-size: 12px;
+}
+
+.auth-bar-nav:hover {
+  background-color: #EFF2F5;
+  cursor: pointer;
+}
+
+.auth-bar-nav-demo {
+  border-left: 1px solid #EFF2F5;
+}
+
+.nav-button {
+  font-family: sans-serif;
+  padding: 20px;
+  padding-left: 27px;
+  padding-right: 27px;
+  padding: 26px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.nav-button:hover {
+  cursor: pointer
+}
+
+.right-side-nav {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.browse-bar-nav {
+  color: #676A6E;
+  font-size: 12px;
+  border-right: none;
+  border-left: 1px solid #EFF2F5;
+}
+
+.browse-bar-nav:hover {
+  background-color: #EFF2F5;
+  cursor: pointer;
+}
+
+.signup-nav {
+  border-left: none;
+}

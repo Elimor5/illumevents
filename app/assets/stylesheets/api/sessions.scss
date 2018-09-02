@@ -1,0 +1,171 @@
+// Place all the styles related to the api/sessions controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.session-modal-container {
+  display:flex;
+  // align-content: center;
+  // flex-direction: column;
+  justify-content: center;
+  background-color: white;
+
+}
+
+.login-form-box {
+  flex-basis: 20%;
+}
+
+.session-modal-greeting {
+  align-self: auto;
+  color: #676A6E;
+  font-family: sans-serif;
+  font-size: 32px;
+  font-weight: 100;
+  letter-spacing: -.1px;
+  text-align: center;
+  margin-bottom: 14px;
+  margin-left: 61px;
+}
+
+.session-modal-form-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 69px;
+}
+
+.session-modal-form-signup-login {
+  color: #676A6E;
+  font-family: sans-serif;
+  font-size: 16px;
+  font-weight: 100;
+  margin-bottom: 30px;
+  margin-left: 62px;
+}
+
+.link {
+  color: blue;
+}
+
+.login-form-email-pw {
+  text-align: left;
+  color: #676A6E;
+  font-size: 16px;
+  font-weight: 100;
+  margin-top: 30px;
+}
+
+.login-input {
+  padding-left: 15px;
+  display: block;
+  width: 126%;
+  height: 38px;
+  font-size: 20px;
+  margin-top: 6px;
+  border-radius: 3px;
+}
+
+.login-input::placeholder {
+  color: #D1D2D6;
+  font-size: 15px;
+  font-weight: 100;
+}
+
+.login-input:focus {
+  outline: none;
+  border:1px solid #39C2C9;
+}
+
+.login-form {
+  // padding: 1px;
+  // margin-right: 29px;
+  // margin-left: -33px;
+}
+
+.session-submit {
+  padding: 10px;
+  padding-left: 100px;
+  padding-right: 100px;
+  font-size: 20px;
+  background-color: #F6682F;
+  border: none;
+  color: white;
+  border-radius: 51px;
+  align-self: center;
+  width: 133%
+}
+
+.session-submit:hover {
+  background-color: #F95654;
+  cursor: pointer;
+}
+
+.demo-button {
+  padding: 10px;
+  padding-left: 0px;
+  padding-right: 0px;
+  font-size: 20px;
+  background-color: #F6682F;
+  border: none;
+  color: white;
+  border-radius: 51px;
+  align-self: center;
+  width: 133%;
+  margin-top: 10px;
+  text-align: center
+}
+
+.demo-button:hover {
+  background-color: #F95654;
+  cursor: pointer;
+}
+
+.close-session-modal {
+  align-self: flex-start;
+  position: relative;
+  bottom: 91px;
+  left: 700px;
+  font-family: sans-serif;
+  color: #676A6E;
+  font-size: 30px;
+}
+
+.close-button {
+  font-size: 20px;
+  z-index: 101;
+  position: fixed;
+  border-radius: 50%;
+  top: 50px;
+  cursor: pointer;
+  color: #676A6E;
+}
+
+close-button:hover {
+  color: black;
+}
+
+.button {
+  font-size: 15px;
+  color: blue;
+  cursor: pointer;
+}
+
+.error-handle {
+  text-align: center;
+  list-style: none;
+  color: red;
+}
+
+.session-form-logo {
+  border-radius: 50%;
+  background-color: #F6682F;
+  height: 70px;
+  width: 70px;
+  color: white;
+  margin-left: 150px;
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 36px;
+  font-family: sans-serif;
+  line-height: 67px;
+}

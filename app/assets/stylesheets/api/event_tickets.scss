@@ -1,0 +1,109 @@
+// Place all the styles related to the api/event_tickets controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.create-tickets-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.ticket-form-input-int {
+  padding-left: 10px;
+  display: block;
+  width: 60px;
+  height: 38px;
+  font-size: 20px;
+  border-radius: 3px;
+  margin: 10px 10px 10px 10px
+}
+
+.ticket-form-input-int::placeholder {
+  color: #D3D5D8;
+  font-size: 16px;
+  font-weight: 100;
+}
+
+.ticket-form-input-char::placeholder {
+  color: #D3D5D8;
+  font-size: 16px;
+  font-weight: 100;
+}
+
+.ticket-form-input-char {
+  padding-left: 10px;
+  display: block;
+  width: 350px;
+  height: 38px;
+  font-size: 20px;
+  border-radius: 3px;
+  margin: 10px 10px 10px 10px
+}
+
+.ticket-form {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.ticket-form:hover {
+  background-color: #E1DDDD;
+}
+
+.tickets-header {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+
+}
+
+.add-ticket-button {
+  font-size: 20px
+}
+
+.create-ticket-form-header {
+  align-self: center;
+  font-size: 30px;
+  font-weight: 100;
+  margin: 56px 150px 30px 0px;
+  color: #464A4F;
+}
+
+.ticket-type {
+  color: #464A4F;
+  font-size: 20px;
+  font-weight: 100;
+  margin: 0px 10px 0px 20px;
+  white-space: nowrap;
+}
+
+.quantity-available {
+  color: #464A4F;
+  font-size: 20px;
+  font-weight: 100;
+  word-wrap: break-word;
+  margin: 0px 28px 0px 185px;
+}
+
+.price {
+  font-weight: 100;
+  color: #464A4F;
+  font-size: 20px;
+}
+
+.flex-right {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.shrink-word {
+  width: 71%
+}
+
+.ticket-form-holder {
+  border: solid black 1px;
+  margin-bottom: 31px;
+}
+
+.add-ticket-button {
+  font-size: 20px
+  font co
+}
