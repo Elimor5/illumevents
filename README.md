@@ -1,7 +1,7 @@
 ## Illumevents
 
 
-[Live](http://www.illumevents.site/)
+[Live](https://illumevents.herokuapp.com/#/)
 
 ### Background
 
