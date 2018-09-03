@@ -10,7 +10,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 35%;
+  width: 71%;
 }
 
 .homepage-event-item {
@@ -100,7 +100,7 @@
 }
 
 .homepage-search-bar-container-inner {
-  height: 50%;
+  height: 23%;
   width: 60%;
   position: absolute;
   margin-top: -7%;
@@ -145,6 +145,8 @@
   height: 44px;
   border-radius: 1px;
   border: 1px solid gainsboro;
+  padding-left: 8px
+
 }
 
 .homepage-search-bar-button {

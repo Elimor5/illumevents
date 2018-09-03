@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 20170919225907) do
     t.string   "category"
     t.string   "image_file_name"
     t.string   "image_content_type"
-    t.integer  "image_file_size"
+    t.bigint   "image_file_size"
     t.datetime "image_updated_at"
     t.float    "lat"
     t.float    "lng"

@@ -2,7 +2,7 @@ class Api::EventsController < ApplicationController
 
   def index
     filters = params[:filters]
-
+    
     if filters
       @events =  filters[:bounds] ? Event.in_bounds(filters[:bounds]) : Event.all
       @events = filters[:category] != "" ? @events.where(category: filters[:category]) : @events
@@ -82,7 +82,5 @@ class Api::EventsController < ApplicationController
     )
     event_params[:event_tickets_attributes] = event_tickets_attributes[:tickets]
     event_params
-
   end
-
 end

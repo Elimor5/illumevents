@@ -2,7 +2,6 @@ import React from 'react';
 import HomepageEventItem from './homepage_event_item';
 import ReactGA from 'react-ga';
 import HomepageSlider from './homepage_slider';
-import EventsSearchBar from './events_search_bar';
 
 class Homepage extends React.Component {
   constructor(props) {
@@ -27,7 +26,6 @@ class Homepage extends React.Component {
     <section>
       <HomepageSlider />
         <div className="homepage-outer-container">
-          <EventsSearchBar />
           <div className="center-heading">
             <h1> Trending Events Near You </h1>
           </div>
